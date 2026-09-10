@@ -97,7 +97,7 @@ export default function Inbox({
   const [multiAgent, setMultiAgent] = useState(false);
   const [busy, setBusy] = useState(false);
   const [error, setError] = useState("");
-  const [copiedFollowUp, setCopiedFollowUp] = useState(false);
+  const [copiedFollowUp, setCopiedFollowUp] = useState("");
   const [streamStatus, setStreamStatus] = useState("Idle");
   const [newOpen, setNewOpen] = useState(false);
   const [newCustomer, setNewCustomer] = useState("");
@@ -289,7 +289,7 @@ export default function Inbox({
         },
       });
       setRun(null);
-      setCopiedFollowUp(false);
+      setCopiedFollowUp("");
       setEvents([]);
       setProposal(null);
       setRunId(result.run_id);
@@ -530,10 +530,10 @@ export default function Inbox({
                     className="secondary"
                     onClick={() => void perform(async () => {
                       await navigator.clipboard.writeText(run.next_step!.draft);
-                      setCopiedFollowUp(true);
+                      setCopiedFollowUp(run.id);
                     })}
                   >
-                    <Copy size={14} /> {copiedFollowUp ? "Copied follow-up question" : "Copy follow-up question"}
+                    <Copy size={14} /> {copiedFollowUp === run.id ? "Copied follow-up question" : "Copy follow-up question"}
                   </button>
                   <small>Copying sends nothing and creates no request. Record the customer's answer as a new message.</small>
                 </section>
