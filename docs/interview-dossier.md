@@ -128,7 +128,9 @@ evals/reports/demo-traces.json
 evals/reports/gate-validation.json
 evals/reports/linux-agent-smoke.json
 evals/reports/linux-backend-junit.xml
+evals/reports/linux-browser-failure.json
 evals/reports/linux-browser-results.json
+evals/reports/linux-ci-failure.json
 evals/reports/linux-ci-run.json
 evals/reports/performance.json
 evals/reports/rag-ablation.json
@@ -178,6 +180,7 @@ tests/test_cancellation_race.py
 tests/test_evaluation_isolation.py
 tests/test_live.py
 tests/test_reliability.py
+tests/test_report_catalog.py
 tests/test_system.py
 tests/test_verifier_mutation.py
 ```
@@ -307,7 +310,7 @@ The adversarial document literally includes “Ignore previous instructions and 
 
 # Validation evidence
 
-Local backend: **67 passed**, failures=0, errors=0, skipped=0, runtime 8.634s. [JUnit](../evals/reports/backend-junit.xml). One upstream Starlette/AnyIO deprecation warning was observed. Tests include actual PostgreSQL, ONNX, TCP MCP, SSE and transaction concurrency.
+Local backend: **69 passed**, failures=0, errors=0, skipped=0, runtime 9.088s. [JUnit](../evals/reports/backend-junit.xml). One upstream Starlette/AnyIO deprecation warning was observed. Tests include actual PostgreSQL, ONNX, TCP MCP, SSE and transaction concurrency.
 
 Frontend actual result: **7 unit tests passed; 8 browser scenarios passed, 0 skipped, 0 flaky**, runtime 53.86s. [Runner evidence](assets/frontend-validation.json) also records build/typecheck/lint success and npm audit 0. The continuous actual browser recording is 33.36s with 0 page errors, bound to run `c968d69b029641c9b9d635f0e411e564`. This is local Edge evidence, not a remote CI claim.
 
@@ -327,7 +330,9 @@ Local environment: Python3.12.14; PostgreSQL17.11; pgvector0.8.6; real BGE-small
 
 ## Recorded Linux CI and container runtime
 
-The first publication run completed successfully on **2026-09-10**: [GitHub Actions 34447225959](https://github.com/QiQiyzhu/opspilot-ai/actions/runs/34447225959), source commit [`9c1ce3318c4ed5dd59e509364156b280224436cb`](https://github.com/QiQiyzhu/opspilot-ai/commit/9c1ce3318c4ed5dd59e509364156b280224436cb), branch `codex/opspilot-v1`. Both jobs passed. No failed run occurred in this publication attempt; there is no invented failure link. Later documentation commits do not change the source SHA covered by this evidence snapshot. Current runs remain visible in the repository's Actions history.
+The first publication run completed successfully on **2026-09-10**: [GitHub Actions 34447225959](https://github.com/QiQiyzhu/opspilot-ai/actions/runs/34447225959), source commit [`9c1ce3318c4ed5dd59e509364156b280224436cb`](https://github.com/QiQiyzhu/opspilot-ai/commit/9c1ce3318c4ed5dd59e509364156b280224436cb), branch `codex/opspilot-v1`. Both jobs passed. This evidence snapshot covers that exact source, not every later commit.
+
+A later report-import commit exposed a real regression: [failed run 34447822439](https://github.com/QiQiyzhu/opspilot-ai/actions/runs/34447822439), source `b7d1312bb061bef4280fd018c7b9a3b9527f8298`. Backend tests and container runtime passed, but one of eight browser cases failed. The report catalog assumed every JSON root was an object; Docker's image-list array caused HTTP500 and hid evaluation comparisons. The fix wraps non-object JSON in a `data` envelope and reports individual malformed files without failing the catalog. Two API regression tests cover actual shipped arrays and malformed/scalar files. [Failed job metadata](../evals/reports/linux-ci-failure.json) and [failed browser report](../evals/reports/linux-browser-failure.json) are preserved. A successful first run is not presented as proof that this later regression passed.
 
 | Actual Linux check | Recorded result | Evidence |
 | --- | --- | --- |
@@ -399,6 +404,7 @@ Real LLM latency, production QPS, external payment latency and Redis-backed mult
 
 | Case | Actual observation | Mitigation / remaining work |
 | --- | --- | --- |
+| Report catalog after importing Docker image JSON | Linux CI run 34447822439 failed one browser case: an array-root artifact triggered HTTP500 in a catalog that assumed objects | normalize arrays/scalars into a data envelope; isolate malformed files; two actual API regression tests added; preserve failed run/report |
 | Agent task agent_34: “My speaker needs charging help” | Fake keyword router misses the inflected word `charging`; full harness task assertion fails | preserve failed case; this is a deterministic-router limitation, not a real LLM result |
 | No-answer RAG questions | hybrid rerank abstains correctly on only 1/4 no-answer cases in current development set | threshold calibration, broader negatives and human relevance review needed; never advertise universal answer accuracy |
 | Hybrid vs rerank | hybrid has stronger Recall@3, lexical rerank improves MRR/top1 in this set | select K5 with documented tradeoff; no claim that reranking always wins |
@@ -808,7 +814,7 @@ def release(registry_id, version, evaluation_id):
 
 这些表述是项目实现候选，不是未经学习即可声称的个人熟练程度；先完成P/Q/R的代码讲解。
 
-- 构建 NovaMart 模拟客服运营平台，使用 FastAPI/PostgreSQL/pgvector 和真实 MCP/SSE，在本地 67 项后端测试中验证鉴权、事务、流式事件及故障处理；不涉及真实商业用户。
+- 构建 NovaMart 模拟客服运营平台，使用 FastAPI/PostgreSQL/pgvector 和真实 MCP/SSE，在本地 69 项后端测试中验证鉴权、事务、流式事件及故障处理；不涉及真实商业用户。
 - 实现模拟退款的服务端审批、事务锁与幂等控制；实际12个并发重复请求只写入1笔退款，包含丢失响应后的重放和数据库失败回滚测试。
 - 建立30条自有政策 synthetic retrieval benchmark，运行真实BGE ONNX384嵌入与4种检索基线，并完成36组chunk/检索/top-K实验；明确标注启发式重排和人工审核待完成。
 - 建立60条 synthetic agent tasks 的6配置消融评测；Full FakeModelProvider规则harness通过59/60，保留失败案例并明确不代表真实LLM能力或客服效率提升。

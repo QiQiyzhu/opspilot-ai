@@ -105,7 +105,16 @@
       "inventory_verification_scope": null
     }
   },
-  "failed_runs_observed": [],
+  "failed_runs_observed": [
+    {
+      "run_id": 34447822439,
+      "url": "https://github.com/QiQiyzhu/opspilot-ai/actions/runs/34447822439",
+      "source_sha": "b7d1312bb061bef4280fd018c7b9a3b9527f8298",
+      "conclusion": "failure",
+      "cause": "Report catalog assumed all JSON roots were objects; newly imported container-images.json array caused HTTP500 and one evaluation-page browser failure",
+      "fix": "Normalize non-object JSON roots into a data envelope; isolate malformed-file errors; two API catalog regression tests"
+    }
+  ],
   "warnings": [
     "One upstream Starlette/AnyIO deprecation warning in pytest",
     "GitHub warned that action versions targeting Node20 are forced to Node24; jobs passed"

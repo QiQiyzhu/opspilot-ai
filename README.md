@@ -100,7 +100,7 @@ python -m analytics.explain
 python -m evals.demo
 ```
 
-Backend local result: **67 passed, 0 skipped**, including TCP MCP/SSE tests. Frontend commands and credential/fixture setup are in [frontend README](frontend/README.md). Actual Linux GitHub Actions passed **67 backend tests, 7 frontend unit tests and 8 browser scenarios**. A separate job built and started Compose, then verified PostgreSQL/Redis, TCP MCP/SSE and an approved idempotent refund. [Exact source SHA and downloaded CI evidence](docs/ci-validation.md).
+Backend local result: **69 passed, 0 skipped**, including TCP MCP/SSE tests. Frontend commands and credential/fixture setup are in [frontend README](frontend/README.md). Actual Linux GitHub Actions passed **67 backend tests, 7 frontend unit tests and 8 browser scenarios**. A separate job built and started Compose, then verified PostgreSQL/Redis, TCP MCP/SSE and an approved idempotent refund. [Exact source SHA and downloaded CI evidence](docs/ci-validation.md).
 
 | Concurrent local Fake sessions | Errors | Client run P50 ms | P95 ms | P99 ms |
 | --- | --- | --- | --- | --- |

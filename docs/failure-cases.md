@@ -2,6 +2,7 @@
 
 | Case | Actual observation | Mitigation / remaining work |
 | --- | --- | --- |
+| Report catalog after importing Docker image JSON | Linux CI run 34447822439 failed one browser case: an array-root artifact triggered HTTP500 in a catalog that assumed objects | normalize arrays/scalars into a data envelope; isolate malformed files; two actual API regression tests added; preserve failed run/report |
 | Agent task agent_34: “My speaker needs charging help” | Fake keyword router misses the inflected word `charging`; full harness task assertion fails | preserve failed case; this is a deterministic-router limitation, not a real LLM result |
 | No-answer RAG questions | hybrid rerank abstains correctly on only 1/4 no-answer cases in current development set | threshold calibration, broader negatives and human relevance review needed; never advertise universal answer accuracy |
 | Hybrid vs rerank | hybrid has stronger Recall@3, lexical rerank improves MRR/top1 in this set | select K5 with documented tradeoff; no claim that reranking always wins |

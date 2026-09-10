@@ -70,6 +70,7 @@ app.add_middleware(
     allow_headers=["Authorization", "Content-Type", "Last-Event-ID"],
 )
 router = APIRouter(prefix="/api", dependencies=[Depends(current_user)])
+REPORT_FOLDER = Path(__file__).resolve().parents[1] / "evals" / "reports"
 
 
 class Payload(BaseModel):
@@ -489,11 +490,19 @@ def datasets():
 
 @router.get("/evaluations/reports")
 def reports():
-    folder = Path(__file__).resolve().parents[1] / "evals" / "reports"
     items = []
-    for path in sorted(folder.glob("*.json")):
-        value = json.loads(path.read_text(encoding="utf-8"))
-        items.append({"file": path.name, **value})
+    for path in sorted(REPORT_FOLDER.glob("*.json")):
+        try:
+            value = json.loads(path.read_text(encoding="utf-8-sig"))
+        except (OSError, UnicodeError, json.JSONDecodeError):
+            items.append({"file": path.name, "artifact_type": "invalid_json", "error": "Unable to read JSON artifact"})
+            continue
+        # Docker and other tools may emit a list/scalar, not a benchmark object.
+        # One artifact must never hide all otherwise-valid benchmark reports.
+        if isinstance(value, dict):
+            items.append({**value, "file": path.name})
+        else:
+            items.append({"file": path.name, "artifact_type": "json_data", "data": value})
     return {"items": items}
 
 

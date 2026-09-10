@@ -1,6 +1,6 @@
 # Validation evidence
 
-Local backend: **67 passed**, failures=0, errors=0, skipped=0, runtime 8.634s. [JUnit](../evals/reports/backend-junit.xml). One upstream Starlette/AnyIO deprecation warning was observed. Tests include actual PostgreSQL, ONNX, TCP MCP, SSE and transaction concurrency.
+Local backend: **69 passed**, failures=0, errors=0, skipped=0, runtime 9.088s. [JUnit](../evals/reports/backend-junit.xml). One upstream Starlette/AnyIO deprecation warning was observed. Tests include actual PostgreSQL, ONNX, TCP MCP, SSE and transaction concurrency.
 
 Frontend actual result: **7 unit tests passed; 8 browser scenarios passed, 0 skipped, 0 flaky**, runtime 53.86s. [Runner evidence](assets/frontend-validation.json) also records build/typecheck/lint success and npm audit 0. The continuous actual browser recording is 33.36s with 0 page errors, bound to run `c968d69b029641c9b9d635f0e411e564`. This is local Edge evidence, not a remote CI claim.
 
@@ -20,7 +20,9 @@ Local environment: Python3.12.14; PostgreSQL17.11; pgvector0.8.6; real BGE-small
 
 ## Recorded Linux CI and container runtime
 
-The first publication run completed successfully on **2026-09-10**: [GitHub Actions 34447225959](https://github.com/QiQiyzhu/opspilot-ai/actions/runs/34447225959), source commit [`9c1ce3318c4ed5dd59e509364156b280224436cb`](https://github.com/QiQiyzhu/opspilot-ai/commit/9c1ce3318c4ed5dd59e509364156b280224436cb), branch `codex/opspilot-v1`. Both jobs passed. No failed run occurred in this publication attempt; there is no invented failure link. Later documentation commits do not change the source SHA covered by this evidence snapshot. Current runs remain visible in the repository's Actions history.
+The first publication run completed successfully on **2026-09-10**: [GitHub Actions 34447225959](https://github.com/QiQiyzhu/opspilot-ai/actions/runs/34447225959), source commit [`9c1ce3318c4ed5dd59e509364156b280224436cb`](https://github.com/QiQiyzhu/opspilot-ai/commit/9c1ce3318c4ed5dd59e509364156b280224436cb), branch `codex/opspilot-v1`. Both jobs passed. This evidence snapshot covers that exact source, not every later commit.
+
+A later report-import commit exposed a real regression: [failed run 34447822439](https://github.com/QiQiyzhu/opspilot-ai/actions/runs/34447822439), source `b7d1312bb061bef4280fd018c7b9a3b9527f8298`. Backend tests and container runtime passed, but one of eight browser cases failed. The report catalog assumed every JSON root was an object; Docker's image-list array caused HTTP500 and hid evaluation comparisons. The fix wraps non-object JSON in a `data` envelope and reports individual malformed files without failing the catalog. Two API regression tests cover actual shipped arrays and malformed/scalar files. [Failed job metadata](../evals/reports/linux-ci-failure.json) and [failed browser report](../evals/reports/linux-browser-failure.json) are preserved. A successful first run is not presented as proof that this later regression passed.
 
 | Actual Linux check | Recorded result | Evidence |
 | --- | --- | --- |
