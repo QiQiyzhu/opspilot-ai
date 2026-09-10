@@ -1,5 +1,5 @@
 {
-  "created_at": "2026-09-10T06:53:38.475575+00:00",
+  "created_at": "2026-09-10T07:07:50.344233+00:00",
   "provenance": "Actual TCP smoke / SIMULATED BUSINESS / FakeModelProvider / scripted review",
   "health": {
     "status": "ok",
@@ -21,9 +21,9 @@
     "approved_amount_matches": true,
     "redis_ping": true
   },
-  "run_id": "d5a8f297c81b47b998b1033cf8c81806",
-  "order_id": "demo_026f2da367da42f5",
-  "proposal_id": "a4a83ee0d2a549a89b6afa54b538c901",
+  "run_id": "90d391541a3643f89972519ede324af3",
+  "order_id": "demo_8ad5337679fe4160",
+  "proposal_id": "f1468eb7f89443fe8034275d8d52614f",
   "verification": {
     "checks": {
       "order_exists": true,
@@ -38,16 +38,16 @@
     },
     "method": "independent_database_read",
     "record": {
-      "id": "53c0d18b727e4200b8e0720355803fc2",
+      "id": "d0513a5eca0247d2858d71cd2bfac6a0",
       "status": "submitted",
-      "order_id": "demo_026f2da367da42f5",
-      "created_at": "2026-09-10T06:53:38.411158+00:00",
-      "proposal_id": "a4a83ee0d2a549a89b6afa54b538c901",
+      "order_id": "demo_8ad5337679fe4160",
+      "created_at": "2026-09-10T07:07:50.270539+00:00",
+      "proposal_id": "f1468eb7f89443fe8034275d8d52614f",
       "amount_cents": 12900
     },
-    "order_id": "demo_026f2da367da42f5",
+    "order_id": "demo_8ad5337679fe4160",
     "verified": true,
-    "checked_at": "2026-09-10T06:53:38.415649+00:00",
+    "checked_at": "2026-09-10T07:07:50.275778+00:00",
     "reservation": null,
     "observed_status": "refunded",
     "inventory_verification_scope": null

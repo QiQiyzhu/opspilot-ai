@@ -1,23 +1,23 @@
 {
-  "observed_at": "2026-09-10T06:58:12.211602+00:00",
-  "run_id": 34447225959,
-  "run_url": "https://github.com/QiQiyzhu/opspilot-ai/actions/runs/34447225959",
-  "source_sha": "9c1ce3318c4ed5dd59e509364156b280224436cb",
+  "observed_at": "2026-09-10T07:10:14.808347+00:00",
+  "run_id": 34448358067,
+  "run_url": "https://github.com/QiQiyzhu/opspilot-ai/actions/runs/34448358067",
+  "source_sha": "5ae5267953a272c9a690fc9bb83a62df7a8beb60",
   "conclusion": "success",
   "jobs": [
     {
       "name": "compose-runtime",
-      "url": "https://github.com/QiQiyzhu/opspilot-ai/actions/runs/34447225959/job/102774571048",
+      "url": "https://github.com/QiQiyzhu/opspilot-ai/actions/runs/34448358067/job/102778086246",
       "conclusion": "success",
-      "started_at": "2026-09-10T06:52:51Z",
-      "completed_at": "2026-09-10T06:53:43Z"
+      "started_at": "2026-09-10T07:06:58Z",
+      "completed_at": "2026-09-10T07:07:56Z"
     },
     {
       "name": "quality",
-      "url": "https://github.com/QiQiyzhu/opspilot-ai/actions/runs/34447225959/job/102774571251",
+      "url": "https://github.com/QiQiyzhu/opspilot-ai/actions/runs/34448358067/job/102778086478",
       "conclusion": "success",
-      "started_at": "2026-09-10T06:52:51Z",
-      "completed_at": "2026-09-10T06:55:18Z"
+      "started_at": "2026-09-10T07:06:58Z",
+      "completed_at": "2026-09-10T07:09:06Z"
     }
   ],
   "backend": {
@@ -25,17 +25,17 @@
     "errors": "0",
     "failures": "0",
     "skipped": "0",
-    "tests": "67",
-    "time": "4.687",
-    "timestamp": "2026-09-10T06:53:49.678199+00:00",
-    "hostname": "runnervmlun5p"
+    "tests": "69",
+    "time": "4.761",
+    "timestamp": "2026-09-10T07:07:53.352677+00:00",
+    "hostname": "runnervmejwal"
   },
   "frontend": {
     "unit_passed": 7,
     "unit_source": "quality job log, npm run test",
     "browser": {
-      "startTime": "2026-09-10T06:54:48.614Z",
-      "duration": 23521.674000000003,
+      "startTime": "2026-09-10T07:08:38.424Z",
+      "duration": 21287.236,
       "expected": 8,
       "skipped": 0,
       "unexpected": 0,
@@ -51,7 +51,7 @@
     "gate": "passed"
   },
   "container": {
-    "created_at": "2026-09-10T06:53:38.475575+00:00",
+    "created_at": "2026-09-10T07:07:50.344233+00:00",
     "provenance": "Actual TCP smoke / SIMULATED BUSINESS / FakeModelProvider / scripted review",
     "health": {
       "status": "ok",
@@ -73,9 +73,9 @@
       "approved_amount_matches": true,
       "redis_ping": true
     },
-    "run_id": "d5a8f297c81b47b998b1033cf8c81806",
-    "order_id": "demo_026f2da367da42f5",
-    "proposal_id": "a4a83ee0d2a549a89b6afa54b538c901",
+    "run_id": "90d391541a3643f89972519ede324af3",
+    "order_id": "demo_8ad5337679fe4160",
+    "proposal_id": "f1468eb7f89443fe8034275d8d52614f",
     "verification": {
       "checks": {
         "order_exists": true,
@@ -90,16 +90,16 @@
       },
       "method": "independent_database_read",
       "record": {
-        "id": "53c0d18b727e4200b8e0720355803fc2",
+        "id": "d0513a5eca0247d2858d71cd2bfac6a0",
         "status": "submitted",
-        "order_id": "demo_026f2da367da42f5",
-        "created_at": "2026-09-10T06:53:38.411158+00:00",
-        "proposal_id": "a4a83ee0d2a549a89b6afa54b538c901",
+        "order_id": "demo_8ad5337679fe4160",
+        "created_at": "2026-09-10T07:07:50.270539+00:00",
+        "proposal_id": "f1468eb7f89443fe8034275d8d52614f",
         "amount_cents": 12900
       },
-      "order_id": "demo_026f2da367da42f5",
+      "order_id": "demo_8ad5337679fe4160",
       "verified": true,
-      "checked_at": "2026-09-10T06:53:38.415649+00:00",
+      "checked_at": "2026-09-10T07:07:50.275778+00:00",
       "reservation": null,
       "observed_status": "refunded",
       "inventory_verification_scope": null
@@ -115,6 +115,10 @@
       "fix": "Normalize non-object JSON roots into a data envelope; isolate malformed-file errors; two API catalog regression tests"
     }
   ],
+  "initial_success": {
+    "run_url": "https://github.com/QiQiyzhu/opspilot-ai/actions/runs/34447225959",
+    "source_sha": "9c1ce3318c4ed5dd59e509364156b280224436cb"
+  },
   "warnings": [
     "One upstream Starlette/AnyIO deprecation warning in pytest",
     "GitHub warned that action versions targeting Node20 are forced to Node24; jobs passed"
