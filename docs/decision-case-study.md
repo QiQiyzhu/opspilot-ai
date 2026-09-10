@@ -67,4 +67,6 @@ AI-assisted 实现与分析；面试时只陈述本人实际读懂、复现并�
 
 ## 本轮验证记录
 
-2026-09-10 本机：完整后端 **70 passed，0 skipped**，包含实际 TCP MCP/SSE；[JUnit 原始记录](../evals/reports/decision-case-tests.xml)。Ruff 检查通过。新增案例脚本真实执行通过；未重新录制视频或在本机跑浏览器。历史 A–T 手册的 69 指本轮新增测试之前的冻结结果。本轮 Linux CI 待推送执行，不能把旧版成功链接当作本轮验收。
+2026-09-10 本机：完整后端 **70 passed，0 skipped**，包含实际 TCP MCP/SSE；[JUnit 原始记录](../evals/reports/decision-case-tests.xml)。Ruff 检查通过。新增案例脚本真实执行通过；未重新录制视频或在本机跑浏览器。历史 A–T 手册的 69 指本轮新增测试之前的冻结结果。
+
+本轮首次功能提交 `86be0d259d53a9ca111339bac5c78a68ceb6de5c` 的 [Linux CI 34463700870](https://github.com/QiQiyzhu/opspilot-ai/actions/runs/34463700870) 已成功：70 后端、8 浏览器（0 skipped/0 flaky），新增 BGE/数据库边界脚本与 Compose runtime 均实际执行。[下载的原始记录](qa/decision-case-ci/README.md)绑定这个精确 source SHA；后续文档与跨平台哈希说明不改写历史结果。README 顶部工作流徽章查看分支最新 CI。

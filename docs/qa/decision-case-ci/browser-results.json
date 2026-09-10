@@ -1,0 +1,404 @@
+{
+  "config": {
+    "configFile": "/home/runner/work/opspilot-ai/opspilot-ai/frontend/playwright.config.ts",
+    "rootDir": "/home/runner/work/opspilot-ai/opspilot-ai/frontend/e2e",
+    "forbidOnly": false,
+    "fullyParallel": false,
+    "globalSetup": null,
+    "globalTeardown": null,
+    "globalTimeout": 0,
+    "grep": {},
+    "grepInvert": null,
+    "maxFailures": 0,
+    "metadata": {
+      "ci": {
+        "commitHref": "https://github.com/QiQiyzhu/opspilot-ai/commit/86be0d259d53a9ca111339bac5c78a68ceb6de5c",
+        "commitHash": "86be0d259d53a9ca111339bac5c78a68ceb6de5c",
+        "buildHref": "https://github.com/QiQiyzhu/opspilot-ai/actions/runs/34463700870"
+      },
+      "gitCommit": {
+        "shortHash": "86be0d2",
+        "hash": "86be0d259d53a9ca111339bac5c78a68ceb6de5c",
+        "subject": "docs: demonstrate retrieval limits and refund decision boundaries",
+        "body": "docs: demonstrate retrieval limits and refund decision boundaries\n",
+        "author": {
+          "name": "QiQiyzhu",
+          "email": "yzhu659@connect.hkust-gz.edu.cn",
+          "time": 1789034388000
+        },
+        "committer": {
+          "name": "QiQiyzhu",
+          "email": "yzhu659@connect.hkust-gz.edu.cn",
+          "time": 1789034388000
+        },
+        "branch": "codex/opspilot-v1"
+      },
+      "actualWorkers": 1
+    },
+    "preserveOutput": "always",
+    "reporter": [
+      [
+        "line",
+        null
+      ],
+      [
+        "json",
+        {
+          "outputFile": "test-results/browser-results.json"
+        }
+      ]
+    ],
+    "reportSlowTests": {
+      "max": 5,
+      "threshold": 300000
+    },
+    "quiet": false,
+    "projects": [
+      {
+        "outputDir": "/home/runner/work/opspilot-ai/opspilot-ai/frontend/test-results",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "ci": {
+            "commitHref": "https://github.com/QiQiyzhu/opspilot-ai/commit/86be0d259d53a9ca111339bac5c78a68ceb6de5c",
+            "commitHash": "86be0d259d53a9ca111339bac5c78a68ceb6de5c",
+            "buildHref": "https://github.com/QiQiyzhu/opspilot-ai/actions/runs/34463700870"
+          },
+          "gitCommit": {
+            "shortHash": "86be0d2",
+            "hash": "86be0d259d53a9ca111339bac5c78a68ceb6de5c",
+            "subject": "docs: demonstrate retrieval limits and refund decision boundaries",
+            "body": "docs: demonstrate retrieval limits and refund decision boundaries\n",
+            "author": {
+              "name": "QiQiyzhu",
+              "email": "yzhu659@connect.hkust-gz.edu.cn",
+              "time": 1789034388000
+            },
+            "committer": {
+              "name": "QiQiyzhu",
+              "email": "yzhu659@connect.hkust-gz.edu.cn",
+              "time": 1789034388000
+            },
+            "branch": "codex/opspilot-v1"
+          },
+          "actualWorkers": 1
+        },
+        "id": "",
+        "name": "",
+        "testDir": "/home/runner/work/opspilot-ai/opspilot-ai/frontend/e2e",
+        "testIgnore": [],
+        "testMatch": [
+          "**/*.@(spec|test).?(c|m)[jt]s?(x)"
+        ],
+        "timeout": 60000
+      }
+    ],
+    "shard": null,
+    "updateSnapshots": "missing",
+    "updateSourceMethod": "patch",
+    "version": "1.55.1",
+    "workers": 1,
+    "webServer": {
+      "command": "npm run dev",
+      "url": "http://127.0.0.1:5176",
+      "reuseExistingServer": true
+    }
+  },
+  "suites": [
+    {
+      "title": "console.spec.ts",
+      "file": "console.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "policy QA streams real evidence, persists messages and exposes MCP transport",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 2852,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-09-10T10:01:56.345Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "ef58feb76c0befb42c6d-78f77862587dade5b37c",
+          "file": "console.spec.ts",
+          "line": 32,
+          "column": 1
+        },
+        {
+          "title": "replacement proposal shows evidence and audited rejection without executing",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 3564,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-09-10T10:02:00.265Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "ef58feb76c0befb42c6d-dc39f822a3fe97a8e5e5",
+          "file": "console.spec.ts",
+          "line": 71,
+          "column": 1
+        },
+        {
+          "title": "viewer cannot submit writes and server rejects bypass attempts",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 843,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-09-10T10:02:03.849Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "ef58feb76c0befb42c6d-f3f695ed7a02ef0f714c",
+          "file": "console.spec.ts",
+          "line": 107,
+          "column": 1
+        },
+        {
+          "title": "knowledge retrieval uses current evidence and registry compares real versions",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 1562,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-09-10T10:02:04.706Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "ef58feb76c0befb42c6d-fbc5e10dddcec27e935d",
+          "file": "console.spec.ts",
+          "line": 134,
+          "column": 1
+        },
+        {
+          "title": "overview displays recorded data and mobile stays within viewport",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 1087,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "steps": [
+                    {
+                      "title": "Expect \"poll toBe\"",
+                      "duration": 6
+                    }
+                  ],
+                  "startTime": "2026-09-10T10:02:06.281Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "ef58feb76c0befb42c6d-edaf6114aaeeac8592f8",
+          "file": "console.spec.ts",
+          "line": 170,
+          "column": 1
+        },
+        {
+          "title": "offline retrieval evaluation persists measured metrics and comparison tables",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 3124,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-09-10T10:02:07.376Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "ef58feb76c0befb42c6d-323152daf050ebd1308c",
+          "file": "console.spec.ts",
+          "line": 191,
+          "column": 1
+        },
+        {
+          "title": "waiting run cancellation is persisted and prevents a late approval",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 3415,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-09-10T10:02:10.509Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "ef58feb76c0befb42c6d-e5f4615a13fdec54cc82",
+          "file": "console.spec.ts",
+          "line": 216,
+          "column": 1
+        },
+        {
+          "title": "refund requires human approval, verifies state and remains idempotent",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 3769,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-09-10T10:02:13.935Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "ef58feb76c0befb42c6d-5b62ea5adf17adf7d342",
+          "file": "console.spec.ts",
+          "line": 253,
+          "column": 1
+        }
+      ]
+    }
+  ],
+  "errors": [],
+  "stats": {
+    "startTime": "2026-09-10T10:01:55.115Z",
+    "duration": 22677.742000000002,
+    "expected": 8,
+    "skipped": 0,
+    "unexpected": 0,
+    "flaky": 0
+  }
+}

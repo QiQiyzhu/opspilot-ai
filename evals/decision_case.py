@@ -193,7 +193,15 @@ def build_export(boundary):
             "agent_provider": "No Agent or LLM invoked by this case; existing Agent reports use FakeModelProvider",
             "human_review": "AI-reviewed gold; independent human review pending; approvals here are scripted QA",
         },
-        "sources": [{"path": p, "sha256": hashlib.sha256((ROOT / p).read_bytes()).hexdigest()} for p in paths],
+        "sources": [
+            {
+                "path": p,
+                "sha256": hashlib.sha256((ROOT / p).read_bytes().replace(b"\r\n", b"\n")).hexdigest(),
+                "sha256_scope": "UTF-8 source text, CRLF normalized to LF for GitHub/fresh-clone comparison",
+                "working_tree_sha256": hashlib.sha256((ROOT / p).read_bytes()).hexdigest(),
+            }
+            for p in paths
+        ],
         "summary": {
             "dataset_cases": 30,
             "answerable_cases": 26,
