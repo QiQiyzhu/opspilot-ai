@@ -41,6 +41,8 @@ jobs:
           echo "OPSPILOT_E2E_REFUND_ORDER=$(python -m backend.demo_fixture)" >> "$GITHUB_ENV"
       - run: OPSPILOT_LIVE_URL=http://127.0.0.1:8003 pytest -q --junitxml=evals/reports/backend-junit.xml
       - run: python -m evals.runner agent --smoke
+      - name: Reproduce retrieval versus refund authorization boundary
+        run: python -m evals.decision_case --output evals/reports/decision-case-ci.json
       - name: Offline regression gate
         run: python -m evals.gate evals/reports/agent-full.json
       - run: npm ci

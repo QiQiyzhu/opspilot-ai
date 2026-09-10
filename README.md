@@ -8,6 +8,8 @@ Production-oriented RAG + Agent system for customer support and business operati
 
 [Watch the actual 33.36-second browser demo](docs/assets/demo.webm) · [Four repeatable demos](docs/demo.md) · [Interview dossier A–T](docs/interview-dossier.md) · [Validation evidence](docs/validation.md)
 
+**Decision walkthrough:** [Retrieval hits do not authorize refunds](docs/decision-case-study.md) · [30-second / 3-minute / 8-minute interview route](docs/interview-deep-dive.md) · [All 120 retrieval rows and a new executed approval boundary](evals/reports/decision-case.json). This preserves a real no-answer failure and a stale-eligibility rejection; scripted QA, simulated business, no LLM or payment calls.
+
 ![Actual human approval console](docs/assets/demo-approval.png)
 
 The console supports inbox/conversations, customers/orders, evidence and traces, reviewed business actions, knowledge ingestion, prompt/workflow versions, verified memory, evaluations and operations. [Actual recorded refund run](docs/assets/demo-run.json) links the video to its database run and audit. No live public admin console is claimed; reviewers can use the video, source and fresh-clone instructions.
@@ -100,7 +102,7 @@ python -m analytics.explain
 python -m evals.demo
 ```
 
-Backend local result: **69 passed, 0 skipped**, including TCP MCP/SSE tests. Frontend commands and credential/fixture setup are in [frontend README](frontend/README.md). Actual Linux GitHub Actions passed **69 backend tests, 7 frontend unit tests and 8 browser scenarios**. A separate job built and started Compose, then verified PostgreSQL/Redis, TCP MCP/SSE and an approved idempotent refund. [Exact source SHA and downloaded CI evidence](docs/ci-validation.md).
+Baseline local result: **69 passed, 0 skipped**, including TCP MCP/SSE tests. The decision-case extension adds one meaningful stale-eligibility regression: **70 local backend tests passed**, with [current evidence and CI status](docs/decision-case-study.md#本轮验证记录). Frontend commands and credential/fixture setup are in [frontend README](frontend/README.md). The earlier Linux release passed **69 backend tests, 7 frontend unit tests and 8 browser scenarios**. A separate job built and started Compose, then verified PostgreSQL/Redis, TCP MCP/SSE and an approved idempotent refund. [Earlier exact source SHA and downloaded CI evidence](docs/ci-validation.md).
 
 | Concurrent local Fake sessions | Errors | Client run P50 ms | P95 ms | P99 ms |
 | --- | --- | --- | --- | --- |
