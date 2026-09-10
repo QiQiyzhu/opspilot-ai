@@ -20,7 +20,7 @@ class Settings(BaseSettings):
     provider_max_output_tokens: int = Field(default=512, ge=64, le=4096)
     provider_token_parameter: Literal["max_completion_tokens", "max_tokens"] = "max_completion_tokens"
     retrieval_timeout: float = 15.0
-    mcp_url: str = "http://127.0.0.1:8003/mcp/"
+    mcp_url: str = "http://127.0.0.1:8003/mcp"
     mcp_token: str = ""
     allow_faults: bool = False
     seed_on_start: bool = True

@@ -2,6 +2,8 @@
 
 **SIMULATED BUSINESS. Fake provider scores are engineering-harness evidence, not LLM能力、真实客服效率或商业落地。**
 
+**2026-09-10 DeepSeek 接入增量：**真实 `deepseek-flash` API 完成 6 次意图调用，5/6 与预期标签一致；失败为 ambiguous → policy_conflict。1,108 input / 247 output tokens，费用未读取，不推断。当前本地 **82 backend tests / 7 frontend unit tests** 通过，历史 8 项浏览器验收另有原始记录。下方 69/70 项结果属于保留的历史快照；Fake ablation 59/60 与真实模型 smoke 分开讲。[失败分析、来源 SHA 和下一步实验](real-model-results.md) · [真实 API 配置](real-model-setup.md)。
+
 ## A. 最终系统架构
 
 # Architecture and explicit boundaries
@@ -12,7 +14,7 @@ OpsPilot is a modular monolith for NovaMart **SIMULATED BUSINESS**. A real Postg
 flowchart LR
   UI[React staff console] -->|Bearer REST + SSE| API[FastAPI API]
   API --> A[Ordered workflow + agent state machine]
-  A --> P[Fake / Qwen / compatible provider]
+  A --> P[Fake / DeepSeek / Qwen / compatible provider]
   A --> R[BM25 + ONNX vectors + RRF + lexical rerank]
   A --> T[Scoped native tools / real MCP client]
   T --> MCP[MCP Streamable HTTP server]
@@ -308,6 +310,8 @@ The adversarial document literally includes “Ignore previous instructions and 
 
 
 ## J. Test实际结果
+
+最新 DeepSeek 接入增量：本地 82 passed / 0 skipped、前端 7 unit passed、lint / typecheck / production build 通过。[本轮 JUnit](../evals/reports/deepseek-adapter-backend-junit.xml)。真实 API 单独记录 6 calls / 5 matched，属于小型开发集，不计入 pytest 数量。[真实 API 原始报告](../evals/reports/deepseek-smoke.json)。以下保留早期发布快照及当时环境。
 
 # Validation evidence
 

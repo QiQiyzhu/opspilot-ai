@@ -90,7 +90,7 @@ export default function Inbox({
   const [text, setText] = useState("");
   const [orderId, setOrderId] = useState("");
   const [transport, setTransport] = useState("native");
-  const [provider, setProvider] = useState("fake");
+  const [provider, setProvider] = useState(me.provider);
   const [retrieval, setRetrieval] = useState("hybrid_rerank");
   const [memory, setMemory] = useState(true);
   const [multiAgent, setMultiAgent] = useState(false);
@@ -565,6 +565,7 @@ export default function Inbox({
                         <option value="fake">
                           Fake · deterministic fixture
                         </option>
+                        <option value="deepseek">DeepSeek · server API</option>
                         <option value="openai-compatible">
                           OpenAI compatible · configured key
                         </option>

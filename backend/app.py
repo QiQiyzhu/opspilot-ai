@@ -11,6 +11,7 @@ from fastapi.staticfiles import StaticFiles
 from pydantic import BaseModel, ConfigDict, Field
 from sqlalchemy import select
 from backend.config import settings
+from backend.providers import provider_readiness
 from backend.db import session_scope, db_health
 from backend.models import (
     Customer,
@@ -379,6 +380,7 @@ def retrieval(data: SearchInput):
 @router.get("/models")
 def models():
     cfg = settings()
+    readiness = provider_readiness(cfg)
     return {
         "items": [
             {
@@ -389,14 +391,20 @@ def models():
             },
             {
                 "id": cfg.provider_model or "not-configured",
+                "provider": "deepseek",
+                **readiness,
+                "description": "DeepSeek JSON intent; server authorization remains mandatory",
+            },
+            {
+                "id": cfg.provider_model or "not-configured",
                 "provider": "openai-compatible",
-                "configured": bool(cfg.provider_key and cfg.provider_url),
+                **readiness,
                 "description": "Opt-in real API provider",
             },
             {
                 "id": cfg.provider_model or "not-configured",
                 "provider": "qwen",
-                "configured": bool(cfg.provider_key and cfg.provider_url),
+                **readiness,
                 "description": "Qwen compatible endpoint adapter",
             },
         ],

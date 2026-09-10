@@ -8,7 +8,7 @@ from backend.config import settings
 from backend.models import EvaluationRun, Conversation
 from backend.db import session_scope
 from backend.security import Principal
-from backend.providers import OpenAICompatibleProvider
+from backend.providers import OpenAICompatibleProvider, ProviderError
 
 OP = Principal("reliability-op", "Test operator", "operator")
 
@@ -35,11 +35,9 @@ async def test_real_provider_timeout_retry_and_circuit(monkeypatch):
         calls.append(request)
         raise httpx.ReadTimeout("Injected provider timeout", request=request)
 
-    original = httpx.AsyncClient
-    monkeypatch.setattr(httpx, "AsyncClient", lambda **kwargs: original(transport=httpx.MockTransport(fail), **kwargs))
-    provider = OpenAICompatibleProvider()
+    provider = OpenAICompatibleProvider(transport=httpx.MockTransport(fail))
     for _ in range(3):
-        with pytest.raises(httpx.ReadTimeout):
+        with pytest.raises(ProviderError, match="transport_error"):
             await provider.understand("refund", "Support")
     with pytest.raises(RuntimeError, match="circuit"):
         await provider.understand("refund", "Support")

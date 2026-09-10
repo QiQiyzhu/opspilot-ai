@@ -75,7 +75,7 @@ def run_detail(run_id):
 
 
 def create_run(conversation_id, text, order_id=None, config=None):
-    cfg = {**DEFAULT, **(config or {})}
+    cfg = {**DEFAULT, "provider": settings().provider, **(config or {})}
     if cfg["provider"] not in PROVIDERS or cfg["transport"] not in {"native", "mcp"}:
         raise HTTPException(422, "Invalid provider or tool transport")
     prompt = snapshot("support-system", cfg["prompt_version"])

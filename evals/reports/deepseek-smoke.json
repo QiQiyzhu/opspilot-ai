@@ -1,0 +1,236 @@
+{
+  "schema_version": 1,
+  "created_at": "2026-09-10T11:14:52.629512+00:00",
+  "evidence_type": "opt-in real API / synthetic intent smoke; not an agent or RAG benchmark",
+  "status": "completed",
+  "provider": "deepseek",
+  "model_requested": "deepseek-flash",
+  "configuration": {
+    "configured": true,
+    "issues": [],
+    "connectivity_verified": false,
+    "max_output_tokens": 512,
+    "timeout_seconds": 30.0,
+    "max_attempts": 1,
+    "scope": "local configuration check only; no network request"
+  },
+  "source_commit": "84f275b865631b88bddec5a9c9c5545c441816bb",
+  "source_worktree_dirty": true,
+  "python_version": "3.12.14",
+  "source_hashes": {
+    "backend/providers.py": "caf4405ed23b3f1bb892ca3d5612ea8fbf7dd6b1121a184da7e4ce6edb6392d8",
+    "backend/config.py": "e38860fcc0abf484c895df26cc8180fe70ff30ec7eef45079674f439ae46a1ce",
+    "evals/real_model_probe.py": "d20f924cae1057ddab21b6008de1d83d43c9354590c2bfe51373b52c9f8f1a53"
+  },
+  "prompt_sha256": "73f4ce0dc928a72dd505eaaefc9f41de95501ced13fc9ea3323885047e4586dd",
+  "dataset_sha256": "159b1f941eff00f1ae936fb944997f8bc8428e5dd741115df8884963954e508d",
+  "max_http_attempts": 6,
+  "max_output_tokens_per_attempt": 512,
+  "http_attempts": 6,
+  "successful_model_responses": 6,
+  "real_model_runs": 6,
+  "rows": [
+    {
+      "id": "refund",
+      "input": "I want a refund for ord_synthetic_probe.",
+      "expected": "refund",
+      "status": "completed",
+      "matched": true,
+      "result": {
+        "data": {
+          "category": "refund",
+          "order_id": "ord_synthetic_probe",
+          "decision_summary": "The customer requests a refund; eligibility is not determined."
+        },
+        "model": "deepseek-flash",
+        "latency_ms": 704.7412999963854,
+        "request_id": "4614e48d-50c6-4b29-9b41-266ad96bd6ed",
+        "tokens": {
+          "input": 186,
+          "output": 31
+        },
+        "error": null,
+        "cost": null,
+        "metadata": {
+          "synthetic_provider": false,
+          "requested_model": "deepseek-flash",
+          "attempts": 1,
+          "max_output_tokens": 512,
+          "usage_scope": "last successful response only; failed attempts may be billable",
+          "role": "structured intent; no business execution authority"
+        }
+      },
+      "latency_ms": 707.1873000095366
+    },
+    {
+      "id": "tracking",
+      "input": "Where is my package ord_synthetic_probe?",
+      "expected": "order_query",
+      "status": "completed",
+      "matched": true,
+      "result": {
+        "data": {
+          "category": "order_query",
+          "order_id": "ord_synthetic_probe",
+          "decision_summary": "The customer asks for the location of order ord_synthetic_probe. This is a shipment tracking inquiry; no refund or policy decision is made here."
+        },
+        "model": "deepseek-flash",
+        "latency_ms": 1027.7527999860467,
+        "request_id": "b400c322-2193-41ed-a2a0-de09bfd2324e",
+        "tokens": {
+          "input": 185,
+          "output": 50
+        },
+        "error": null,
+        "cost": null,
+        "metadata": {
+          "synthetic_provider": false,
+          "requested_model": "deepseek-flash",
+          "attempts": 1,
+          "max_output_tokens": 512,
+          "usage_scope": "last successful response only; failed attempts may be billable",
+          "role": "structured intent; no business execution authority"
+        }
+      },
+      "latency_ms": 1030.4126999981236
+    },
+    {
+      "id": "scope",
+      "input": "What will the weather be like next week?",
+      "expected": "out_of_scope",
+      "status": "completed",
+      "matched": true,
+      "result": {
+        "data": {
+          "category": "out_of_scope",
+          "order_id": null,
+          "decision_summary": "The request asks about weather, which is unrelated to NovaMart support; no order or policy action applies."
+        },
+        "model": "deepseek-flash",
+        "latency_ms": 1024.825000000419,
+        "request_id": "780a8ac2-fba2-4b93-9fa3-2b367f8a3479",
+        "tokens": {
+          "input": 184,
+          "output": 39
+        },
+        "error": null,
+        "cost": null,
+        "metadata": {
+          "synthetic_provider": false,
+          "requested_model": "deepseek-flash",
+          "attempts": 1,
+          "max_output_tokens": 512,
+          "usage_scope": "last successful response only; failed attempts may be billable",
+          "role": "structured intent; no business execution authority"
+        }
+      },
+      "latency_ms": 1029.0330999996513
+    },
+    {
+      "id": "ambiguous",
+      "input": "Should I refund or replace ord_synthetic_probe?",
+      "expected": "ambiguous",
+      "status": "completed",
+      "matched": false,
+      "result": {
+        "data": {
+          "category": "policy_conflict",
+          "order_id": "ord_synthetic_probe",
+          "decision_summary": "The customer asks whether to refund or replace the order; the appropriate resolution path is ambiguous between two categories, so no eligibility or authorization is determined."
+        },
+        "model": "deepseek-flash",
+        "latency_ms": 914.1368999989936,
+        "request_id": "62bc6ef5-0cdf-4140-827a-e9856aa705d3",
+        "tokens": {
+          "input": 186,
+          "output": 50
+        },
+        "error": null,
+        "cost": null,
+        "metadata": {
+          "synthetic_provider": false,
+          "requested_model": "deepseek-flash",
+          "attempts": 1,
+          "max_output_tokens": 512,
+          "usage_scope": "last successful response only; failed attempts may be billable",
+          "role": "structured intent; no business execution authority"
+        }
+      },
+      "latency_ms": 915.9324999927776
+    },
+    {
+      "id": "troubleshooting",
+      "input": "My speaker will not power on after charging.",
+      "expected": "troubleshooting",
+      "status": "completed",
+      "matched": true,
+      "result": {
+        "data": {
+          "category": "troubleshooting",
+          "order_id": null,
+          "decision_summary": "The customer reports a speaker that will not power on after charging; this is a troubleshooting request with no order identifier provided."
+        },
+        "model": "deepseek-flash",
+        "latency_ms": 668.0371999973431,
+        "request_id": "44ae79cb-0f48-4537-ad6a-f4a881380ae9",
+        "tokens": {
+          "input": 184,
+          "output": 42
+        },
+        "error": null,
+        "cost": null,
+        "metadata": {
+          "synthetic_provider": false,
+          "requested_model": "deepseek-flash",
+          "attempts": 1,
+          "max_output_tokens": 512,
+          "usage_scope": "last successful response only; failed attempts may be billable",
+          "role": "structured intent; no business execution authority"
+        }
+      },
+      "latency_ms": 671.2712999869836
+    },
+    {
+      "id": "replacement",
+      "input": "Please replace ord_synthetic_probe.",
+      "expected": "replacement",
+      "status": "completed",
+      "matched": true,
+      "result": {
+        "data": {
+          "category": "replacement",
+          "order_id": "ord_synthetic_probe",
+          "decision_summary": "The customer requests a replacement for the referenced order; eligibility is not determined."
+        },
+        "model": "deepseek-flash",
+        "latency_ms": 636.890299996594,
+        "request_id": "31584876-d6e6-4603-a0f7-4e878f28af39",
+        "tokens": {
+          "input": 183,
+          "output": 35
+        },
+        "error": null,
+        "cost": null,
+        "metadata": {
+          "synthetic_provider": false,
+          "requested_model": "deepseek-flash",
+          "attempts": 1,
+          "max_output_tokens": 512,
+          "usage_scope": "last successful response only; failed attempts may be billable",
+          "role": "structured intent; no business execution authority"
+        }
+      },
+      "latency_ms": 638.6479000066174
+    }
+  ],
+  "routing_accuracy": 0.8333333333333334,
+  "cost": null,
+  "cost_note": "No tariff or invoice was read; timeouts/failed requests may still be billable.",
+  "business_effects": 0,
+  "limitations": [
+    "Only six authored synthetic routing cases are available; no production/generalization claim.",
+    "This program never runs agent execution, payment, approval, DB or customer retrieval.",
+    "Missing credentials and failures never switch to Fake; CI transport mocks are not model evidence.",
+    "Configuration readiness does not prove model access, billing, region or connectivity."
+  ]
+}

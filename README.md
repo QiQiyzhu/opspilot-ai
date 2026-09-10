@@ -4,7 +4,7 @@
 
 Production-oriented RAG + Agent system for customer support and business operations.
 
-**NovaMart is SIMULATED BUSINESS.** Real PostgreSQL transactions, ONNX embeddings, MCP and SSE are executed locally. The default **FakeModelProvider is a deterministic rules router, not an LLM**; its full harness passes **59/60 synthetic tasks**. Real LLM quality, token usage and cost are **NOT RUN / unavailable**.
+**NovaMart is SIMULATED BUSINESS.** Real PostgreSQL transactions, ONNX embeddings, MCP and SSE are executed locally. The default **FakeModelProvider is a deterministic rules router, not an LLM**; its full harness passes **59/60 synthetic tasks**. Separately, **DeepSeek Flash completed six real API routing calls, matching 5/6 authored intent labels**; this small development smoke is not an agent/RAG benchmark. [Exact outputs, failure and token usage](docs/real-model-results.md) · [Server-only DeepSeek setup](docs/real-model-setup.md).
 
 [Watch the actual 33.36-second browser demo](docs/assets/demo.webm) · [Four repeatable demos](docs/demo.md) · [Interview dossier A–T](docs/interview-dossier.md) · [Validation evidence](docs/validation.md)
 
@@ -116,4 +116,6 @@ Local Windows developer-host Fake sessions, not production QPS or real LLM laten
 
 [Architecture](docs/architecture.md) · [Database](docs/database.md) · [RAG](docs/rag.md) · [Agent/workflow/memory](docs/agent.md) · [MCP](docs/mcp.md) · [LLMOps](docs/llmops.md) · [Evaluation](docs/evaluation.md) · [API contract](docs/api-contract.md) · [Interview guide](docs/interview-guide.md).
 
-Remaining work includes independent human review, real-provider evaluation, better no-answer calibration, tenant/SSO authorization, durable workers and migration/backup operations. This portfolio does not claim real customers, revenue, DAU, production throughput or paid-model gains.
+The DeepSeek adapter extension passes **82 local backend tests, 0 skipped** (including real TCP MCP/SSE), plus **7 frontend unit tests**, lint, typecheck and production build. Its transport tests exercise bounded JSON, provider-specific fields, retry/deadline/circuit, secret redaction and explicit opt-in; mocks report zero real-model runs. [Current raw JUnit](evals/reports/deepseek-adapter-backend-junit.xml). Historical reports above remain source-bound snapshots.
+
+Remaining work includes independent human review, held-out real-provider evaluation and full-agent ablation, better no-answer calibration, tenant/SSO authorization, durable workers and migration/backup operations. Six real routing calls do not establish production quality or paid-model gains. This portfolio does not claim real customers, revenue, DAU or production throughput.

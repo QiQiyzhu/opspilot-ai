@@ -728,7 +728,7 @@ export function RunsPage() {
         ) : (
           <div className="model-grid">
             {models.data.items.map((m) => (
-              <article key={String(m.id)}>
+              <article key={`${String(m.provider)}:${String(m.id)}`}>
                 <div className="row spread">
                   <strong>{String(m.id)}</strong>
                   <Badge tone={m.configured ? "good" : "warn"}>
