@@ -68,6 +68,25 @@ test("policy QA streams real evidence, persists messages and exposes MCP transpo
   await expect(page.locator(".agent-message")).toContainText(/refund|policy/i);
   expect(errors).toEqual([]);
 });
+
+test("unclear remedy shows a follow-up without creating a proposal or another run", async ({ page, request }) => {
+  await connect(page);
+  await conversation(page, `Clarification boundary ${Date.now()}`);
+  await page.getByLabel("Customer message").fill("Should I refund or replace ord_recent?");
+  await page.getByRole("button", { name: "Run agent", exact: true }).click();
+  await expect(page.getByRole("region", { name: "Required next step" })).toBeVisible();
+  await expect(page.getByRole("heading", { name: "Clarify the customer's preferred outcome" })).toBeVisible();
+  await expect(page.locator(".approval-panel")).toHaveCount(0);
+  const before = await request.get("http://127.0.0.1:8003/api/runs", { headers: headers() });
+  const ids = (await before.json()).items.map((r: { id: string }) => r.id);
+  // Stub only the OS clipboard boundary; the application handler and its lack of HTTP effects are real.
+  await page.evaluate(() => Object.defineProperty(navigator, "clipboard", { configurable: true, value: { writeText: async () => undefined } }));
+  await page.getByRole("button", { name: "Copy follow-up question", exact: true }).click();
+  await expect(page.getByRole("button", { name: "Copied follow-up question" })).toBeVisible();
+  const after = await request.get("http://127.0.0.1:8003/api/runs", { headers: headers() });
+  expect((await after.json()).items.map((r: { id: string }) => r.id)).toEqual(ids);
+  await page.screenshot({ path: "../docs/assets/clarification-next-step.png", fullPage: true });
+});
 test("replacement proposal shows evidence and audited rejection without executing", async ({
   page,
   request,

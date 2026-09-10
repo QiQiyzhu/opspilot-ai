@@ -158,7 +158,9 @@ async def eval_agent(ablation="full", prompt_version=1, limit=None):
         elif outcome == "missing":
             success = "provide" in response and "order identifier" in response
         elif outcome == "clarify":
-            success = "clarify" in response
+            success = detail["proposal_id"] is None and (
+                (detail.get("next_step") or {}).get("kind") == "clarify" or "clarify" in response
+            )
         elif outcome == "escalate":
             success = any(v in response for v in ["human", "qualified support", "outside novamart"])
         elif outcome == "technical":

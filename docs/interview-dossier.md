@@ -1,5 +1,7 @@
 # OpsPilot AI — Interview dossier A–T
 
+**最新实际产品升级：**先冻结 24 条合成意图案例，再进行 48 次真实 DeepSeek 配对调用。16 条可见测试样本的下一步匹配为 baseline 12/16、仅 workflow 13/16、仅 taxonomy 13/16、组合 16/16；全 24 条组合为 23/24，政策冲突错例保留。不是独立盲测或真实客户准确率。产品会在业务工具前生成澄清/人审下一步；复制跟进问题不发请求。本地最新 88 backend / 7 UI unit，新浏览器场景已通过。[四策略消融、冻结协议、来源与限制](competition-upgrade.md)。下文早期结果作为历史快照保留。
+
 **SIMULATED BUSINESS. Fake provider scores are engineering-harness evidence, not LLM能力、真实客服效率或商业落地。**
 
 **2026-09-10 DeepSeek 接入增量：**真实 `deepseek-flash` API 完成 6 次意图调用，5/6 与预期标签一致；失败为 ambiguous → policy_conflict。1,108 input / 247 output tokens，费用未读取，不推断。当前本地 **82 backend tests / 7 frontend unit tests** 通过，历史 8 项浏览器验收另有原始记录。下方 69/70 项结果属于保留的历史快照；Fake ablation 59/60 与真实模型 smoke 分开讲。[失败分析、来源 SHA 和下一步实验](real-model-results.md) · [真实 API 配置](real-model-setup.md)。

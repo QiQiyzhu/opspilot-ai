@@ -4,6 +4,8 @@
 
 Production-oriented RAG + Agent system for customer support and business operations.
 
+**Product upgrade — clarify before proposing:** unresolved remedies and conflicting policy now have explicit, persisted next steps in the staff console, before business tools run. A frozen **48-call DeepSeek paired experiment** improved next-step matches from **12/16 to 16/16** on its small authored test split; full candidate score is **23/24**, with a failure preserved. [Actual product screen, four-way ablation, dataset/provenance and limits](docs/competition-upgrade.md). These are synthetic observations, not real-customer impact or a competition score.
+
 **NovaMart is SIMULATED BUSINESS.** Real PostgreSQL transactions, ONNX embeddings, MCP and SSE are executed locally. The default **FakeModelProvider is a deterministic rules router, not an LLM**; its full harness passes **59/60 synthetic tasks**. Separately, **DeepSeek Flash completed six real API routing calls, matching 5/6 authored intent labels**; this small development smoke is not an agent/RAG benchmark. [Exact outputs, failure and token usage](docs/real-model-results.md) · [Server-only DeepSeek setup](docs/real-model-setup.md).
 
 [Watch the actual 33.36-second browser demo](docs/assets/demo.webm) · [Four repeatable demos](docs/demo.md) · [Interview dossier A–T](docs/interview-dossier.md) · [Validation evidence](docs/validation.md)

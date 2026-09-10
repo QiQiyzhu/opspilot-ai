@@ -35,6 +35,9 @@ def validate_workflow(definition):
         raise HTTPException(422, "Node IDs must be unique and nonempty")
     if sum(n["type"] == "LLM" for n in nodes) != 1:
         raise HTTPException(422, "Exactly one structured-intent LLM node is required")
+    intent_index = next(i for i, n in enumerate(nodes) if n["type"] == "LLM")
+    if any(n["type"] == "Tool" for n in nodes[:intent_index]):
+        raise HTTPException(422, "Business tool nodes must follow structured intent and its clarification gate")
     if not any(n["type"] == "Approval" for n in nodes):
         raise HTTPException(422, "Approval gate cannot be removed from operations workflows")
     for n in nodes:

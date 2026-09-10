@@ -459,6 +459,20 @@ details > summary:hover {
   font-size: 10px;
   color: #7a8d97;
 }
+
+.next-step-panel {
+  margin: 20px 0;
+  padding: 22px;
+  border: 1px solid #dfc68e;
+  border-left: 4px solid #b88424;
+  border-radius: 12px;
+  background: #fffbef;
+  color: #163f46;
+}
+.next-step-panel .eyebrow { color: #805d20; }
+.next-step-panel h3 { margin: 10px 0; font-size: 18px; }
+.next-step-panel p { line-height: 1.65; }
+.next-step-panel > small { display: block; margin-top: 12px; color: #526b70; }
 .main-shell > main {
   min-width: 0;
 }

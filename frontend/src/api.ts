@@ -78,6 +78,14 @@ export type Run = {
   status: string;
   state: string;
   category?: string;
+  next_step?: {
+    kind: "clarify" | "review";
+    title: string;
+    question: string;
+    detail: string;
+    draft: string;
+    contract_version: number;
+  } | null;
   input: string;
   response?: string;
   config: Json;

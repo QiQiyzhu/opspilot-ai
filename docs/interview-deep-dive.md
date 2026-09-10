@@ -1,5 +1,7 @@
 # OpsPilot：从一个检索失败讲清业务权限
 
+**本轮升级的 30 秒讲法：**“真实模型返回合法 JSON 后，客服仍可能不知道下一步该做什么。我先冻结 24 条合成案例，再将分类定义和服务端分流分别消融：16 条测试的下一步匹配是 12、13、13、16。只有提示词或只有工作流都不够。完整 24 条仍错一条，且标签由 AI 辅助编写，没有独立盲测资格。产品改为在工具前明确澄清或人工政策审阅；它不把客户偏好当作审批。”[实际界面、48 次原始调用与完整限制](competition-upgrade.md)。
+
 [完整案例](decision-case-study.md) · [逐条证据](../evals/reports/decision-case.json) · [核心实现](../backend/business.py)
 
 **真实模型增量：**另有 DeepSeek Flash 的 6 次真实意图调用，5/6 标签匹配，1 次把 ambiguous 分为 policy_conflict。它揭示“JSON 合法但语义错误”；不替代下方历史检索/事务实验，也不构成完整 Agent 评测。[原始输出、tokens、来源和失败分析](real-model-results.md)。

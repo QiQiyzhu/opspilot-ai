@@ -14,6 +14,7 @@ from backend.tools import call_tool
 from backend.rag import cached_search, search
 from backend.config import settings
 from backend.cache import cache
+from backend.intent_contract import VERSION as INTENT_CONTRACT_VERSION, with_contract, next_step
 
 TASKS: dict[str, asyncio.Task] = {}
 DEFAULT = {
@@ -71,6 +72,9 @@ def run_detail(run_id):
             as_dict(r)
             for r in s.scalars(select(ToolCall).where(ToolCall.run_id == run_id).order_by(ToolCall.created_at))
         ]
+        result["next_step"] = next(
+            (item["payload"] for item in reversed(result["trace"]) if item["type"] == "intent.next_step"), None
+        )
         return result
 
 
@@ -87,7 +91,13 @@ def create_run(conversation_id, text, order_id=None, config=None):
             cfg["retrieval"] = retrieve_node["config"].get("mode", "hybrid_rerank")
         if not config or "top_k" not in config:
             cfg["top_k"] = retrieve_node["config"].get("top_k", 5)
-    cfg.update(prompt_snapshot=prompt, workflow_snapshot=workflow, order_id=order_id)
+    cfg.update(
+        prompt_snapshot=prompt,
+        workflow_snapshot=workflow,
+        order_id=order_id,
+        intent_contract_version=INTENT_CONTRACT_VERSION,
+        intent_contract_prompt=with_contract(prompt["content"]),
+    )
     with session_scope() as s:
         if not s.get(Conversation, conversation_id):
             raise HTTPException(404, "Conversation not found")
@@ -211,7 +221,9 @@ async def execute(run_id, user):
                         )
                         raise
                 result = await asyncio.wait_for(
-                    PROVIDERS[cfg["provider"]].understand(message, cfg["prompt_snapshot"]["content"]),
+                    PROVIDERS[cfg["provider"]].understand(
+                        message, cfg.get("intent_contract_prompt", cfg["prompt_snapshot"]["content"])
+                    ),
                     settings().provider_timeout + 1,
                 )
                 intent = result.data
@@ -229,6 +241,7 @@ async def execute(run_id, user):
                         "cost": result.cost,
                         "decision": intent,
                         "metadata": result.metadata,
+                        "intent_contract_version": cfg.get("intent_contract_version", 1),
                     },
                 )
                 if cfg["multi_agent"] or cfg["ablation"] == "multi":
@@ -241,7 +254,8 @@ async def execute(run_id, user):
                     )
                     second = await PROVIDERS[cfg["provider"]].understand(
                         message,
-                        cfg["prompt_snapshot"]["content"] + "\nYou are " + specialist + ". Check the routing decision.",
+                        cfg.get("intent_contract_prompt", cfg["prompt_snapshot"]["content"])
+                        + "\nYou are " + specialist + ". Check the routing decision.",
                     )
                     event(
                         run_id,
@@ -261,6 +275,12 @@ async def execute(run_id, user):
                         "supervisor.completed",
                         {"decision": "compose grounded observations; escalate disagreements"},
                     )
+                if cfg.get("intent_contract_version", 1) >= 2:
+                    follow_up = next_step(intent["category"], cfg.get("order_id") or intent.get("order_id"))
+                    if follow_up:
+                        event(run_id, "intent.next_step", follow_up)
+                        await complete(run_id, follow_up["question"] + " " + follow_up["detail"])
+                        return
             elif node["type"] == "Retrieve" and cfg["ablation"] != "llm_only":
                 update_run(run_id, state="RETRIEVE")
                 if fault == "retrieval_error":

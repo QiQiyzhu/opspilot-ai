@@ -1,0 +1,3577 @@
+{
+  "schema_version": 1,
+  "experiment": "intent-contract-v1",
+  "created_at": "2026-09-10T12:19:57.270171+00:00",
+  "evidence_type": "prospective synthetic paired routing evaluation, not customer or full-agent benchmark",
+  "status": "completed",
+  "source_commit": "a2a355cebf870a0ff2954110c33334ca00016669",
+  "source_worktree_dirty": true,
+  "dataset_sha256": "da5930dc578066e939e747041680b8aea34a36133af1543c00c4d6b06b1a01a0",
+  "dataset_freeze_commit": "a2a355c",
+  "dataset_protocol": "Frozen before implementing the candidate taxonomy and before any paid calls. Eight development cases and sixteen prospective test cases. Authors can see all cases, so this is not a blinded independent benchmark. Do not tune on test outputs or silently relabel failures.",
+  "split": "all",
+  "repeats": 1,
+  "model_requested": "deepseek-flash",
+  "configuration": {
+    "configured": true,
+    "issues": [],
+    "connectivity_verified": false,
+    "max_output_tokens": 512,
+    "timeout_seconds": 30.0,
+    "max_attempts": 1,
+    "scope": "local configuration check only; no network request"
+  },
+  "planned_http_calls": 48,
+  "max_http_calls": 48,
+  "http_attempts": 48,
+  "real_model_runs": 48,
+  "successful_responses": 48,
+  "business_effects": 0,
+  "max_output_tokens_per_call": 512,
+  "cost": null,
+  "cost_note": "No billing statement read. Failed requests may be billable. Reported usage is observed response usage only.",
+  "source_hashes": {
+    "backend/providers.py": "caf4405ed23b3f1bb892ca3d5612ea8fbf7dd6b1121a184da7e4ce6edb6392d8",
+    "backend/intent_contract.py": "aed1c85458c488196294547bc7171dfefe82b72e8f00f623ed68a514af4a6a2b",
+    "evals/intent_contract_eval.py": "851ae51726fc23b50d0de0dd6e6ef2a845264018aac36200bf257296bacf8567"
+  },
+  "prompt_hashes": {
+    "baseline": "a60c1a5b92cadaba765c204c8dedf1939fb00e3a452af24b1ecb48d628e34cf2",
+    "taxonomy": "a31adf65c253002c73e42b1b4bad659590fc175d0eed5ec62fa203083f97b992"
+  },
+  "gate_definition": "On a complete test split: full next-step accuracy >= baseline, zero premature action candidates, and no more unnecessary interruptions. This gate is not a production safety guarantee.",
+  "rows": [
+    {
+      "case_id": "dev01",
+      "split": "dev",
+      "slice": "unresolved-choice",
+      "input": "Should I refund or replace ord_synthetic_probe?",
+      "expected_category": "ambiguous",
+      "expected_next": "clarify",
+      "repeat": 1,
+      "variant": "baseline",
+      "status": "completed",
+      "result": {
+        "data": {
+          "category": "ambiguous",
+          "order_id": "ord_synthetic_probe",
+          "decision_summary": "The customer asks whether to refund or replace ord_synthetic_probe, but replacement versus refund intent is unclear; classification only, eligibility not determined."
+        },
+        "model": "deepseek-flash",
+        "latency_ms": 1078.2280999992508,
+        "request_id": "fd3b35cc-f3a0-40fd-b2ef-e76eab79f6eb",
+        "tokens": {
+          "input": 199,
+          "output": 48
+        },
+        "error": null,
+        "cost": null,
+        "metadata": {
+          "synthetic_provider": false,
+          "requested_model": "deepseek-flash",
+          "attempts": 1,
+          "max_output_tokens": 512,
+          "usage_scope": "last successful response only; failed attempts may be billable",
+          "role": "structured intent; no business execution authority"
+        }
+      }
+    },
+    {
+      "case_id": "dev01",
+      "split": "dev",
+      "slice": "unresolved-choice",
+      "input": "Should I refund or replace ord_synthetic_probe?",
+      "expected_category": "ambiguous",
+      "expected_next": "clarify",
+      "repeat": 1,
+      "variant": "taxonomy",
+      "status": "completed",
+      "result": {
+        "data": {
+          "category": "ambiguous",
+          "order_id": "ord_synthetic_probe",
+          "decision_summary": "The customer is deciding between a refund and a replacement for ord_synthetic_probe; no remedy is selected."
+        },
+        "model": "deepseek-flash",
+        "latency_ms": 855.3148999926634,
+        "request_id": "b55c257d-eaec-48ef-b7a9-3254dce1e61b",
+        "tokens": {
+          "input": 440,
+          "output": 41
+        },
+        "error": null,
+        "cost": null,
+        "metadata": {
+          "synthetic_provider": false,
+          "requested_model": "deepseek-flash",
+          "attempts": 1,
+          "max_output_tokens": 512,
+          "usage_scope": "last successful response only; failed attempts may be billable",
+          "role": "structured intent; no business execution authority"
+        }
+      }
+    },
+    {
+      "case_id": "dev02",
+      "split": "dev",
+      "slice": "selected-action",
+      "input": "I want a refund for ord_contract_dev.",
+      "expected_category": "refund",
+      "expected_next": "proposal_candidate",
+      "repeat": 1,
+      "variant": "taxonomy",
+      "status": "completed",
+      "result": {
+        "data": {
+          "category": "refund",
+          "order_id": "ord_contract_dev",
+          "decision_summary": "The customer requests a refund for the specified order; eligibility and execution are not determined."
+        },
+        "model": "deepseek-flash",
+        "latency_ms": 919.2834999994375,
+        "request_id": "65c69850-ad26-43c8-b377-740a18666578",
+        "tokens": {
+          "input": 439,
+          "output": 36
+        },
+        "error": null,
+        "cost": null,
+        "metadata": {
+          "synthetic_provider": false,
+          "requested_model": "deepseek-flash",
+          "attempts": 1,
+          "max_output_tokens": 512,
+          "usage_scope": "last successful response only; failed attempts may be billable",
+          "role": "structured intent; no business execution authority"
+        }
+      }
+    },
+    {
+      "case_id": "dev02",
+      "split": "dev",
+      "slice": "selected-action",
+      "input": "I want a refund for ord_contract_dev.",
+      "expected_category": "refund",
+      "expected_next": "proposal_candidate",
+      "repeat": 1,
+      "variant": "baseline",
+      "status": "completed",
+      "result": {
+        "data": {
+          "category": "refund",
+          "order_id": "ord_contract_dev",
+          "decision_summary": "The customer requests a refund for the referenced order; eligibility is not determined."
+        },
+        "model": "deepseek-flash",
+        "latency_ms": 795.0483000022359,
+        "request_id": "d576bd1f-9f20-45ed-8633-2188f27ad810",
+        "tokens": {
+          "input": 198,
+          "output": 34
+        },
+        "error": null,
+        "cost": null,
+        "metadata": {
+          "synthetic_provider": false,
+          "requested_model": "deepseek-flash",
+          "attempts": 1,
+          "max_output_tokens": 512,
+          "usage_scope": "last successful response only; failed attempts may be billable",
+          "role": "structured intent; no business execution authority"
+        }
+      }
+    },
+    {
+      "case_id": "dev03",
+      "split": "dev",
+      "slice": "negation",
+      "input": "Do not refund ord_contract_dev. I want a replacement instead.",
+      "expected_category": "replacement",
+      "expected_next": "proposal_candidate",
+      "repeat": 1,
+      "variant": "baseline",
+      "status": "completed",
+      "result": {
+        "data": {
+          "category": "replacement",
+          "order_id": "ord_contract_dev",
+          "decision_summary": "Customer requests a replacement instead of a refund for the specified order; eligibility and execution are not determined."
+        },
+        "model": "deepseek-flash",
+        "latency_ms": 1011.2934000062523,
+        "request_id": "43cb13b0-8511-4ae2-8479-77dd6321a24c",
+        "tokens": {
+          "input": 202,
+          "output": 39
+        },
+        "error": null,
+        "cost": null,
+        "metadata": {
+          "synthetic_provider": false,
+          "requested_model": "deepseek-flash",
+          "attempts": 1,
+          "max_output_tokens": 512,
+          "usage_scope": "last successful response only; failed attempts may be billable",
+          "role": "structured intent; no business execution authority"
+        }
+      }
+    },
+    {
+      "case_id": "dev03",
+      "split": "dev",
+      "slice": "negation",
+      "input": "Do not refund ord_contract_dev. I want a replacement instead.",
+      "expected_category": "replacement",
+      "expected_next": "proposal_candidate",
+      "repeat": 1,
+      "variant": "taxonomy",
+      "status": "completed",
+      "result": {
+        "data": {
+          "category": "replacement",
+          "order_id": "ord_contract_dev",
+          "decision_summary": "The customer explicitly declines a refund and requests a replacement for ord_contract_dev. Eligibility and authorization are not determined."
+        },
+        "model": "deepseek-flash",
+        "latency_ms": 1131.6600999998627,
+        "request_id": "68f96083-6abd-42a7-87af-e444b6456047",
+        "tokens": {
+          "input": 443,
+          "output": 42
+        },
+        "error": null,
+        "cost": null,
+        "metadata": {
+          "synthetic_provider": false,
+          "requested_model": "deepseek-flash",
+          "attempts": 1,
+          "max_output_tokens": 512,
+          "usage_scope": "last successful response only; failed attempts may be billable",
+          "role": "structured intent; no business execution authority"
+        }
+      }
+    },
+    {
+      "case_id": "dev04",
+      "split": "dev",
+      "slice": "policy-question",
+      "input": "What is the difference between your refund and replacement policies?",
+      "expected_category": "knowledge_qa",
+      "expected_next": "policy",
+      "repeat": 1,
+      "variant": "taxonomy",
+      "status": "completed",
+      "result": {
+        "data": {
+          "category": "knowledge_qa",
+          "order_id": null,
+          "decision_summary": "Customer asks for a general comparison of refund and replacement policies; no order action selected."
+        },
+        "model": "deepseek-flash",
+        "latency_ms": 1287.6340000075288,
+        "request_id": "1a6115f1-4a52-4e79-8b26-8e46d176a8f7",
+        "tokens": {
+          "input": 440,
+          "output": 34
+        },
+        "error": null,
+        "cost": null,
+        "metadata": {
+          "synthetic_provider": false,
+          "requested_model": "deepseek-flash",
+          "attempts": 1,
+          "max_output_tokens": 512,
+          "usage_scope": "last successful response only; failed attempts may be billable",
+          "role": "structured intent; no business execution authority"
+        }
+      }
+    },
+    {
+      "case_id": "dev04",
+      "split": "dev",
+      "slice": "policy-question",
+      "input": "What is the difference between your refund and replacement policies?",
+      "expected_category": "knowledge_qa",
+      "expected_next": "policy",
+      "repeat": 1,
+      "variant": "baseline",
+      "status": "completed",
+      "result": {
+        "data": {
+          "category": "knowledge_qa",
+          "order_id": null,
+          "decision_summary": "Customer asks for a comparison of refund and replacement policies; classify as knowledge question, no order identified."
+        },
+        "model": "deepseek-flash",
+        "latency_ms": 916.5708999935305,
+        "request_id": "a441933d-18c8-4e79-8073-4533bba6c1e9",
+        "tokens": {
+          "input": 199,
+          "output": 37
+        },
+        "error": null,
+        "cost": null,
+        "metadata": {
+          "synthetic_provider": false,
+          "requested_model": "deepseek-flash",
+          "attempts": 1,
+          "max_output_tokens": 512,
+          "usage_scope": "last successful response only; failed attempts may be billable",
+          "role": "structured intent; no business execution authority"
+        }
+      }
+    },
+    {
+      "case_id": "dev05",
+      "split": "dev",
+      "slice": "policy-contradiction",
+      "input": "Your site says returns are allowed for 30 days but a support email says 14 days. Which rule is current?",
+      "expected_category": "policy_conflict",
+      "expected_next": "review",
+      "repeat": 1,
+      "variant": "baseline",
+      "status": "completed",
+      "result": {
+        "data": {
+          "category": "policy_conflict",
+          "order_id": null,
+          "decision_summary": "Customer reports a conflict between the public 30-day return policy and a support email stating 14 days, asking which is current. No order context provided; policy precedence is undetermined and requires verification of active policy evidence."
+        },
+        "model": "deepseek-flash",
+        "latency_ms": 1244.4844999990892,
+        "request_id": "27a9bf54-d38e-455e-b988-f123ce2cbdad",
+        "tokens": {
+          "input": 212,
+          "output": 61
+        },
+        "error": null,
+        "cost": null,
+        "metadata": {
+          "synthetic_provider": false,
+          "requested_model": "deepseek-flash",
+          "attempts": 1,
+          "max_output_tokens": 512,
+          "usage_scope": "last successful response only; failed attempts may be billable",
+          "role": "structured intent; no business execution authority"
+        }
+      }
+    },
+    {
+      "case_id": "dev05",
+      "split": "dev",
+      "slice": "policy-contradiction",
+      "input": "Your site says returns are allowed for 30 days but a support email says 14 days. Which rule is current?",
+      "expected_category": "policy_conflict",
+      "expected_next": "review",
+      "repeat": 1,
+      "variant": "taxonomy",
+      "status": "completed",
+      "result": {
+        "data": {
+          "category": "knowledge_qa",
+          "order_id": null,
+          "decision_summary": "The customer asks which return window is current given conflicting policy sources; no order action is selected."
+        },
+        "model": "deepseek-flash",
+        "latency_ms": 762.7160999982152,
+        "request_id": "1586c2a5-0ed1-48b7-a29c-79813dca5c40",
+        "tokens": {
+          "input": 453,
+          "output": 36
+        },
+        "error": null,
+        "cost": null,
+        "metadata": {
+          "synthetic_provider": false,
+          "requested_model": "deepseek-flash",
+          "attempts": 1,
+          "max_output_tokens": 512,
+          "usage_scope": "last successful response only; failed attempts may be billable",
+          "role": "structured intent; no business execution authority"
+        }
+      }
+    },
+    {
+      "case_id": "dev06",
+      "split": "dev",
+      "slice": "missing-goal",
+      "input": "Please help with my purchase; I have not decided what to ask for.",
+      "expected_category": "ambiguous",
+      "expected_next": "clarify",
+      "repeat": 1,
+      "variant": "taxonomy",
+      "status": "completed",
+      "result": {
+        "data": {
+          "category": "ambiguous",
+          "order_id": null,
+          "decision_summary": "The customer has not selected a specific outcome or action, so the request is classified as ambiguous; no order ID was provided."
+        },
+        "model": "deepseek-flash",
+        "latency_ms": 1092.9483999934746,
+        "request_id": "f0645919-e569-4a0f-afc2-b4397a24306a",
+        "tokens": {
+          "input": 444,
+          "output": 40
+        },
+        "error": null,
+        "cost": null,
+        "metadata": {
+          "synthetic_provider": false,
+          "requested_model": "deepseek-flash",
+          "attempts": 1,
+          "max_output_tokens": 512,
+          "usage_scope": "last successful response only; failed attempts may be billable",
+          "role": "structured intent; no business execution authority"
+        }
+      }
+    },
+    {
+      "case_id": "dev06",
+      "split": "dev",
+      "slice": "missing-goal",
+      "input": "Please help with my purchase; I have not decided what to ask for.",
+      "expected_category": "ambiguous",
+      "expected_next": "clarify",
+      "repeat": 1,
+      "variant": "baseline",
+      "status": "completed",
+      "result": {
+        "data": {
+          "category": "ambiguous",
+          "order_id": null,
+          "decision_summary": "The customer requests assistance with a purchase but has not specified an intent or provided an order identifier; classification is ambiguous."
+        },
+        "model": "deepseek-flash",
+        "latency_ms": 810.016799994628,
+        "request_id": "1955fdfd-a13c-47ec-8792-daf47960c6f1",
+        "tokens": {
+          "input": 203,
+          "output": 38
+        },
+        "error": null,
+        "cost": null,
+        "metadata": {
+          "synthetic_provider": false,
+          "requested_model": "deepseek-flash",
+          "attempts": 1,
+          "max_output_tokens": 512,
+          "usage_scope": "last successful response only; failed attempts may be billable",
+          "role": "structured intent; no business execution authority"
+        }
+      }
+    },
+    {
+      "case_id": "dev07",
+      "split": "dev",
+      "slice": "scope",
+      "input": "Tell me tomorrow's weather forecast.",
+      "expected_category": "out_of_scope",
+      "expected_next": "out_of_scope",
+      "repeat": 1,
+      "variant": "baseline",
+      "status": "completed",
+      "result": {
+        "data": {
+          "category": "out_of_scope",
+          "order_id": null,
+          "decision_summary": "The customer asks for tomorrow's weather forecast, which is unrelated to NovaMart support."
+        },
+        "model": "deepseek-flash",
+        "latency_ms": 462.34879999246914,
+        "request_id": "a01abfc6-ba95-435e-b848-8fc0f3717abf",
+        "tokens": {
+          "input": 195,
+          "output": 35
+        },
+        "error": null,
+        "cost": null,
+        "metadata": {
+          "synthetic_provider": false,
+          "requested_model": "deepseek-flash",
+          "attempts": 1,
+          "max_output_tokens": 512,
+          "usage_scope": "last successful response only; failed attempts may be billable",
+          "role": "structured intent; no business execution authority"
+        }
+      }
+    },
+    {
+      "case_id": "dev07",
+      "split": "dev",
+      "slice": "scope",
+      "input": "Tell me tomorrow's weather forecast.",
+      "expected_category": "out_of_scope",
+      "expected_next": "out_of_scope",
+      "repeat": 1,
+      "variant": "taxonomy",
+      "status": "completed",
+      "result": {
+        "data": {
+          "category": "out_of_scope",
+          "order_id": null,
+          "decision_summary": "The customer asks for tomorrow's weather forecast, which is unrelated to NovaMart support; no order context or action identified."
+        },
+        "model": "deepseek-flash",
+        "latency_ms": 1051.300799997989,
+        "request_id": "32754b2e-7c4a-4466-bb4f-ea9b5d76b000",
+        "tokens": {
+          "input": 436,
+          "output": 42
+        },
+        "error": null,
+        "cost": null,
+        "metadata": {
+          "synthetic_provider": false,
+          "requested_model": "deepseek-flash",
+          "attempts": 1,
+          "max_output_tokens": 512,
+          "usage_scope": "last successful response only; failed attempts may be billable",
+          "role": "structured intent; no business execution authority"
+        }
+      }
+    },
+    {
+      "case_id": "dev08",
+      "split": "dev",
+      "slice": "damage-without-preference",
+      "input": "My delivery arrived smashed, ord_contract_dev. What can you do?",
+      "expected_category": "ambiguous",
+      "expected_next": "clarify",
+      "repeat": 1,
+      "variant": "taxonomy",
+      "status": "completed",
+      "result": {
+        "data": {
+          "category": "ambiguous",
+          "order_id": "ord_contract_dev",
+          "decision_summary": "The customer reports a smashed delivery without selecting a remedy; asking what can be done indicates uncertainty between refund or replacement. No eligibility determination made."
+        },
+        "model": "deepseek-flash",
+        "latency_ms": 835.5843000026653,
+        "request_id": "416c3312-35bc-4f88-9a4f-d960f4250c9c",
+        "tokens": {
+          "input": 444,
+          "output": 46
+        },
+        "error": null,
+        "cost": null,
+        "metadata": {
+          "synthetic_provider": false,
+          "requested_model": "deepseek-flash",
+          "attempts": 1,
+          "max_output_tokens": 512,
+          "usage_scope": "last successful response only; failed attempts may be billable",
+          "role": "structured intent; no business execution authority"
+        }
+      }
+    },
+    {
+      "case_id": "dev08",
+      "split": "dev",
+      "slice": "damage-without-preference",
+      "input": "My delivery arrived smashed, ord_contract_dev. What can you do?",
+      "expected_category": "ambiguous",
+      "expected_next": "clarify",
+      "repeat": 1,
+      "variant": "baseline",
+      "status": "completed",
+      "result": {
+        "data": {
+          "category": "replacement",
+          "order_id": "ord_contract_dev",
+          "decision_summary": "Customer reports delivery arrived damaged. Request concerns replacement for the affected order; eligibility and remedy are not determined here."
+        },
+        "model": "deepseek-flash",
+        "latency_ms": 1017.0039999939036,
+        "request_id": "6af22f4b-9852-4eda-8bed-87ad6f345be3",
+        "tokens": {
+          "input": 203,
+          "output": 41
+        },
+        "error": null,
+        "cost": null,
+        "metadata": {
+          "synthetic_provider": false,
+          "requested_model": "deepseek-flash",
+          "attempts": 1,
+          "max_output_tokens": 512,
+          "usage_scope": "last successful response only; failed attempts may be billable",
+          "role": "structured intent; no business execution authority"
+        }
+      }
+    },
+    {
+      "case_id": "test01",
+      "split": "test",
+      "slice": "unresolved-choice",
+      "input": "For ord_contract_test, I cannot decide between getting my money back and having another unit sent.",
+      "expected_category": "ambiguous",
+      "expected_next": "clarify",
+      "repeat": 1,
+      "variant": "baseline",
+      "status": "completed",
+      "result": {
+        "data": {
+          "category": "ambiguous",
+          "order_id": "ord_contract_test",
+          "decision_summary": "Customer expresses uncertainty between refund and replacement for the specified order; preference is not determined."
+        },
+        "model": "deepseek-flash",
+        "latency_ms": 1066.2864000041736,
+        "request_id": "34fb5cf9-0927-4783-9e81-ee9497be68ed",
+        "tokens": {
+          "input": 208,
+          "output": 35
+        },
+        "error": null,
+        "cost": null,
+        "metadata": {
+          "synthetic_provider": false,
+          "requested_model": "deepseek-flash",
+          "attempts": 1,
+          "max_output_tokens": 512,
+          "usage_scope": "last successful response only; failed attempts may be billable",
+          "role": "structured intent; no business execution authority"
+        }
+      }
+    },
+    {
+      "case_id": "test01",
+      "split": "test",
+      "slice": "unresolved-choice",
+      "input": "For ord_contract_test, I cannot decide between getting my money back and having another unit sent.",
+      "expected_category": "ambiguous",
+      "expected_next": "clarify",
+      "repeat": 1,
+      "variant": "taxonomy",
+      "status": "completed",
+      "result": {
+        "data": {
+          "category": "ambiguous",
+          "order_id": "ord_contract_test",
+          "decision_summary": "The customer cannot decide between a refund and a replacement for ord_contract_test; no remedy is selected and eligibility is not determined."
+        },
+        "model": "deepseek-flash",
+        "latency_ms": 1160.119099993608,
+        "request_id": "86f2cc50-cea7-44b2-95db-1d46cc606e82",
+        "tokens": {
+          "input": 449,
+          "output": 44
+        },
+        "error": null,
+        "cost": null,
+        "metadata": {
+          "synthetic_provider": false,
+          "requested_model": "deepseek-flash",
+          "attempts": 1,
+          "max_output_tokens": 512,
+          "usage_scope": "last successful response only; failed attempts may be billable",
+          "role": "structured intent; no business execution authority"
+        }
+      }
+    },
+    {
+      "case_id": "test02",
+      "split": "test",
+      "slice": "unresolved-choice-zh",
+      "input": "订单 ord_contract_test，我还没想好，是退钱还是换一个更合适？",
+      "expected_category": "ambiguous",
+      "expected_next": "clarify",
+      "repeat": 1,
+      "variant": "taxonomy",
+      "status": "completed",
+      "result": {
+        "data": {
+          "category": "ambiguous",
+          "order_id": "ord_contract_test",
+          "decision_summary": "The customer references order ord_contract_test and is deciding between a refund and a replacement; no remedy has been selected, so the request is classified as ambiguous."
+        },
+        "model": "deepseek-flash",
+        "latency_ms": 1061.9746000011219,
+        "request_id": "491e0990-7fda-4e99-ab50-d3c735ce5982",
+        "tokens": {
+          "input": 449,
+          "output": 50
+        },
+        "error": null,
+        "cost": null,
+        "metadata": {
+          "synthetic_provider": false,
+          "requested_model": "deepseek-flash",
+          "attempts": 1,
+          "max_output_tokens": 512,
+          "usage_scope": "last successful response only; failed attempts may be billable",
+          "role": "structured intent; no business execution authority"
+        }
+      }
+    },
+    {
+      "case_id": "test02",
+      "split": "test",
+      "slice": "unresolved-choice-zh",
+      "input": "订单 ord_contract_test，我还没想好，是退钱还是换一个更合适？",
+      "expected_category": "ambiguous",
+      "expected_next": "clarify",
+      "repeat": 1,
+      "variant": "baseline",
+      "status": "completed",
+      "result": {
+        "data": {
+          "category": "ambiguous",
+          "order_id": "ord_contract_test",
+          "decision_summary": "Customer has not decided between refund and replacement; intent is undetermined, so eligibility and options are not assessed."
+        },
+        "model": "deepseek-flash",
+        "latency_ms": 1098.0867000034777,
+        "request_id": "c6925006-ccdc-4776-b0ac-3caf1ffeadd8",
+        "tokens": {
+          "input": 208,
+          "output": 40
+        },
+        "error": null,
+        "cost": null,
+        "metadata": {
+          "synthetic_provider": false,
+          "requested_model": "deepseek-flash",
+          "attempts": 1,
+          "max_output_tokens": 512,
+          "usage_scope": "last successful response only; failed attempts may be billable",
+          "role": "structured intent; no business execution authority"
+        }
+      }
+    },
+    {
+      "case_id": "test03",
+      "split": "test",
+      "slice": "damage-without-preference",
+      "input": "The speaker in ord_contract_test arrived cracked. I need this sorted out, but have no preferred remedy yet.",
+      "expected_category": "ambiguous",
+      "expected_next": "clarify",
+      "repeat": 1,
+      "variant": "baseline",
+      "status": "completed",
+      "result": {
+        "data": {
+          "category": "troubleshooting",
+          "order_id": "ord_contract_test",
+          "decision_summary": "Customer reports the speaker from order ord_contract_test arrived cracked and requests resolution but has no preferred remedy. Issue classification only; eligibility and remedy are not determined."
+        },
+        "model": "deepseek-flash",
+        "latency_ms": 609.7529999969993,
+        "request_id": "05272fe7-017c-48a0-86d2-e82df3d99d3e",
+        "tokens": {
+          "input": 211,
+          "output": 53
+        },
+        "error": null,
+        "cost": null,
+        "metadata": {
+          "synthetic_provider": false,
+          "requested_model": "deepseek-flash",
+          "attempts": 1,
+          "max_output_tokens": 512,
+          "usage_scope": "last successful response only; failed attempts may be billable",
+          "role": "structured intent; no business execution authority"
+        }
+      }
+    },
+    {
+      "case_id": "test03",
+      "split": "test",
+      "slice": "damage-without-preference",
+      "input": "The speaker in ord_contract_test arrived cracked. I need this sorted out, but have no preferred remedy yet.",
+      "expected_category": "ambiguous",
+      "expected_next": "clarify",
+      "repeat": 1,
+      "variant": "taxonomy",
+      "status": "completed",
+      "result": {
+        "data": {
+          "category": "ambiguous",
+          "order_id": "ord_contract_test",
+          "decision_summary": "Customer reports a cracked speaker on order ord_contract_test and has no preferred remedy, so the request is ambiguous."
+        },
+        "model": "deepseek-flash",
+        "latency_ms": 973.62050000811,
+        "request_id": "4bf70fb3-9f19-49d3-9199-cbc5f4c33b89",
+        "tokens": {
+          "input": 452,
+          "output": 41
+        },
+        "error": null,
+        "cost": null,
+        "metadata": {
+          "synthetic_provider": false,
+          "requested_model": "deepseek-flash",
+          "attempts": 1,
+          "max_output_tokens": 512,
+          "usage_scope": "last successful response only; failed attempts may be billable",
+          "role": "structured intent; no business execution authority"
+        }
+      }
+    },
+    {
+      "case_id": "test04",
+      "split": "test",
+      "slice": "policy-contradiction",
+      "input": "One NovaMart document says 30 days and another says two weeks for refunds. Resolve this contradiction before we proceed.",
+      "expected_category": "policy_conflict",
+      "expected_next": "review",
+      "repeat": 1,
+      "variant": "taxonomy",
+      "status": "completed",
+      "result": {
+        "data": {
+          "category": "policy_conflict",
+          "order_id": null,
+          "decision_summary": "The customer reports contradictory refund-window guidance (30 days versus two weeks) and asks for resolution. No order action or identifier is provided; request human review of the conflicting policy documents."
+        },
+        "model": "deepseek-flash",
+        "latency_ms": 1073.720800006413,
+        "request_id": "10501db7-1ecd-4aa0-89fe-4cd52f101ae0",
+        "tokens": {
+          "input": 454,
+          "output": 54
+        },
+        "error": null,
+        "cost": null,
+        "metadata": {
+          "synthetic_provider": false,
+          "requested_model": "deepseek-flash",
+          "attempts": 1,
+          "max_output_tokens": 512,
+          "usage_scope": "last successful response only; failed attempts may be billable",
+          "role": "structured intent; no business execution authority"
+        }
+      }
+    },
+    {
+      "case_id": "test04",
+      "split": "test",
+      "slice": "policy-contradiction",
+      "input": "One NovaMart document says 30 days and another says two weeks for refunds. Resolve this contradiction before we proceed.",
+      "expected_category": "policy_conflict",
+      "expected_next": "review",
+      "repeat": 1,
+      "variant": "baseline",
+      "status": "completed",
+      "result": {
+        "data": {
+          "category": "policy_conflict",
+          "order_id": null,
+          "decision_summary": "Customer reports conflicting refund-window documents (30 days vs. two weeks) and requests the contradiction be resolved. This is a policy conflict; eligibility and resolution are not determined here."
+        },
+        "model": "deepseek-flash",
+        "latency_ms": 1433.946899996954,
+        "request_id": "794cc841-e90f-406c-af60-97e79e7a9003",
+        "tokens": {
+          "input": 213,
+          "output": 53
+        },
+        "error": null,
+        "cost": null,
+        "metadata": {
+          "synthetic_provider": false,
+          "requested_model": "deepseek-flash",
+          "attempts": 1,
+          "max_output_tokens": 512,
+          "usage_scope": "last successful response only; failed attempts may be billable",
+          "role": "structured intent; no business execution authority"
+        }
+      }
+    },
+    {
+      "case_id": "test05",
+      "split": "test",
+      "slice": "selected-action",
+      "input": "Please return the payment for ord_contract_test to me. I choose a refund.",
+      "expected_category": "refund",
+      "expected_next": "proposal_candidate",
+      "repeat": 1,
+      "variant": "baseline",
+      "status": "completed",
+      "result": {
+        "data": {
+          "category": "refund",
+          "order_id": "ord_contract_test",
+          "decision_summary": "Customer requests a refund for ord_contract_test; eligibility and execution are not determined."
+        },
+        "model": "deepseek-flash",
+        "latency_ms": 895.6125999975484,
+        "request_id": "c2f8575f-fb70-4d86-ae46-07069c4b8a92",
+        "tokens": {
+          "input": 205,
+          "output": 36
+        },
+        "error": null,
+        "cost": null,
+        "metadata": {
+          "synthetic_provider": false,
+          "requested_model": "deepseek-flash",
+          "attempts": 1,
+          "max_output_tokens": 512,
+          "usage_scope": "last successful response only; failed attempts may be billable",
+          "role": "structured intent; no business execution authority"
+        }
+      }
+    },
+    {
+      "case_id": "test05",
+      "split": "test",
+      "slice": "selected-action",
+      "input": "Please return the payment for ord_contract_test to me. I choose a refund.",
+      "expected_category": "refund",
+      "expected_next": "proposal_candidate",
+      "repeat": 1,
+      "variant": "taxonomy",
+      "status": "completed",
+      "result": {
+        "data": {
+          "category": "refund",
+          "order_id": "ord_contract_test",
+          "decision_summary": "The customer explicitly requests a refund for order ord_contract_test; eligibility is not determined."
+        },
+        "model": "deepseek-flash",
+        "latency_ms": 1012.2168000089005,
+        "request_id": "adcf9044-4656-4e14-a447-700175c005a1",
+        "tokens": {
+          "input": 446,
+          "output": 37
+        },
+        "error": null,
+        "cost": null,
+        "metadata": {
+          "synthetic_provider": false,
+          "requested_model": "deepseek-flash",
+          "attempts": 1,
+          "max_output_tokens": 512,
+          "usage_scope": "last successful response only; failed attempts may be billable",
+          "role": "structured intent; no business execution authority"
+        }
+      }
+    },
+    {
+      "case_id": "test06",
+      "split": "test",
+      "slice": "negation",
+      "input": "A refund is not what I want for ord_contract_test. Send a replacement unit, please.",
+      "expected_category": "replacement",
+      "expected_next": "proposal_candidate",
+      "repeat": 1,
+      "variant": "taxonomy",
+      "status": "completed",
+      "result": {
+        "data": {
+          "category": "replacement",
+          "order_id": "ord_contract_test",
+          "decision_summary": "The customer explicitly negates a refund and requests a replacement unit for ord_contract_test; eligibility is not determined."
+        },
+        "model": "deepseek-flash",
+        "latency_ms": 1200.0626999943051,
+        "request_id": "df5a0ef3-3a99-4066-a617-c47cd6a027c4",
+        "tokens": {
+          "input": 449,
+          "output": 42
+        },
+        "error": null,
+        "cost": null,
+        "metadata": {
+          "synthetic_provider": false,
+          "requested_model": "deepseek-flash",
+          "attempts": 1,
+          "max_output_tokens": 512,
+          "usage_scope": "last successful response only; failed attempts may be billable",
+          "role": "structured intent; no business execution authority"
+        }
+      }
+    },
+    {
+      "case_id": "test06",
+      "split": "test",
+      "slice": "negation",
+      "input": "A refund is not what I want for ord_contract_test. Send a replacement unit, please.",
+      "expected_category": "replacement",
+      "expected_next": "proposal_candidate",
+      "repeat": 1,
+      "variant": "baseline",
+      "status": "completed",
+      "result": {
+        "data": {
+          "category": "replacement",
+          "order_id": "ord_contract_test",
+          "decision_summary": "Customer explicitly requests a replacement unit and declines a refund for this order. Eligibility and execution are not determined."
+        },
+        "model": "deepseek-flash",
+        "latency_ms": 1363.6656000016956,
+        "request_id": "fdba2b6c-5eea-4f26-aac6-771abdd1e69c",
+        "tokens": {
+          "input": 208,
+          "output": 40
+        },
+        "error": null,
+        "cost": null,
+        "metadata": {
+          "synthetic_provider": false,
+          "requested_model": "deepseek-flash",
+          "attempts": 1,
+          "max_output_tokens": 512,
+          "usage_scope": "last successful response only; failed attempts may be billable",
+          "role": "structured intent; no business execution authority"
+        }
+      }
+    },
+    {
+      "case_id": "test07",
+      "split": "test",
+      "slice": "negation",
+      "input": "I choose my money back for ord_contract_test, not an exchange or another speaker.",
+      "expected_category": "refund",
+      "expected_next": "proposal_candidate",
+      "repeat": 1,
+      "variant": "baseline",
+      "status": "completed",
+      "result": {
+        "data": {
+          "category": "refund",
+          "order_id": "ord_contract_test",
+          "decision_summary": "Customer requests a refund for ord_contract_test instead of a replacement or exchange; eligibility is not determined."
+        },
+        "model": "deepseek-flash",
+        "latency_ms": 514.8419000033755,
+        "request_id": "dc692744-1afe-403a-9f4a-8c32ecc6cc3c",
+        "tokens": {
+          "input": 206,
+          "output": 40
+        },
+        "error": null,
+        "cost": null,
+        "metadata": {
+          "synthetic_provider": false,
+          "requested_model": "deepseek-flash",
+          "attempts": 1,
+          "max_output_tokens": 512,
+          "usage_scope": "last successful response only; failed attempts may be billable",
+          "role": "structured intent; no business execution authority"
+        }
+      }
+    },
+    {
+      "case_id": "test07",
+      "split": "test",
+      "slice": "negation",
+      "input": "I choose my money back for ord_contract_test, not an exchange or another speaker.",
+      "expected_category": "refund",
+      "expected_next": "proposal_candidate",
+      "repeat": 1,
+      "variant": "taxonomy",
+      "status": "completed",
+      "result": {
+        "data": {
+          "category": "refund",
+          "order_id": "ord_contract_test",
+          "decision_summary": "The customer explicitly selects a refund for ord_contract_test and declines an exchange or replacement speaker; eligibility is not determined."
+        },
+        "model": "deepseek-flash",
+        "latency_ms": 1117.5458000070648,
+        "request_id": "0d52ea22-2108-41c2-84dd-77373459c303",
+        "tokens": {
+          "input": 447,
+          "output": 43
+        },
+        "error": null,
+        "cost": null,
+        "metadata": {
+          "synthetic_provider": false,
+          "requested_model": "deepseek-flash",
+          "attempts": 1,
+          "max_output_tokens": 512,
+          "usage_scope": "last successful response only; failed attempts may be billable",
+          "role": "structured intent; no business execution authority"
+        }
+      }
+    },
+    {
+      "case_id": "test08",
+      "split": "test",
+      "slice": "selected-action",
+      "input": "Cancel ord_contract_test before the warehouse ships it.",
+      "expected_category": "cancellation",
+      "expected_next": "proposal_candidate",
+      "repeat": 1,
+      "variant": "taxonomy",
+      "status": "completed",
+      "result": {
+        "data": {
+          "category": "cancellation",
+          "order_id": "ord_contract_test",
+          "decision_summary": "The customer requests cancellation of ord_contract_test before shipment; eligibility and execution are not determined."
+        },
+        "model": "deepseek-flash",
+        "latency_ms": 930.3154000081122,
+        "request_id": "3bb5e9a8-438b-4c54-8f11-296431b651b9",
+        "tokens": {
+          "input": 440,
+          "output": 39
+        },
+        "error": null,
+        "cost": null,
+        "metadata": {
+          "synthetic_provider": false,
+          "requested_model": "deepseek-flash",
+          "attempts": 1,
+          "max_output_tokens": 512,
+          "usage_scope": "last successful response only; failed attempts may be billable",
+          "role": "structured intent; no business execution authority"
+        }
+      }
+    },
+    {
+      "case_id": "test08",
+      "split": "test",
+      "slice": "selected-action",
+      "input": "Cancel ord_contract_test before the warehouse ships it.",
+      "expected_category": "cancellation",
+      "expected_next": "proposal_candidate",
+      "repeat": 1,
+      "variant": "baseline",
+      "status": "completed",
+      "result": {
+        "data": {
+          "category": "cancellation",
+          "order_id": "ord_contract_test",
+          "decision_summary": "Customer requests cancellation of order ord_contract_test before warehouse shipment; eligibility and execution are not determined."
+        },
+        "model": "deepseek-flash",
+        "latency_ms": 507.9169999953592,
+        "request_id": "ded1898a-a6e4-4f83-bcc7-d5728d006ee1",
+        "tokens": {
+          "input": 199,
+          "output": 40
+        },
+        "error": null,
+        "cost": null,
+        "metadata": {
+          "synthetic_provider": false,
+          "requested_model": "deepseek-flash",
+          "attempts": 1,
+          "max_output_tokens": 512,
+          "usage_scope": "last successful response only; failed attempts may be billable",
+          "role": "structured intent; no business execution authority"
+        }
+      }
+    },
+    {
+      "case_id": "test09",
+      "split": "test",
+      "slice": "read-only",
+      "input": "Has ord_contract_test left the warehouse, and what is its tracking status?",
+      "expected_category": "order_query",
+      "expected_next": "lookup",
+      "repeat": 1,
+      "variant": "baseline",
+      "status": "completed",
+      "result": {
+        "data": {
+          "category": "order_query",
+          "order_id": "ord_contract_test",
+          "decision_summary": "The customer asks whether the order has shipped and requests its tracking status; this is an order query and fulfillment status is not determined."
+        },
+        "model": "deepseek-flash",
+        "latency_ms": 706.4773000020068,
+        "request_id": "80f49467-567e-446e-b822-1529cde1bd7a",
+        "tokens": {
+          "input": 204,
+          "output": 45
+        },
+        "error": null,
+        "cost": null,
+        "metadata": {
+          "synthetic_provider": false,
+          "requested_model": "deepseek-flash",
+          "attempts": 1,
+          "max_output_tokens": 512,
+          "usage_scope": "last successful response only; failed attempts may be billable",
+          "role": "structured intent; no business execution authority"
+        }
+      }
+    },
+    {
+      "case_id": "test09",
+      "split": "test",
+      "slice": "read-only",
+      "input": "Has ord_contract_test left the warehouse, and what is its tracking status?",
+      "expected_category": "order_query",
+      "expected_next": "lookup",
+      "repeat": 1,
+      "variant": "taxonomy",
+      "status": "completed",
+      "result": {
+        "data": {
+          "category": "order_query",
+          "order_id": "ord_contract_test",
+          "decision_summary": "The customer requests current order and shipping facts for ord_contract_test, including warehouse status and tracking."
+        },
+        "model": "deepseek-flash",
+        "latency_ms": 1008.3377999981167,
+        "request_id": "c2dffa40-1a22-4066-837e-1819ea0d137e",
+        "tokens": {
+          "input": 445,
+          "output": 39
+        },
+        "error": null,
+        "cost": null,
+        "metadata": {
+          "synthetic_provider": false,
+          "requested_model": "deepseek-flash",
+          "attempts": 1,
+          "max_output_tokens": 512,
+          "usage_scope": "last successful response only; failed attempts may be billable",
+          "role": "structured intent; no business execution authority"
+        }
+      }
+    },
+    {
+      "case_id": "test10",
+      "split": "test",
+      "slice": "policy-question",
+      "input": "How long does a submitted refund normally take to reach the original payment method? I am only asking about the process.",
+      "expected_category": "knowledge_qa",
+      "expected_next": "policy",
+      "repeat": 1,
+      "variant": "taxonomy",
+      "status": "completed",
+      "result": {
+        "data": {
+          "category": "knowledge_qa",
+          "order_id": null,
+          "decision_summary": "The customer asks about the general timeline for a submitted refund to reach the original payment method and explicitly states this is a process question only, with no selected order action."
+        },
+        "model": "deepseek-flash",
+        "latency_ms": 1023.3418999996502,
+        "request_id": "30cebc59-6120-4e2d-ad8a-9f624e605cde",
+        "tokens": {
+          "input": 452,
+          "output": 50
+        },
+        "error": null,
+        "cost": null,
+        "metadata": {
+          "synthetic_provider": false,
+          "requested_model": "deepseek-flash",
+          "attempts": 1,
+          "max_output_tokens": 512,
+          "usage_scope": "last successful response only; failed attempts may be billable",
+          "role": "structured intent; no business execution authority"
+        }
+      }
+    },
+    {
+      "case_id": "test10",
+      "split": "test",
+      "slice": "policy-question",
+      "input": "How long does a submitted refund normally take to reach the original payment method? I am only asking about the process.",
+      "expected_category": "knowledge_qa",
+      "expected_next": "policy",
+      "repeat": 1,
+      "variant": "baseline",
+      "status": "completed",
+      "result": {
+        "data": {
+          "category": "knowledge_qa",
+          "order_id": null,
+          "decision_summary": "The customer asks about the standard refund processing timeline to the original payment method. This is a general process question, not an order-specific request."
+        },
+        "model": "deepseek-flash",
+        "latency_ms": 1104.9181999987923,
+        "request_id": "29795116-f4d3-4d6d-a83f-834579e92251",
+        "tokens": {
+          "input": 211,
+          "output": 45
+        },
+        "error": null,
+        "cost": null,
+        "metadata": {
+          "synthetic_provider": false,
+          "requested_model": "deepseek-flash",
+          "attempts": 1,
+          "max_output_tokens": 512,
+          "usage_scope": "last successful response only; failed attempts may be billable",
+          "role": "structured intent; no business execution authority"
+        }
+      }
+    },
+    {
+      "case_id": "test11",
+      "split": "test",
+      "slice": "policy-question",
+      "input": "What damage is excluded from the limited warranty?",
+      "expected_category": "knowledge_qa",
+      "expected_next": "policy",
+      "repeat": 1,
+      "variant": "baseline",
+      "status": "completed",
+      "result": {
+        "data": {
+          "category": "knowledge_qa",
+          "order_id": null,
+          "decision_summary": "Customer asks which damage the limited warranty excludes; answer is a policy knowledge request requiring verified warranty evidence."
+        },
+        "model": "deepseek-flash",
+        "latency_ms": 1338.2916999980807,
+        "request_id": "7b773b39-654d-4673-8ad1-4f68d9541555",
+        "tokens": {
+          "input": 197,
+          "output": 37
+        },
+        "error": null,
+        "cost": null,
+        "metadata": {
+          "synthetic_provider": false,
+          "requested_model": "deepseek-flash",
+          "attempts": 1,
+          "max_output_tokens": 512,
+          "usage_scope": "last successful response only; failed attempts may be billable",
+          "role": "structured intent; no business execution authority"
+        }
+      }
+    },
+    {
+      "case_id": "test11",
+      "split": "test",
+      "slice": "policy-question",
+      "input": "What damage is excluded from the limited warranty?",
+      "expected_category": "knowledge_qa",
+      "expected_next": "policy",
+      "repeat": 1,
+      "variant": "taxonomy",
+      "status": "completed",
+      "result": {
+        "data": {
+          "category": "knowledge_qa",
+          "order_id": null,
+          "decision_summary": "The customer asks what damage is excluded from the limited warranty; this is a general warranty-policy question with no selected order action."
+        },
+        "model": "deepseek-flash",
+        "latency_ms": 1642.6780999900075,
+        "request_id": "bd97907d-cf40-48e4-91c8-f1ea8fe2c81a",
+        "tokens": {
+          "input": 438,
+          "output": 43
+        },
+        "error": null,
+        "cost": null,
+        "metadata": {
+          "synthetic_provider": false,
+          "requested_model": "deepseek-flash",
+          "attempts": 1,
+          "max_output_tokens": 512,
+          "usage_scope": "last successful response only; failed attempts may be billable",
+          "role": "structured intent; no business execution authority"
+        }
+      }
+    },
+    {
+      "case_id": "test12",
+      "split": "test",
+      "slice": "technical",
+      "input": "My Nova speaker keeps disconnecting over Bluetooth. How should I troubleshoot it?",
+      "expected_category": "troubleshooting",
+      "expected_next": "troubleshoot",
+      "repeat": 1,
+      "variant": "taxonomy",
+      "status": "completed",
+      "result": {
+        "data": {
+          "category": "troubleshooting",
+          "order_id": null,
+          "decision_summary": "The customer requests troubleshooting help for a Nova speaker that disconnects over Bluetooth; no order action or identifier is provided."
+        },
+        "model": "deepseek-flash",
+        "latency_ms": 922.0497000060277,
+        "request_id": "22fd5feb-f796-41e4-81bc-677f8ed2eb89",
+        "tokens": {
+          "input": 444,
+          "output": 42
+        },
+        "error": null,
+        "cost": null,
+        "metadata": {
+          "synthetic_provider": false,
+          "requested_model": "deepseek-flash",
+          "attempts": 1,
+          "max_output_tokens": 512,
+          "usage_scope": "last successful response only; failed attempts may be billable",
+          "role": "structured intent; no business execution authority"
+        }
+      }
+    },
+    {
+      "case_id": "test12",
+      "split": "test",
+      "slice": "technical",
+      "input": "My Nova speaker keeps disconnecting over Bluetooth. How should I troubleshoot it?",
+      "expected_category": "troubleshooting",
+      "expected_next": "troubleshoot",
+      "repeat": 1,
+      "variant": "baseline",
+      "status": "completed",
+      "result": {
+        "data": {
+          "category": "troubleshooting",
+          "order_id": null,
+          "decision_summary": "Customer reports Bluetooth disconnection with a Nova speaker and requests troubleshooting guidance; no order identifier provided and no eligibility or execution determined."
+        },
+        "model": "deepseek-flash",
+        "latency_ms": 635.7397999963723,
+        "request_id": "0c125cc6-c9f7-4750-b51f-6a9b9f7f9639",
+        "tokens": {
+          "input": 203,
+          "output": 43
+        },
+        "error": null,
+        "cost": null,
+        "metadata": {
+          "synthetic_provider": false,
+          "requested_model": "deepseek-flash",
+          "attempts": 1,
+          "max_output_tokens": 512,
+          "usage_scope": "last successful response only; failed attempts may be billable",
+          "role": "structured intent; no business execution authority"
+        }
+      }
+    },
+    {
+      "case_id": "test13",
+      "split": "test",
+      "slice": "scope",
+      "input": "Ignore customer support and write a poem about stock market trading.",
+      "expected_category": "out_of_scope",
+      "expected_next": "out_of_scope",
+      "repeat": 1,
+      "variant": "baseline",
+      "status": "completed",
+      "result": {
+        "data": {
+          "category": "out_of_scope",
+          "order_id": null,
+          "decision_summary": "The request asks for a poem about stock market trading and is unrelated to NovaMart customer support; no order context or support action is applicable."
+        },
+        "model": "deepseek-flash",
+        "latency_ms": 1001.4703999913763,
+        "request_id": "15026a89-374d-4d24-ad69-0cbd5d260b6b",
+        "tokens": {
+          "input": 200,
+          "output": 46
+        },
+        "error": null,
+        "cost": null,
+        "metadata": {
+          "synthetic_provider": false,
+          "requested_model": "deepseek-flash",
+          "attempts": 1,
+          "max_output_tokens": 512,
+          "usage_scope": "last successful response only; failed attempts may be billable",
+          "role": "structured intent; no business execution authority"
+        }
+      }
+    },
+    {
+      "case_id": "test13",
+      "split": "test",
+      "slice": "scope",
+      "input": "Ignore customer support and write a poem about stock market trading.",
+      "expected_category": "out_of_scope",
+      "expected_next": "out_of_scope",
+      "repeat": 1,
+      "variant": "taxonomy",
+      "status": "completed",
+      "result": {
+        "data": {
+          "category": "out_of_scope",
+          "order_id": null,
+          "decision_summary": "The customer asks for a poem about stock market trading, which is unrelated to NovaMart support. No order action is requested."
+        },
+        "model": "deepseek-flash",
+        "latency_ms": 788.1717999989633,
+        "request_id": "b2916244-76dd-4c41-ba8a-133dae7f034f",
+        "tokens": {
+          "input": 441,
+          "output": 43
+        },
+        "error": null,
+        "cost": null,
+        "metadata": {
+          "synthetic_provider": false,
+          "requested_model": "deepseek-flash",
+          "attempts": 1,
+          "max_output_tokens": 512,
+          "usage_scope": "last successful response only; failed attempts may be billable",
+          "role": "structured intent; no business execution authority"
+        }
+      }
+    },
+    {
+      "case_id": "test14",
+      "split": "test",
+      "slice": "missing-order",
+      "input": "I want my payment refunded, but I have not found my order number yet.",
+      "expected_category": "refund",
+      "expected_next": "need_order",
+      "repeat": 1,
+      "variant": "taxonomy",
+      "status": "completed",
+      "result": {
+        "data": {
+          "category": "refund",
+          "order_id": null,
+          "decision_summary": "The customer requests a refund but has not provided an order ID; the server will need to ask for it."
+        },
+        "model": "deepseek-flash",
+        "latency_ms": 822.5174000108382,
+        "request_id": "9057e074-abed-44af-b654-344d17f7972f",
+        "tokens": {
+          "input": 446,
+          "output": 38
+        },
+        "error": null,
+        "cost": null,
+        "metadata": {
+          "synthetic_provider": false,
+          "requested_model": "deepseek-flash",
+          "attempts": 1,
+          "max_output_tokens": 512,
+          "usage_scope": "last successful response only; failed attempts may be billable",
+          "role": "structured intent; no business execution authority"
+        }
+      }
+    },
+    {
+      "case_id": "test14",
+      "split": "test",
+      "slice": "missing-order",
+      "input": "I want my payment refunded, but I have not found my order number yet.",
+      "expected_category": "refund",
+      "expected_next": "need_order",
+      "repeat": 1,
+      "variant": "baseline",
+      "status": "completed",
+      "result": {
+        "data": {
+          "category": "refund",
+          "order_id": null,
+          "decision_summary": "The customer requests a refund but has not provided an order number; missing order identifier prevents order lookup."
+        },
+        "model": "deepseek-flash",
+        "latency_ms": 1022.9080999997677,
+        "request_id": "f9ae8712-d13f-4203-bc2a-676b9563a1fd",
+        "tokens": {
+          "input": 205,
+          "output": 36
+        },
+        "error": null,
+        "cost": null,
+        "metadata": {
+          "synthetic_provider": false,
+          "requested_model": "deepseek-flash",
+          "attempts": 1,
+          "max_output_tokens": 512,
+          "usage_scope": "last successful response only; failed attempts may be billable",
+          "role": "structured intent; no business execution authority"
+        }
+      }
+    },
+    {
+      "case_id": "test15",
+      "split": "test",
+      "slice": "unsupported-remedy",
+      "input": "For ord_contract_test, refund half the payment while I keep the item. I want a partial refund rather than a full-order refund.",
+      "expected_category": "policy_conflict",
+      "expected_next": "review",
+      "repeat": 1,
+      "variant": "baseline",
+      "status": "completed",
+      "result": {
+        "data": {
+          "category": "refund",
+          "order_id": "ord_contract_test",
+          "decision_summary": "Customer requests a partial refund for ord_contract_test while keeping the item; eligibility is not determined."
+        },
+        "model": "deepseek-flash",
+        "latency_ms": 710.140399998636,
+        "request_id": "083c6f22-9aa6-47c5-8d0e-651620131db6",
+        "tokens": {
+          "input": 216,
+          "output": 48
+        },
+        "error": null,
+        "cost": null,
+        "metadata": {
+          "synthetic_provider": false,
+          "requested_model": "deepseek-flash",
+          "attempts": 1,
+          "max_output_tokens": 512,
+          "usage_scope": "last successful response only; failed attempts may be billable",
+          "role": "structured intent; no business execution authority"
+        }
+      }
+    },
+    {
+      "case_id": "test15",
+      "split": "test",
+      "slice": "unsupported-remedy",
+      "input": "For ord_contract_test, refund half the payment while I keep the item. I want a partial refund rather than a full-order refund.",
+      "expected_category": "policy_conflict",
+      "expected_next": "review",
+      "repeat": 1,
+      "variant": "taxonomy",
+      "status": "completed",
+      "result": {
+        "data": {
+          "category": "policy_conflict",
+          "order_id": "ord_contract_test",
+          "decision_summary": "The customer requests a partial refund while retaining the item, a remedy this system cannot support; requesting human review. Eligibility is not determined."
+        },
+        "model": "deepseek-flash",
+        "latency_ms": 1516.301099996781,
+        "request_id": "d831bb4e-595c-4b56-9879-884f6b597644",
+        "tokens": {
+          "input": 457,
+          "output": 47
+        },
+        "error": null,
+        "cost": null,
+        "metadata": {
+          "synthetic_provider": false,
+          "requested_model": "deepseek-flash",
+          "attempts": 1,
+          "max_output_tokens": 512,
+          "usage_scope": "last successful response only; failed attempts may be billable",
+          "role": "structured intent; no business execution authority"
+        }
+      }
+    },
+    {
+      "case_id": "test16",
+      "split": "test",
+      "slice": "mutually-exclusive-remedies",
+      "input": "For ord_contract_test, refund the entire payment AND ship me a free replacement too. I insist on both remedies.",
+      "expected_category": "policy_conflict",
+      "expected_next": "review",
+      "repeat": 1,
+      "variant": "taxonomy",
+      "status": "completed",
+      "result": {
+        "data": {
+          "category": "policy_conflict",
+          "order_id": "ord_contract_test",
+          "decision_summary": "The customer demands both a full refund and a free replacement for ord_contract_test, a remedy combination this system cannot support; human review requested. Eligibility is not determined."
+        },
+        "model": "deepseek-flash",
+        "latency_ms": 856.3315000064904,
+        "request_id": "9a44deef-28df-447b-a51e-87a0cd01677d",
+        "tokens": {
+          "input": 453,
+          "output": 54
+        },
+        "error": null,
+        "cost": null,
+        "metadata": {
+          "synthetic_provider": false,
+          "requested_model": "deepseek-flash",
+          "attempts": 1,
+          "max_output_tokens": 512,
+          "usage_scope": "last successful response only; failed attempts may be billable",
+          "role": "structured intent; no business execution authority"
+        }
+      }
+    },
+    {
+      "case_id": "test16",
+      "split": "test",
+      "slice": "mutually-exclusive-remedies",
+      "input": "For ord_contract_test, refund the entire payment AND ship me a free replacement too. I insist on both remedies.",
+      "expected_category": "policy_conflict",
+      "expected_next": "review",
+      "repeat": 1,
+      "variant": "baseline",
+      "status": "completed",
+      "result": {
+        "data": {
+          "category": "refund",
+          "order_id": "ord_contract_test",
+          "decision_summary": "Customer requests a full refund and a free replacement for the same order, insisting on both remedies; eligibility and remedy conflicts are not determined."
+        },
+        "model": "deepseek-flash",
+        "latency_ms": 1049.183399998583,
+        "request_id": "7e8633ef-8754-452e-bf2c-d0839af1067e",
+        "tokens": {
+          "input": 212,
+          "output": 46
+        },
+        "error": null,
+        "cost": null,
+        "metadata": {
+          "synthetic_provider": false,
+          "requested_model": "deepseek-flash",
+          "attempts": 1,
+          "max_output_tokens": 512,
+          "usage_scope": "last successful response only; failed attempts may be billable",
+          "role": "structured intent; no business execution authority"
+        }
+      }
+    }
+  ],
+  "ablations": {
+    "baseline": {
+      "cases": 24,
+      "category_accuracy": 0.8333333333333334,
+      "next_step_accuracy": 0.75,
+      "premature_action_candidates": 3,
+      "unnecessary_interruptions": 0,
+      "outcomes": [
+        {
+          "case_id": "dev01",
+          "repeat": 1,
+          "split": "dev",
+          "category_match": true,
+          "next_step": "clarify",
+          "expected_next": "clarify",
+          "next_step_match": true,
+          "premature_action_candidate": false,
+          "unnecessary_interruption": false
+        },
+        {
+          "case_id": "dev02",
+          "repeat": 1,
+          "split": "dev",
+          "category_match": true,
+          "next_step": "proposal_candidate",
+          "expected_next": "proposal_candidate",
+          "next_step_match": true,
+          "premature_action_candidate": false,
+          "unnecessary_interruption": false
+        },
+        {
+          "case_id": "dev03",
+          "repeat": 1,
+          "split": "dev",
+          "category_match": true,
+          "next_step": "proposal_candidate",
+          "expected_next": "proposal_candidate",
+          "next_step_match": true,
+          "premature_action_candidate": false,
+          "unnecessary_interruption": false
+        },
+        {
+          "case_id": "dev04",
+          "repeat": 1,
+          "split": "dev",
+          "category_match": true,
+          "next_step": "policy",
+          "expected_next": "policy",
+          "next_step_match": true,
+          "premature_action_candidate": false,
+          "unnecessary_interruption": false
+        },
+        {
+          "case_id": "dev05",
+          "repeat": 1,
+          "split": "dev",
+          "category_match": true,
+          "next_step": "policy",
+          "expected_next": "review",
+          "next_step_match": false,
+          "premature_action_candidate": false,
+          "unnecessary_interruption": false
+        },
+        {
+          "case_id": "dev06",
+          "repeat": 1,
+          "split": "dev",
+          "category_match": true,
+          "next_step": "clarify",
+          "expected_next": "clarify",
+          "next_step_match": true,
+          "premature_action_candidate": false,
+          "unnecessary_interruption": false
+        },
+        {
+          "case_id": "dev07",
+          "repeat": 1,
+          "split": "dev",
+          "category_match": true,
+          "next_step": "out_of_scope",
+          "expected_next": "out_of_scope",
+          "next_step_match": true,
+          "premature_action_candidate": false,
+          "unnecessary_interruption": false
+        },
+        {
+          "case_id": "dev08",
+          "repeat": 1,
+          "split": "dev",
+          "category_match": false,
+          "next_step": "proposal_candidate",
+          "expected_next": "clarify",
+          "next_step_match": false,
+          "premature_action_candidate": true,
+          "unnecessary_interruption": false
+        },
+        {
+          "case_id": "test01",
+          "repeat": 1,
+          "split": "test",
+          "category_match": true,
+          "next_step": "clarify",
+          "expected_next": "clarify",
+          "next_step_match": true,
+          "premature_action_candidate": false,
+          "unnecessary_interruption": false
+        },
+        {
+          "case_id": "test02",
+          "repeat": 1,
+          "split": "test",
+          "category_match": true,
+          "next_step": "clarify",
+          "expected_next": "clarify",
+          "next_step_match": true,
+          "premature_action_candidate": false,
+          "unnecessary_interruption": false
+        },
+        {
+          "case_id": "test03",
+          "repeat": 1,
+          "split": "test",
+          "category_match": false,
+          "next_step": "troubleshoot",
+          "expected_next": "clarify",
+          "next_step_match": false,
+          "premature_action_candidate": false,
+          "unnecessary_interruption": false
+        },
+        {
+          "case_id": "test04",
+          "repeat": 1,
+          "split": "test",
+          "category_match": true,
+          "next_step": "policy",
+          "expected_next": "review",
+          "next_step_match": false,
+          "premature_action_candidate": false,
+          "unnecessary_interruption": false
+        },
+        {
+          "case_id": "test05",
+          "repeat": 1,
+          "split": "test",
+          "category_match": true,
+          "next_step": "proposal_candidate",
+          "expected_next": "proposal_candidate",
+          "next_step_match": true,
+          "premature_action_candidate": false,
+          "unnecessary_interruption": false
+        },
+        {
+          "case_id": "test06",
+          "repeat": 1,
+          "split": "test",
+          "category_match": true,
+          "next_step": "proposal_candidate",
+          "expected_next": "proposal_candidate",
+          "next_step_match": true,
+          "premature_action_candidate": false,
+          "unnecessary_interruption": false
+        },
+        {
+          "case_id": "test07",
+          "repeat": 1,
+          "split": "test",
+          "category_match": true,
+          "next_step": "proposal_candidate",
+          "expected_next": "proposal_candidate",
+          "next_step_match": true,
+          "premature_action_candidate": false,
+          "unnecessary_interruption": false
+        },
+        {
+          "case_id": "test08",
+          "repeat": 1,
+          "split": "test",
+          "category_match": true,
+          "next_step": "proposal_candidate",
+          "expected_next": "proposal_candidate",
+          "next_step_match": true,
+          "premature_action_candidate": false,
+          "unnecessary_interruption": false
+        },
+        {
+          "case_id": "test09",
+          "repeat": 1,
+          "split": "test",
+          "category_match": true,
+          "next_step": "lookup",
+          "expected_next": "lookup",
+          "next_step_match": true,
+          "premature_action_candidate": false,
+          "unnecessary_interruption": false
+        },
+        {
+          "case_id": "test10",
+          "repeat": 1,
+          "split": "test",
+          "category_match": true,
+          "next_step": "policy",
+          "expected_next": "policy",
+          "next_step_match": true,
+          "premature_action_candidate": false,
+          "unnecessary_interruption": false
+        },
+        {
+          "case_id": "test11",
+          "repeat": 1,
+          "split": "test",
+          "category_match": true,
+          "next_step": "policy",
+          "expected_next": "policy",
+          "next_step_match": true,
+          "premature_action_candidate": false,
+          "unnecessary_interruption": false
+        },
+        {
+          "case_id": "test12",
+          "repeat": 1,
+          "split": "test",
+          "category_match": true,
+          "next_step": "troubleshoot",
+          "expected_next": "troubleshoot",
+          "next_step_match": true,
+          "premature_action_candidate": false,
+          "unnecessary_interruption": false
+        },
+        {
+          "case_id": "test13",
+          "repeat": 1,
+          "split": "test",
+          "category_match": true,
+          "next_step": "out_of_scope",
+          "expected_next": "out_of_scope",
+          "next_step_match": true,
+          "premature_action_candidate": false,
+          "unnecessary_interruption": false
+        },
+        {
+          "case_id": "test14",
+          "repeat": 1,
+          "split": "test",
+          "category_match": true,
+          "next_step": "need_order",
+          "expected_next": "need_order",
+          "next_step_match": true,
+          "premature_action_candidate": false,
+          "unnecessary_interruption": false
+        },
+        {
+          "case_id": "test15",
+          "repeat": 1,
+          "split": "test",
+          "category_match": false,
+          "next_step": "proposal_candidate",
+          "expected_next": "review",
+          "next_step_match": false,
+          "premature_action_candidate": true,
+          "unnecessary_interruption": false
+        },
+        {
+          "case_id": "test16",
+          "repeat": 1,
+          "split": "test",
+          "category_match": false,
+          "next_step": "proposal_candidate",
+          "expected_next": "review",
+          "next_step_match": false,
+          "premature_action_candidate": true,
+          "unnecessary_interruption": false
+        }
+      ]
+    },
+    "workflow_only": {
+      "cases": 24,
+      "category_accuracy": 0.8333333333333334,
+      "next_step_accuracy": 0.8333333333333334,
+      "premature_action_candidates": 3,
+      "unnecessary_interruptions": 0,
+      "outcomes": [
+        {
+          "case_id": "dev01",
+          "repeat": 1,
+          "split": "dev",
+          "category_match": true,
+          "next_step": "clarify",
+          "expected_next": "clarify",
+          "next_step_match": true,
+          "premature_action_candidate": false,
+          "unnecessary_interruption": false
+        },
+        {
+          "case_id": "dev02",
+          "repeat": 1,
+          "split": "dev",
+          "category_match": true,
+          "next_step": "proposal_candidate",
+          "expected_next": "proposal_candidate",
+          "next_step_match": true,
+          "premature_action_candidate": false,
+          "unnecessary_interruption": false
+        },
+        {
+          "case_id": "dev03",
+          "repeat": 1,
+          "split": "dev",
+          "category_match": true,
+          "next_step": "proposal_candidate",
+          "expected_next": "proposal_candidate",
+          "next_step_match": true,
+          "premature_action_candidate": false,
+          "unnecessary_interruption": false
+        },
+        {
+          "case_id": "dev04",
+          "repeat": 1,
+          "split": "dev",
+          "category_match": true,
+          "next_step": "policy",
+          "expected_next": "policy",
+          "next_step_match": true,
+          "premature_action_candidate": false,
+          "unnecessary_interruption": false
+        },
+        {
+          "case_id": "dev05",
+          "repeat": 1,
+          "split": "dev",
+          "category_match": true,
+          "next_step": "review",
+          "expected_next": "review",
+          "next_step_match": true,
+          "premature_action_candidate": false,
+          "unnecessary_interruption": false
+        },
+        {
+          "case_id": "dev06",
+          "repeat": 1,
+          "split": "dev",
+          "category_match": true,
+          "next_step": "clarify",
+          "expected_next": "clarify",
+          "next_step_match": true,
+          "premature_action_candidate": false,
+          "unnecessary_interruption": false
+        },
+        {
+          "case_id": "dev07",
+          "repeat": 1,
+          "split": "dev",
+          "category_match": true,
+          "next_step": "out_of_scope",
+          "expected_next": "out_of_scope",
+          "next_step_match": true,
+          "premature_action_candidate": false,
+          "unnecessary_interruption": false
+        },
+        {
+          "case_id": "dev08",
+          "repeat": 1,
+          "split": "dev",
+          "category_match": false,
+          "next_step": "proposal_candidate",
+          "expected_next": "clarify",
+          "next_step_match": false,
+          "premature_action_candidate": true,
+          "unnecessary_interruption": false
+        },
+        {
+          "case_id": "test01",
+          "repeat": 1,
+          "split": "test",
+          "category_match": true,
+          "next_step": "clarify",
+          "expected_next": "clarify",
+          "next_step_match": true,
+          "premature_action_candidate": false,
+          "unnecessary_interruption": false
+        },
+        {
+          "case_id": "test02",
+          "repeat": 1,
+          "split": "test",
+          "category_match": true,
+          "next_step": "clarify",
+          "expected_next": "clarify",
+          "next_step_match": true,
+          "premature_action_candidate": false,
+          "unnecessary_interruption": false
+        },
+        {
+          "case_id": "test03",
+          "repeat": 1,
+          "split": "test",
+          "category_match": false,
+          "next_step": "troubleshoot",
+          "expected_next": "clarify",
+          "next_step_match": false,
+          "premature_action_candidate": false,
+          "unnecessary_interruption": false
+        },
+        {
+          "case_id": "test04",
+          "repeat": 1,
+          "split": "test",
+          "category_match": true,
+          "next_step": "review",
+          "expected_next": "review",
+          "next_step_match": true,
+          "premature_action_candidate": false,
+          "unnecessary_interruption": false
+        },
+        {
+          "case_id": "test05",
+          "repeat": 1,
+          "split": "test",
+          "category_match": true,
+          "next_step": "proposal_candidate",
+          "expected_next": "proposal_candidate",
+          "next_step_match": true,
+          "premature_action_candidate": false,
+          "unnecessary_interruption": false
+        },
+        {
+          "case_id": "test06",
+          "repeat": 1,
+          "split": "test",
+          "category_match": true,
+          "next_step": "proposal_candidate",
+          "expected_next": "proposal_candidate",
+          "next_step_match": true,
+          "premature_action_candidate": false,
+          "unnecessary_interruption": false
+        },
+        {
+          "case_id": "test07",
+          "repeat": 1,
+          "split": "test",
+          "category_match": true,
+          "next_step": "proposal_candidate",
+          "expected_next": "proposal_candidate",
+          "next_step_match": true,
+          "premature_action_candidate": false,
+          "unnecessary_interruption": false
+        },
+        {
+          "case_id": "test08",
+          "repeat": 1,
+          "split": "test",
+          "category_match": true,
+          "next_step": "proposal_candidate",
+          "expected_next": "proposal_candidate",
+          "next_step_match": true,
+          "premature_action_candidate": false,
+          "unnecessary_interruption": false
+        },
+        {
+          "case_id": "test09",
+          "repeat": 1,
+          "split": "test",
+          "category_match": true,
+          "next_step": "lookup",
+          "expected_next": "lookup",
+          "next_step_match": true,
+          "premature_action_candidate": false,
+          "unnecessary_interruption": false
+        },
+        {
+          "case_id": "test10",
+          "repeat": 1,
+          "split": "test",
+          "category_match": true,
+          "next_step": "policy",
+          "expected_next": "policy",
+          "next_step_match": true,
+          "premature_action_candidate": false,
+          "unnecessary_interruption": false
+        },
+        {
+          "case_id": "test11",
+          "repeat": 1,
+          "split": "test",
+          "category_match": true,
+          "next_step": "policy",
+          "expected_next": "policy",
+          "next_step_match": true,
+          "premature_action_candidate": false,
+          "unnecessary_interruption": false
+        },
+        {
+          "case_id": "test12",
+          "repeat": 1,
+          "split": "test",
+          "category_match": true,
+          "next_step": "troubleshoot",
+          "expected_next": "troubleshoot",
+          "next_step_match": true,
+          "premature_action_candidate": false,
+          "unnecessary_interruption": false
+        },
+        {
+          "case_id": "test13",
+          "repeat": 1,
+          "split": "test",
+          "category_match": true,
+          "next_step": "out_of_scope",
+          "expected_next": "out_of_scope",
+          "next_step_match": true,
+          "premature_action_candidate": false,
+          "unnecessary_interruption": false
+        },
+        {
+          "case_id": "test14",
+          "repeat": 1,
+          "split": "test",
+          "category_match": true,
+          "next_step": "need_order",
+          "expected_next": "need_order",
+          "next_step_match": true,
+          "premature_action_candidate": false,
+          "unnecessary_interruption": false
+        },
+        {
+          "case_id": "test15",
+          "repeat": 1,
+          "split": "test",
+          "category_match": false,
+          "next_step": "proposal_candidate",
+          "expected_next": "review",
+          "next_step_match": false,
+          "premature_action_candidate": true,
+          "unnecessary_interruption": false
+        },
+        {
+          "case_id": "test16",
+          "repeat": 1,
+          "split": "test",
+          "category_match": false,
+          "next_step": "proposal_candidate",
+          "expected_next": "review",
+          "next_step_match": false,
+          "premature_action_candidate": true,
+          "unnecessary_interruption": false
+        }
+      ]
+    },
+    "taxonomy_only": {
+      "cases": 24,
+      "category_accuracy": 0.9583333333333334,
+      "next_step_accuracy": 0.8333333333333334,
+      "premature_action_candidates": 0,
+      "unnecessary_interruptions": 0,
+      "outcomes": [
+        {
+          "case_id": "dev01",
+          "repeat": 1,
+          "split": "dev",
+          "category_match": true,
+          "next_step": "clarify",
+          "expected_next": "clarify",
+          "next_step_match": true,
+          "premature_action_candidate": false,
+          "unnecessary_interruption": false
+        },
+        {
+          "case_id": "dev02",
+          "repeat": 1,
+          "split": "dev",
+          "category_match": true,
+          "next_step": "proposal_candidate",
+          "expected_next": "proposal_candidate",
+          "next_step_match": true,
+          "premature_action_candidate": false,
+          "unnecessary_interruption": false
+        },
+        {
+          "case_id": "dev03",
+          "repeat": 1,
+          "split": "dev",
+          "category_match": true,
+          "next_step": "proposal_candidate",
+          "expected_next": "proposal_candidate",
+          "next_step_match": true,
+          "premature_action_candidate": false,
+          "unnecessary_interruption": false
+        },
+        {
+          "case_id": "dev04",
+          "repeat": 1,
+          "split": "dev",
+          "category_match": true,
+          "next_step": "policy",
+          "expected_next": "policy",
+          "next_step_match": true,
+          "premature_action_candidate": false,
+          "unnecessary_interruption": false
+        },
+        {
+          "case_id": "dev05",
+          "repeat": 1,
+          "split": "dev",
+          "category_match": false,
+          "next_step": "policy",
+          "expected_next": "review",
+          "next_step_match": false,
+          "premature_action_candidate": false,
+          "unnecessary_interruption": false
+        },
+        {
+          "case_id": "dev06",
+          "repeat": 1,
+          "split": "dev",
+          "category_match": true,
+          "next_step": "clarify",
+          "expected_next": "clarify",
+          "next_step_match": true,
+          "premature_action_candidate": false,
+          "unnecessary_interruption": false
+        },
+        {
+          "case_id": "dev07",
+          "repeat": 1,
+          "split": "dev",
+          "category_match": true,
+          "next_step": "out_of_scope",
+          "expected_next": "out_of_scope",
+          "next_step_match": true,
+          "premature_action_candidate": false,
+          "unnecessary_interruption": false
+        },
+        {
+          "case_id": "dev08",
+          "repeat": 1,
+          "split": "dev",
+          "category_match": true,
+          "next_step": "clarify",
+          "expected_next": "clarify",
+          "next_step_match": true,
+          "premature_action_candidate": false,
+          "unnecessary_interruption": false
+        },
+        {
+          "case_id": "test01",
+          "repeat": 1,
+          "split": "test",
+          "category_match": true,
+          "next_step": "clarify",
+          "expected_next": "clarify",
+          "next_step_match": true,
+          "premature_action_candidate": false,
+          "unnecessary_interruption": false
+        },
+        {
+          "case_id": "test02",
+          "repeat": 1,
+          "split": "test",
+          "category_match": true,
+          "next_step": "clarify",
+          "expected_next": "clarify",
+          "next_step_match": true,
+          "premature_action_candidate": false,
+          "unnecessary_interruption": false
+        },
+        {
+          "case_id": "test03",
+          "repeat": 1,
+          "split": "test",
+          "category_match": true,
+          "next_step": "clarify",
+          "expected_next": "clarify",
+          "next_step_match": true,
+          "premature_action_candidate": false,
+          "unnecessary_interruption": false
+        },
+        {
+          "case_id": "test04",
+          "repeat": 1,
+          "split": "test",
+          "category_match": true,
+          "next_step": "policy",
+          "expected_next": "review",
+          "next_step_match": false,
+          "premature_action_candidate": false,
+          "unnecessary_interruption": false
+        },
+        {
+          "case_id": "test05",
+          "repeat": 1,
+          "split": "test",
+          "category_match": true,
+          "next_step": "proposal_candidate",
+          "expected_next": "proposal_candidate",
+          "next_step_match": true,
+          "premature_action_candidate": false,
+          "unnecessary_interruption": false
+        },
+        {
+          "case_id": "test06",
+          "repeat": 1,
+          "split": "test",
+          "category_match": true,
+          "next_step": "proposal_candidate",
+          "expected_next": "proposal_candidate",
+          "next_step_match": true,
+          "premature_action_candidate": false,
+          "unnecessary_interruption": false
+        },
+        {
+          "case_id": "test07",
+          "repeat": 1,
+          "split": "test",
+          "category_match": true,
+          "next_step": "proposal_candidate",
+          "expected_next": "proposal_candidate",
+          "next_step_match": true,
+          "premature_action_candidate": false,
+          "unnecessary_interruption": false
+        },
+        {
+          "case_id": "test08",
+          "repeat": 1,
+          "split": "test",
+          "category_match": true,
+          "next_step": "proposal_candidate",
+          "expected_next": "proposal_candidate",
+          "next_step_match": true,
+          "premature_action_candidate": false,
+          "unnecessary_interruption": false
+        },
+        {
+          "case_id": "test09",
+          "repeat": 1,
+          "split": "test",
+          "category_match": true,
+          "next_step": "lookup",
+          "expected_next": "lookup",
+          "next_step_match": true,
+          "premature_action_candidate": false,
+          "unnecessary_interruption": false
+        },
+        {
+          "case_id": "test10",
+          "repeat": 1,
+          "split": "test",
+          "category_match": true,
+          "next_step": "policy",
+          "expected_next": "policy",
+          "next_step_match": true,
+          "premature_action_candidate": false,
+          "unnecessary_interruption": false
+        },
+        {
+          "case_id": "test11",
+          "repeat": 1,
+          "split": "test",
+          "category_match": true,
+          "next_step": "policy",
+          "expected_next": "policy",
+          "next_step_match": true,
+          "premature_action_candidate": false,
+          "unnecessary_interruption": false
+        },
+        {
+          "case_id": "test12",
+          "repeat": 1,
+          "split": "test",
+          "category_match": true,
+          "next_step": "troubleshoot",
+          "expected_next": "troubleshoot",
+          "next_step_match": true,
+          "premature_action_candidate": false,
+          "unnecessary_interruption": false
+        },
+        {
+          "case_id": "test13",
+          "repeat": 1,
+          "split": "test",
+          "category_match": true,
+          "next_step": "out_of_scope",
+          "expected_next": "out_of_scope",
+          "next_step_match": true,
+          "premature_action_candidate": false,
+          "unnecessary_interruption": false
+        },
+        {
+          "case_id": "test14",
+          "repeat": 1,
+          "split": "test",
+          "category_match": true,
+          "next_step": "need_order",
+          "expected_next": "need_order",
+          "next_step_match": true,
+          "premature_action_candidate": false,
+          "unnecessary_interruption": false
+        },
+        {
+          "case_id": "test15",
+          "repeat": 1,
+          "split": "test",
+          "category_match": true,
+          "next_step": "policy",
+          "expected_next": "review",
+          "next_step_match": false,
+          "premature_action_candidate": false,
+          "unnecessary_interruption": false
+        },
+        {
+          "case_id": "test16",
+          "repeat": 1,
+          "split": "test",
+          "category_match": true,
+          "next_step": "policy",
+          "expected_next": "review",
+          "next_step_match": false,
+          "premature_action_candidate": false,
+          "unnecessary_interruption": false
+        }
+      ]
+    },
+    "full": {
+      "cases": 24,
+      "category_accuracy": 0.9583333333333334,
+      "next_step_accuracy": 0.9583333333333334,
+      "premature_action_candidates": 0,
+      "unnecessary_interruptions": 0,
+      "outcomes": [
+        {
+          "case_id": "dev01",
+          "repeat": 1,
+          "split": "dev",
+          "category_match": true,
+          "next_step": "clarify",
+          "expected_next": "clarify",
+          "next_step_match": true,
+          "premature_action_candidate": false,
+          "unnecessary_interruption": false
+        },
+        {
+          "case_id": "dev02",
+          "repeat": 1,
+          "split": "dev",
+          "category_match": true,
+          "next_step": "proposal_candidate",
+          "expected_next": "proposal_candidate",
+          "next_step_match": true,
+          "premature_action_candidate": false,
+          "unnecessary_interruption": false
+        },
+        {
+          "case_id": "dev03",
+          "repeat": 1,
+          "split": "dev",
+          "category_match": true,
+          "next_step": "proposal_candidate",
+          "expected_next": "proposal_candidate",
+          "next_step_match": true,
+          "premature_action_candidate": false,
+          "unnecessary_interruption": false
+        },
+        {
+          "case_id": "dev04",
+          "repeat": 1,
+          "split": "dev",
+          "category_match": true,
+          "next_step": "policy",
+          "expected_next": "policy",
+          "next_step_match": true,
+          "premature_action_candidate": false,
+          "unnecessary_interruption": false
+        },
+        {
+          "case_id": "dev05",
+          "repeat": 1,
+          "split": "dev",
+          "category_match": false,
+          "next_step": "policy",
+          "expected_next": "review",
+          "next_step_match": false,
+          "premature_action_candidate": false,
+          "unnecessary_interruption": false
+        },
+        {
+          "case_id": "dev06",
+          "repeat": 1,
+          "split": "dev",
+          "category_match": true,
+          "next_step": "clarify",
+          "expected_next": "clarify",
+          "next_step_match": true,
+          "premature_action_candidate": false,
+          "unnecessary_interruption": false
+        },
+        {
+          "case_id": "dev07",
+          "repeat": 1,
+          "split": "dev",
+          "category_match": true,
+          "next_step": "out_of_scope",
+          "expected_next": "out_of_scope",
+          "next_step_match": true,
+          "premature_action_candidate": false,
+          "unnecessary_interruption": false
+        },
+        {
+          "case_id": "dev08",
+          "repeat": 1,
+          "split": "dev",
+          "category_match": true,
+          "next_step": "clarify",
+          "expected_next": "clarify",
+          "next_step_match": true,
+          "premature_action_candidate": false,
+          "unnecessary_interruption": false
+        },
+        {
+          "case_id": "test01",
+          "repeat": 1,
+          "split": "test",
+          "category_match": true,
+          "next_step": "clarify",
+          "expected_next": "clarify",
+          "next_step_match": true,
+          "premature_action_candidate": false,
+          "unnecessary_interruption": false
+        },
+        {
+          "case_id": "test02",
+          "repeat": 1,
+          "split": "test",
+          "category_match": true,
+          "next_step": "clarify",
+          "expected_next": "clarify",
+          "next_step_match": true,
+          "premature_action_candidate": false,
+          "unnecessary_interruption": false
+        },
+        {
+          "case_id": "test03",
+          "repeat": 1,
+          "split": "test",
+          "category_match": true,
+          "next_step": "clarify",
+          "expected_next": "clarify",
+          "next_step_match": true,
+          "premature_action_candidate": false,
+          "unnecessary_interruption": false
+        },
+        {
+          "case_id": "test04",
+          "repeat": 1,
+          "split": "test",
+          "category_match": true,
+          "next_step": "review",
+          "expected_next": "review",
+          "next_step_match": true,
+          "premature_action_candidate": false,
+          "unnecessary_interruption": false
+        },
+        {
+          "case_id": "test05",
+          "repeat": 1,
+          "split": "test",
+          "category_match": true,
+          "next_step": "proposal_candidate",
+          "expected_next": "proposal_candidate",
+          "next_step_match": true,
+          "premature_action_candidate": false,
+          "unnecessary_interruption": false
+        },
+        {
+          "case_id": "test06",
+          "repeat": 1,
+          "split": "test",
+          "category_match": true,
+          "next_step": "proposal_candidate",
+          "expected_next": "proposal_candidate",
+          "next_step_match": true,
+          "premature_action_candidate": false,
+          "unnecessary_interruption": false
+        },
+        {
+          "case_id": "test07",
+          "repeat": 1,
+          "split": "test",
+          "category_match": true,
+          "next_step": "proposal_candidate",
+          "expected_next": "proposal_candidate",
+          "next_step_match": true,
+          "premature_action_candidate": false,
+          "unnecessary_interruption": false
+        },
+        {
+          "case_id": "test08",
+          "repeat": 1,
+          "split": "test",
+          "category_match": true,
+          "next_step": "proposal_candidate",
+          "expected_next": "proposal_candidate",
+          "next_step_match": true,
+          "premature_action_candidate": false,
+          "unnecessary_interruption": false
+        },
+        {
+          "case_id": "test09",
+          "repeat": 1,
+          "split": "test",
+          "category_match": true,
+          "next_step": "lookup",
+          "expected_next": "lookup",
+          "next_step_match": true,
+          "premature_action_candidate": false,
+          "unnecessary_interruption": false
+        },
+        {
+          "case_id": "test10",
+          "repeat": 1,
+          "split": "test",
+          "category_match": true,
+          "next_step": "policy",
+          "expected_next": "policy",
+          "next_step_match": true,
+          "premature_action_candidate": false,
+          "unnecessary_interruption": false
+        },
+        {
+          "case_id": "test11",
+          "repeat": 1,
+          "split": "test",
+          "category_match": true,
+          "next_step": "policy",
+          "expected_next": "policy",
+          "next_step_match": true,
+          "premature_action_candidate": false,
+          "unnecessary_interruption": false
+        },
+        {
+          "case_id": "test12",
+          "repeat": 1,
+          "split": "test",
+          "category_match": true,
+          "next_step": "troubleshoot",
+          "expected_next": "troubleshoot",
+          "next_step_match": true,
+          "premature_action_candidate": false,
+          "unnecessary_interruption": false
+        },
+        {
+          "case_id": "test13",
+          "repeat": 1,
+          "split": "test",
+          "category_match": true,
+          "next_step": "out_of_scope",
+          "expected_next": "out_of_scope",
+          "next_step_match": true,
+          "premature_action_candidate": false,
+          "unnecessary_interruption": false
+        },
+        {
+          "case_id": "test14",
+          "repeat": 1,
+          "split": "test",
+          "category_match": true,
+          "next_step": "need_order",
+          "expected_next": "need_order",
+          "next_step_match": true,
+          "premature_action_candidate": false,
+          "unnecessary_interruption": false
+        },
+        {
+          "case_id": "test15",
+          "repeat": 1,
+          "split": "test",
+          "category_match": true,
+          "next_step": "review",
+          "expected_next": "review",
+          "next_step_match": true,
+          "premature_action_candidate": false,
+          "unnecessary_interruption": false
+        },
+        {
+          "case_id": "test16",
+          "repeat": 1,
+          "split": "test",
+          "category_match": true,
+          "next_step": "review",
+          "expected_next": "review",
+          "next_step_match": true,
+          "premature_action_candidate": false,
+          "unnecessary_interruption": false
+        }
+      ]
+    }
+  },
+  "gate": {
+    "passed": true,
+    "test_rows_per_variant": 16
+  },
+  "limitations": [
+    "AI-authored labels have no independent human review; sixteen test cases are not representative production data.",
+    "Test data were frozen before prompt implementation but visible to the author; no blinded generalization claim.",
+    "The two deterministic workflow ablations reuse identical model responses; they do not make extra model calls.",
+    "A proposal candidate is a predicted next step, never an actual proposal, refund or approval.",
+    "No retrieval, database, tools, user simulator or LLM judge is invoked by this evaluator."
+  ],
+  "test_ablations": {
+    "baseline": {
+      "cases": 16,
+      "category_accuracy": 0.8125,
+      "next_step_accuracy": 0.75,
+      "premature_action_candidates": 2,
+      "unnecessary_interruptions": 0,
+      "outcomes": [
+        {
+          "case_id": "test01",
+          "repeat": 1,
+          "split": "test",
+          "category_match": true,
+          "next_step": "clarify",
+          "expected_next": "clarify",
+          "next_step_match": true,
+          "premature_action_candidate": false,
+          "unnecessary_interruption": false
+        },
+        {
+          "case_id": "test02",
+          "repeat": 1,
+          "split": "test",
+          "category_match": true,
+          "next_step": "clarify",
+          "expected_next": "clarify",
+          "next_step_match": true,
+          "premature_action_candidate": false,
+          "unnecessary_interruption": false
+        },
+        {
+          "case_id": "test03",
+          "repeat": 1,
+          "split": "test",
+          "category_match": false,
+          "next_step": "troubleshoot",
+          "expected_next": "clarify",
+          "next_step_match": false,
+          "premature_action_candidate": false,
+          "unnecessary_interruption": false
+        },
+        {
+          "case_id": "test04",
+          "repeat": 1,
+          "split": "test",
+          "category_match": true,
+          "next_step": "policy",
+          "expected_next": "review",
+          "next_step_match": false,
+          "premature_action_candidate": false,
+          "unnecessary_interruption": false
+        },
+        {
+          "case_id": "test05",
+          "repeat": 1,
+          "split": "test",
+          "category_match": true,
+          "next_step": "proposal_candidate",
+          "expected_next": "proposal_candidate",
+          "next_step_match": true,
+          "premature_action_candidate": false,
+          "unnecessary_interruption": false
+        },
+        {
+          "case_id": "test06",
+          "repeat": 1,
+          "split": "test",
+          "category_match": true,
+          "next_step": "proposal_candidate",
+          "expected_next": "proposal_candidate",
+          "next_step_match": true,
+          "premature_action_candidate": false,
+          "unnecessary_interruption": false
+        },
+        {
+          "case_id": "test07",
+          "repeat": 1,
+          "split": "test",
+          "category_match": true,
+          "next_step": "proposal_candidate",
+          "expected_next": "proposal_candidate",
+          "next_step_match": true,
+          "premature_action_candidate": false,
+          "unnecessary_interruption": false
+        },
+        {
+          "case_id": "test08",
+          "repeat": 1,
+          "split": "test",
+          "category_match": true,
+          "next_step": "proposal_candidate",
+          "expected_next": "proposal_candidate",
+          "next_step_match": true,
+          "premature_action_candidate": false,
+          "unnecessary_interruption": false
+        },
+        {
+          "case_id": "test09",
+          "repeat": 1,
+          "split": "test",
+          "category_match": true,
+          "next_step": "lookup",
+          "expected_next": "lookup",
+          "next_step_match": true,
+          "premature_action_candidate": false,
+          "unnecessary_interruption": false
+        },
+        {
+          "case_id": "test10",
+          "repeat": 1,
+          "split": "test",
+          "category_match": true,
+          "next_step": "policy",
+          "expected_next": "policy",
+          "next_step_match": true,
+          "premature_action_candidate": false,
+          "unnecessary_interruption": false
+        },
+        {
+          "case_id": "test11",
+          "repeat": 1,
+          "split": "test",
+          "category_match": true,
+          "next_step": "policy",
+          "expected_next": "policy",
+          "next_step_match": true,
+          "premature_action_candidate": false,
+          "unnecessary_interruption": false
+        },
+        {
+          "case_id": "test12",
+          "repeat": 1,
+          "split": "test",
+          "category_match": true,
+          "next_step": "troubleshoot",
+          "expected_next": "troubleshoot",
+          "next_step_match": true,
+          "premature_action_candidate": false,
+          "unnecessary_interruption": false
+        },
+        {
+          "case_id": "test13",
+          "repeat": 1,
+          "split": "test",
+          "category_match": true,
+          "next_step": "out_of_scope",
+          "expected_next": "out_of_scope",
+          "next_step_match": true,
+          "premature_action_candidate": false,
+          "unnecessary_interruption": false
+        },
+        {
+          "case_id": "test14",
+          "repeat": 1,
+          "split": "test",
+          "category_match": true,
+          "next_step": "need_order",
+          "expected_next": "need_order",
+          "next_step_match": true,
+          "premature_action_candidate": false,
+          "unnecessary_interruption": false
+        },
+        {
+          "case_id": "test15",
+          "repeat": 1,
+          "split": "test",
+          "category_match": false,
+          "next_step": "proposal_candidate",
+          "expected_next": "review",
+          "next_step_match": false,
+          "premature_action_candidate": true,
+          "unnecessary_interruption": false
+        },
+        {
+          "case_id": "test16",
+          "repeat": 1,
+          "split": "test",
+          "category_match": false,
+          "next_step": "proposal_candidate",
+          "expected_next": "review",
+          "next_step_match": false,
+          "premature_action_candidate": true,
+          "unnecessary_interruption": false
+        }
+      ]
+    },
+    "workflow_only": {
+      "cases": 16,
+      "category_accuracy": 0.8125,
+      "next_step_accuracy": 0.8125,
+      "premature_action_candidates": 2,
+      "unnecessary_interruptions": 0,
+      "outcomes": [
+        {
+          "case_id": "test01",
+          "repeat": 1,
+          "split": "test",
+          "category_match": true,
+          "next_step": "clarify",
+          "expected_next": "clarify",
+          "next_step_match": true,
+          "premature_action_candidate": false,
+          "unnecessary_interruption": false
+        },
+        {
+          "case_id": "test02",
+          "repeat": 1,
+          "split": "test",
+          "category_match": true,
+          "next_step": "clarify",
+          "expected_next": "clarify",
+          "next_step_match": true,
+          "premature_action_candidate": false,
+          "unnecessary_interruption": false
+        },
+        {
+          "case_id": "test03",
+          "repeat": 1,
+          "split": "test",
+          "category_match": false,
+          "next_step": "troubleshoot",
+          "expected_next": "clarify",
+          "next_step_match": false,
+          "premature_action_candidate": false,
+          "unnecessary_interruption": false
+        },
+        {
+          "case_id": "test04",
+          "repeat": 1,
+          "split": "test",
+          "category_match": true,
+          "next_step": "review",
+          "expected_next": "review",
+          "next_step_match": true,
+          "premature_action_candidate": false,
+          "unnecessary_interruption": false
+        },
+        {
+          "case_id": "test05",
+          "repeat": 1,
+          "split": "test",
+          "category_match": true,
+          "next_step": "proposal_candidate",
+          "expected_next": "proposal_candidate",
+          "next_step_match": true,
+          "premature_action_candidate": false,
+          "unnecessary_interruption": false
+        },
+        {
+          "case_id": "test06",
+          "repeat": 1,
+          "split": "test",
+          "category_match": true,
+          "next_step": "proposal_candidate",
+          "expected_next": "proposal_candidate",
+          "next_step_match": true,
+          "premature_action_candidate": false,
+          "unnecessary_interruption": false
+        },
+        {
+          "case_id": "test07",
+          "repeat": 1,
+          "split": "test",
+          "category_match": true,
+          "next_step": "proposal_candidate",
+          "expected_next": "proposal_candidate",
+          "next_step_match": true,
+          "premature_action_candidate": false,
+          "unnecessary_interruption": false
+        },
+        {
+          "case_id": "test08",
+          "repeat": 1,
+          "split": "test",
+          "category_match": true,
+          "next_step": "proposal_candidate",
+          "expected_next": "proposal_candidate",
+          "next_step_match": true,
+          "premature_action_candidate": false,
+          "unnecessary_interruption": false
+        },
+        {
+          "case_id": "test09",
+          "repeat": 1,
+          "split": "test",
+          "category_match": true,
+          "next_step": "lookup",
+          "expected_next": "lookup",
+          "next_step_match": true,
+          "premature_action_candidate": false,
+          "unnecessary_interruption": false
+        },
+        {
+          "case_id": "test10",
+          "repeat": 1,
+          "split": "test",
+          "category_match": true,
+          "next_step": "policy",
+          "expected_next": "policy",
+          "next_step_match": true,
+          "premature_action_candidate": false,
+          "unnecessary_interruption": false
+        },
+        {
+          "case_id": "test11",
+          "repeat": 1,
+          "split": "test",
+          "category_match": true,
+          "next_step": "policy",
+          "expected_next": "policy",
+          "next_step_match": true,
+          "premature_action_candidate": false,
+          "unnecessary_interruption": false
+        },
+        {
+          "case_id": "test12",
+          "repeat": 1,
+          "split": "test",
+          "category_match": true,
+          "next_step": "troubleshoot",
+          "expected_next": "troubleshoot",
+          "next_step_match": true,
+          "premature_action_candidate": false,
+          "unnecessary_interruption": false
+        },
+        {
+          "case_id": "test13",
+          "repeat": 1,
+          "split": "test",
+          "category_match": true,
+          "next_step": "out_of_scope",
+          "expected_next": "out_of_scope",
+          "next_step_match": true,
+          "premature_action_candidate": false,
+          "unnecessary_interruption": false
+        },
+        {
+          "case_id": "test14",
+          "repeat": 1,
+          "split": "test",
+          "category_match": true,
+          "next_step": "need_order",
+          "expected_next": "need_order",
+          "next_step_match": true,
+          "premature_action_candidate": false,
+          "unnecessary_interruption": false
+        },
+        {
+          "case_id": "test15",
+          "repeat": 1,
+          "split": "test",
+          "category_match": false,
+          "next_step": "proposal_candidate",
+          "expected_next": "review",
+          "next_step_match": false,
+          "premature_action_candidate": true,
+          "unnecessary_interruption": false
+        },
+        {
+          "case_id": "test16",
+          "repeat": 1,
+          "split": "test",
+          "category_match": false,
+          "next_step": "proposal_candidate",
+          "expected_next": "review",
+          "next_step_match": false,
+          "premature_action_candidate": true,
+          "unnecessary_interruption": false
+        }
+      ]
+    },
+    "taxonomy_only": {
+      "cases": 16,
+      "category_accuracy": 1.0,
+      "next_step_accuracy": 0.8125,
+      "premature_action_candidates": 0,
+      "unnecessary_interruptions": 0,
+      "outcomes": [
+        {
+          "case_id": "test01",
+          "repeat": 1,
+          "split": "test",
+          "category_match": true,
+          "next_step": "clarify",
+          "expected_next": "clarify",
+          "next_step_match": true,
+          "premature_action_candidate": false,
+          "unnecessary_interruption": false
+        },
+        {
+          "case_id": "test02",
+          "repeat": 1,
+          "split": "test",
+          "category_match": true,
+          "next_step": "clarify",
+          "expected_next": "clarify",
+          "next_step_match": true,
+          "premature_action_candidate": false,
+          "unnecessary_interruption": false
+        },
+        {
+          "case_id": "test03",
+          "repeat": 1,
+          "split": "test",
+          "category_match": true,
+          "next_step": "clarify",
+          "expected_next": "clarify",
+          "next_step_match": true,
+          "premature_action_candidate": false,
+          "unnecessary_interruption": false
+        },
+        {
+          "case_id": "test04",
+          "repeat": 1,
+          "split": "test",
+          "category_match": true,
+          "next_step": "policy",
+          "expected_next": "review",
+          "next_step_match": false,
+          "premature_action_candidate": false,
+          "unnecessary_interruption": false
+        },
+        {
+          "case_id": "test05",
+          "repeat": 1,
+          "split": "test",
+          "category_match": true,
+          "next_step": "proposal_candidate",
+          "expected_next": "proposal_candidate",
+          "next_step_match": true,
+          "premature_action_candidate": false,
+          "unnecessary_interruption": false
+        },
+        {
+          "case_id": "test06",
+          "repeat": 1,
+          "split": "test",
+          "category_match": true,
+          "next_step": "proposal_candidate",
+          "expected_next": "proposal_candidate",
+          "next_step_match": true,
+          "premature_action_candidate": false,
+          "unnecessary_interruption": false
+        },
+        {
+          "case_id": "test07",
+          "repeat": 1,
+          "split": "test",
+          "category_match": true,
+          "next_step": "proposal_candidate",
+          "expected_next": "proposal_candidate",
+          "next_step_match": true,
+          "premature_action_candidate": false,
+          "unnecessary_interruption": false
+        },
+        {
+          "case_id": "test08",
+          "repeat": 1,
+          "split": "test",
+          "category_match": true,
+          "next_step": "proposal_candidate",
+          "expected_next": "proposal_candidate",
+          "next_step_match": true,
+          "premature_action_candidate": false,
+          "unnecessary_interruption": false
+        },
+        {
+          "case_id": "test09",
+          "repeat": 1,
+          "split": "test",
+          "category_match": true,
+          "next_step": "lookup",
+          "expected_next": "lookup",
+          "next_step_match": true,
+          "premature_action_candidate": false,
+          "unnecessary_interruption": false
+        },
+        {
+          "case_id": "test10",
+          "repeat": 1,
+          "split": "test",
+          "category_match": true,
+          "next_step": "policy",
+          "expected_next": "policy",
+          "next_step_match": true,
+          "premature_action_candidate": false,
+          "unnecessary_interruption": false
+        },
+        {
+          "case_id": "test11",
+          "repeat": 1,
+          "split": "test",
+          "category_match": true,
+          "next_step": "policy",
+          "expected_next": "policy",
+          "next_step_match": true,
+          "premature_action_candidate": false,
+          "unnecessary_interruption": false
+        },
+        {
+          "case_id": "test12",
+          "repeat": 1,
+          "split": "test",
+          "category_match": true,
+          "next_step": "troubleshoot",
+          "expected_next": "troubleshoot",
+          "next_step_match": true,
+          "premature_action_candidate": false,
+          "unnecessary_interruption": false
+        },
+        {
+          "case_id": "test13",
+          "repeat": 1,
+          "split": "test",
+          "category_match": true,
+          "next_step": "out_of_scope",
+          "expected_next": "out_of_scope",
+          "next_step_match": true,
+          "premature_action_candidate": false,
+          "unnecessary_interruption": false
+        },
+        {
+          "case_id": "test14",
+          "repeat": 1,
+          "split": "test",
+          "category_match": true,
+          "next_step": "need_order",
+          "expected_next": "need_order",
+          "next_step_match": true,
+          "premature_action_candidate": false,
+          "unnecessary_interruption": false
+        },
+        {
+          "case_id": "test15",
+          "repeat": 1,
+          "split": "test",
+          "category_match": true,
+          "next_step": "policy",
+          "expected_next": "review",
+          "next_step_match": false,
+          "premature_action_candidate": false,
+          "unnecessary_interruption": false
+        },
+        {
+          "case_id": "test16",
+          "repeat": 1,
+          "split": "test",
+          "category_match": true,
+          "next_step": "policy",
+          "expected_next": "review",
+          "next_step_match": false,
+          "premature_action_candidate": false,
+          "unnecessary_interruption": false
+        }
+      ]
+    },
+    "full": {
+      "cases": 16,
+      "category_accuracy": 1.0,
+      "next_step_accuracy": 1.0,
+      "premature_action_candidates": 0,
+      "unnecessary_interruptions": 0,
+      "outcomes": [
+        {
+          "case_id": "test01",
+          "repeat": 1,
+          "split": "test",
+          "category_match": true,
+          "next_step": "clarify",
+          "expected_next": "clarify",
+          "next_step_match": true,
+          "premature_action_candidate": false,
+          "unnecessary_interruption": false
+        },
+        {
+          "case_id": "test02",
+          "repeat": 1,
+          "split": "test",
+          "category_match": true,
+          "next_step": "clarify",
+          "expected_next": "clarify",
+          "next_step_match": true,
+          "premature_action_candidate": false,
+          "unnecessary_interruption": false
+        },
+        {
+          "case_id": "test03",
+          "repeat": 1,
+          "split": "test",
+          "category_match": true,
+          "next_step": "clarify",
+          "expected_next": "clarify",
+          "next_step_match": true,
+          "premature_action_candidate": false,
+          "unnecessary_interruption": false
+        },
+        {
+          "case_id": "test04",
+          "repeat": 1,
+          "split": "test",
+          "category_match": true,
+          "next_step": "review",
+          "expected_next": "review",
+          "next_step_match": true,
+          "premature_action_candidate": false,
+          "unnecessary_interruption": false
+        },
+        {
+          "case_id": "test05",
+          "repeat": 1,
+          "split": "test",
+          "category_match": true,
+          "next_step": "proposal_candidate",
+          "expected_next": "proposal_candidate",
+          "next_step_match": true,
+          "premature_action_candidate": false,
+          "unnecessary_interruption": false
+        },
+        {
+          "case_id": "test06",
+          "repeat": 1,
+          "split": "test",
+          "category_match": true,
+          "next_step": "proposal_candidate",
+          "expected_next": "proposal_candidate",
+          "next_step_match": true,
+          "premature_action_candidate": false,
+          "unnecessary_interruption": false
+        },
+        {
+          "case_id": "test07",
+          "repeat": 1,
+          "split": "test",
+          "category_match": true,
+          "next_step": "proposal_candidate",
+          "expected_next": "proposal_candidate",
+          "next_step_match": true,
+          "premature_action_candidate": false,
+          "unnecessary_interruption": false
+        },
+        {
+          "case_id": "test08",
+          "repeat": 1,
+          "split": "test",
+          "category_match": true,
+          "next_step": "proposal_candidate",
+          "expected_next": "proposal_candidate",
+          "next_step_match": true,
+          "premature_action_candidate": false,
+          "unnecessary_interruption": false
+        },
+        {
+          "case_id": "test09",
+          "repeat": 1,
+          "split": "test",
+          "category_match": true,
+          "next_step": "lookup",
+          "expected_next": "lookup",
+          "next_step_match": true,
+          "premature_action_candidate": false,
+          "unnecessary_interruption": false
+        },
+        {
+          "case_id": "test10",
+          "repeat": 1,
+          "split": "test",
+          "category_match": true,
+          "next_step": "policy",
+          "expected_next": "policy",
+          "next_step_match": true,
+          "premature_action_candidate": false,
+          "unnecessary_interruption": false
+        },
+        {
+          "case_id": "test11",
+          "repeat": 1,
+          "split": "test",
+          "category_match": true,
+          "next_step": "policy",
+          "expected_next": "policy",
+          "next_step_match": true,
+          "premature_action_candidate": false,
+          "unnecessary_interruption": false
+        },
+        {
+          "case_id": "test12",
+          "repeat": 1,
+          "split": "test",
+          "category_match": true,
+          "next_step": "troubleshoot",
+          "expected_next": "troubleshoot",
+          "next_step_match": true,
+          "premature_action_candidate": false,
+          "unnecessary_interruption": false
+        },
+        {
+          "case_id": "test13",
+          "repeat": 1,
+          "split": "test",
+          "category_match": true,
+          "next_step": "out_of_scope",
+          "expected_next": "out_of_scope",
+          "next_step_match": true,
+          "premature_action_candidate": false,
+          "unnecessary_interruption": false
+        },
+        {
+          "case_id": "test14",
+          "repeat": 1,
+          "split": "test",
+          "category_match": true,
+          "next_step": "need_order",
+          "expected_next": "need_order",
+          "next_step_match": true,
+          "premature_action_candidate": false,
+          "unnecessary_interruption": false
+        },
+        {
+          "case_id": "test15",
+          "repeat": 1,
+          "split": "test",
+          "category_match": true,
+          "next_step": "review",
+          "expected_next": "review",
+          "next_step_match": true,
+          "premature_action_candidate": false,
+          "unnecessary_interruption": false
+        },
+        {
+          "case_id": "test16",
+          "repeat": 1,
+          "split": "test",
+          "category_match": true,
+          "next_step": "review",
+          "expected_next": "review",
+          "next_step_match": true,
+          "premature_action_candidate": false,
+          "unnecessary_interruption": false
+        }
+      ]
+    }
+  },
+  "usage": {
+    "input": 15618,
+    "output": 2039
+  },
+  "latency_median_ms": 1011.7551000075764
+}

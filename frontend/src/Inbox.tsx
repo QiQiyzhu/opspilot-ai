@@ -9,6 +9,7 @@ import {
   Plus,
   Send,
   ShieldCheck,
+  Copy,
   Square,
   UserRound,
 } from "lucide-react";
@@ -96,6 +97,7 @@ export default function Inbox({
   const [multiAgent, setMultiAgent] = useState(false);
   const [busy, setBusy] = useState(false);
   const [error, setError] = useState("");
+  const [copiedFollowUp, setCopiedFollowUp] = useState(false);
   const [streamStatus, setStreamStatus] = useState("Idle");
   const [newOpen, setNewOpen] = useState(false);
   const [newCustomer, setNewCustomer] = useState("");
@@ -287,6 +289,7 @@ export default function Inbox({
         },
       });
       setRun(null);
+      setCopiedFollowUp(false);
       setEvents([]);
       setProposal(null);
       setRunId(result.run_id);
@@ -517,6 +520,24 @@ export default function Inbox({
                 />
               )}
               <div ref={messageEnd} />
+              {run?.next_step && !ongoing && (
+                <section className="next-step-panel" aria-label="Required next step">
+                  <span className="eyebrow">NEXT STEP · {run.next_step.kind === "clarify" ? "CUSTOMER CHOICE" : "POLICY REVIEW"}</span>
+                  <h3>{run.next_step.title}</h3>
+                  <p>{run.next_step.question}</p>
+                  <p className="small muted">{run.next_step.detail}</p>
+                  <button
+                    className="secondary"
+                    onClick={() => void perform(async () => {
+                      await navigator.clipboard.writeText(run.next_step!.draft);
+                      setCopiedFollowUp(true);
+                    })}
+                  >
+                    <Copy size={14} /> {copiedFollowUp ? "Copied follow-up question" : "Copy follow-up question"}
+                  </button>
+                  <small>Copying sends nothing and creates no request. Record the customer's answer as a new message.</small>
+                </section>
+              )}
             </>
           )}
         </div>
