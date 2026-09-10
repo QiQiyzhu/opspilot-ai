@@ -1,0 +1,11 @@
+# Local installation provenance
+
+Source remains portable; this developer host placed bulky dependencies on `D:/CodexData/OpsPilotAI` because its system drive was nearly full. This is not a required path in the repository. `.env` is ignored and selects database/model locations. Python3.12.14 created a separate venv on the data drive. Process TEMP/TMP, pip cache, Hugging Face cache and model cache were redirected there.
+
+Docker was not installed during initial setup. A genuine PostgreSQL17.11 database was initialized, listening only on 127.0.0.1:5433 with SCRAM password authentication. PostgreSQL runtime/development files came from the official [EDB binary archive page](https://www.enterprisedb.com/download-postgresql-binaries), linked by the [PostgreSQL Windows download page](https://www.postgresql.org/download/windows/). The portal redirected to `https://get.enterprisedb.com/postgresql/postgresql-17.11-3-windows-x64-binaries.zip`.
+
+Archive length: 341325378 bytes. Observed SHA-256: `4b8db0930c38f6ef845db919551dedda3b6b845aeb0927b3d79a6e8e9e4537cf`. ZIP extraction/integrity succeeded. This is a recorded local integrity hash, not an independently published vendor checksum. `postgres.exe` is not Authenticode-signed; authenticity is based on the official HTTPS distribution source, not a claimed signature verification.
+
+pgvector was cloned from [official source](https://github.com/pgvector/pgvector), tag `v0.8.6`, commit `8ee86c96f0fd72390f890aa8a336fda6d3ab4c6c`, and compiled using the installed MSVC x64 toolchain with `nmake /F Makefile.win` then `nmake /F Makefile.win install`. Both returned exit0. `SELECT version()` and `pg_extension.extversion` confirmed PostgreSQL17.11/pgvector0.8.6. No SQLite substitute exists.
+
+For a fresh machine, prefer the README Compose route or install PostgreSQL/pgvector using the current official instructions. Do not copy a developer database or depend on their path. The container tags in Compose follow upstream `pg17`/Redis7 channels; they are not digest-pinned supply-chain attestations. Docker build remains unverified locally until actual CI execution.

@@ -1,0 +1,1048 @@
+{
+  "created_at": "2026-09-10T06:11:59.420027+00:00",
+  "provenance": "LOCAL SIMULATED SESSIONS / FAKE PROVIDER",
+  "results": [
+    {
+      "concurrency": 10,
+      "sessions": 10,
+      "wall_seconds": 1.3369851000024937,
+      "error_rate": 0.0,
+      "latencies": {
+        "api": {
+          "p50_ms": 52.27375000686152,
+          "p95_ms": 68.05587499256944,
+          "p99_ms": 69.2901349926251
+        },
+        "db": {
+          "p50_ms": 57.6687499997206,
+          "p95_ms": 144.9475999979768,
+          "p99_ms": 147.03847999335267
+        },
+        "retrieval": {
+          "p50_ms": 268.0675000010524,
+          "p95_ms": 410.054310002306,
+          "p99_ms": 418.7851020038943
+        },
+        "agent_session": {
+          "p50_ms": 635.6893499978469,
+          "p95_ms": 952.780339999299,
+          "p99_ms": 965.9861480034306
+        },
+        "agent_active": {
+          "p50_ms": 490.65000000000003,
+          "p95_ms": 689.64945,
+          "p99_ms": 689.98749
+        }
+      },
+      "raw": [
+        {
+          "index": 0,
+          "success": true,
+          "timings": {
+            "api": 66.17019999248441,
+            "db": 57.144899998093024,
+            "retrieval": 302.3280000052182,
+            "agent_session": 653.255099998205,
+            "agent_active": 505.11300000000006
+          }
+        },
+        {
+          "index": 1,
+          "success": true,
+          "timings": {
+            "api": 36.94220000761561,
+            "db": 58.19260000134818,
+            "retrieval": 159.02449999703094,
+            "agent_session": 927.8092000022298,
+            "agent_active": 690.072
+          }
+        },
+        {
+          "index": 2,
+          "success": true,
+          "timings": {
+            "api": 37.17229999892879,
+            "db": 55.51550000382122,
+            "retrieval": 204.57519999763463,
+            "agent_session": 932.604799992987,
+            "agent_active": 689.133
+          }
+        },
+        {
+          "index": 3,
+          "success": true,
+          "timings": {
+            "api": 25.13469998666551,
+            "db": 60.43440000212286,
+            "retrieval": 60.77809999987949,
+            "agent_session": 814.5824999955948,
+            "agent_active": 612.265
+          }
+        },
+        {
+          "index": 4,
+          "success": true,
+          "timings": {
+            "api": 51.08400000608526,
+            "db": 147.56119999219663,
+            "retrieval": 378.9682000060566,
+            "agent_session": 554.9961000069743,
+            "agent_active": 355.87
+          }
+        },
+        {
+          "index": 5,
+          "success": true,
+          "timings": {
+            "api": 27.756399998907,
+            "db": 58.66749999404419,
+            "retrieval": 116.903000001912,
+            "agent_session": 969.2876000044635,
+            "agent_active": 682.71
+          }
+        },
+        {
+          "index": 6,
+          "success": true,
+          "timings": {
+            "api": 53.463500007637776,
+            "db": 40.58080000686459,
+            "retrieval": 370.0377000059234,
+            "agent_session": 601.5683000005083,
+            "agent_active": 465.667
+          }
+        },
+        {
+          "index": 7,
+          "success": true,
+          "timings": {
+            "api": 69.59869999263901,
+            "db": 141.75320000504144,
+            "retrieval": 396.7155999998795,
+            "agent_session": 548.2629999896744,
+            "agent_active": 315.269
+          }
+        },
+        {
+          "index": 8,
+          "success": true,
+          "timings": {
+            "api": 56.525499996496364,
+            "db": 41.59799999615643,
+            "retrieval": 420.96780000429135,
+            "agent_session": 590.9913999930723,
+            "agent_active": 416.86600000000004
+          }
+        },
+        {
+          "index": 9,
+          "success": true,
+          "timings": {
+            "api": 61.74730000202544,
+            "db": 36.53409999969881,
+            "retrieval": 233.8069999968866,
+            "agent_session": 618.1235999974888,
+            "agent_active": 476.187
+          }
+        }
+      ]
+    },
+    {
+      "concurrency": 25,
+      "sessions": 25,
+      "wall_seconds": 3.36101680000138,
+      "error_rate": 0.0,
+      "latencies": {
+        "api": {
+          "p50_ms": 94.26659999007825,
+          "p95_ms": 143.24351999675852,
+          "p99_ms": 175.4306080081732
+        },
+        "db": {
+          "p50_ms": 11.153200000990182,
+          "p95_ms": 15.137500001583247,
+          "p99_ms": 15.609704004018566
+        },
+        "retrieval": {
+          "p50_ms": 444.7821999929147,
+          "p95_ms": 776.2147400033427,
+          "p99_ms": 778.823407999007
+        },
+        "agent_session": {
+          "p50_ms": 2052.9143000021577,
+          "p95_ms": 2254.941539996071,
+          "p99_ms": 2259.0644199954113
+        },
+        "agent_active": {
+          "p50_ms": 1066.244,
+          "p95_ms": 1323.1974,
+          "p99_ms": 1348.21152
+        }
+      },
+      "raw": [
+        {
+          "index": 0,
+          "success": true,
+          "timings": {
+            "api": 59.636599995428696,
+            "db": 2.943800005596131,
+            "retrieval": 93.79379999882076,
+            "agent_session": 1212.9653000010876,
+            "agent_active": 597.407
+          }
+        },
+        {
+          "index": 1,
+          "success": true,
+          "timings": {
+            "api": 121.60719999519642,
+            "db": 10.953899996820837,
+            "retrieval": 92.51800000492949,
+            "agent_session": 1976.968900009524,
+            "agent_active": 1005.115
+          }
+        },
+        {
+          "index": 2,
+          "success": true,
+          "timings": {
+            "api": 81.80489999358542,
+            "db": 10.574100000667386,
+            "retrieval": 417.06999999587424,
+            "agent_session": 2240.428499993868,
+            "agent_active": 1295.3220000000001
+          }
+        },
+        {
+          "index": 3,
+          "success": true,
+          "timings": {
+            "api": 71.4944000064861,
+            "db": 13.718900008825585,
+            "retrieval": 69.47329999820795,
+            "agent_session": 1672.4740999925416,
+            "agent_active": 530.613
+          }
+        },
+        {
+          "index": 4,
+          "success": true,
+          "timings": {
+            "api": 107.28560001007281,
+            "db": 15.250299999024719,
+            "retrieval": 682.9044000041904,
+            "agent_session": 2026.5020999941044,
+            "agent_active": 1009.2270000000001
+          }
+        },
+        {
+          "index": 5,
+          "success": true,
+          "timings": {
+            "api": 59.29429999378044,
+            "db": 6.894399994052947,
+            "retrieval": 105.33229999418836,
+            "agent_session": 2103.493400005391,
+            "agent_active": 1066.244
+          }
+        },
+        {
+          "index": 6,
+          "success": true,
+          "timings": {
+            "api": 73.6068999976851,
+            "db": 10.981300001731142,
+            "retrieval": 84.59990000119433,
+            "agent_session": 1350.4729000123916,
+            "agent_active": 562.424
+          }
+        },
+        {
+          "index": 7,
+          "success": true,
+          "timings": {
+            "api": 75.10479999473318,
+            "db": 10.907000003498979,
+            "retrieval": 96.4693999994779,
+            "agent_session": 1257.929499988677,
+            "agent_active": 603.6270000000001
+          }
+        },
+        {
+          "index": 8,
+          "success": true,
+          "timings": {
+            "api": 108.81240000890102,
+            "db": 11.616999996476807,
+            "retrieval": 507.8866999974707,
+            "agent_session": 2259.8280999955023,
+            "agent_active": 1317.083
+          }
+        },
+        {
+          "index": 9,
+          "success": true,
+          "timings": {
+            "api": 58.90910000016447,
+            "db": 12.010400008875877,
+            "retrieval": 64.43539999600034,
+            "agent_session": 824.4394000066677,
+            "agent_active": 618.502
+          }
+        },
+        {
+          "index": 10,
+          "success": true,
+          "timings": {
+            "api": 76.40020000690129,
+            "db": 9.852800008957274,
+            "retrieval": 771.3381000066875,
+            "agent_session": 1942.3408000002382,
+            "agent_active": 817.8290000000001
+          }
+        },
+        {
+          "index": 11,
+          "success": true,
+          "timings": {
+            "api": 71.10100000863895,
+            "db": 10.036799998488277,
+            "retrieval": 127.69579999439884,
+            "agent_session": 1920.2531000046292,
+            "agent_active": 946.549
+          }
+        },
+        {
+          "index": 12,
+          "success": true,
+          "timings": {
+            "api": 94.26659999007825,
+            "db": 9.388599995872937,
+            "retrieval": 613.1635999918217,
+            "agent_session": 2240.3657999966526,
+            "agent_active": 1219.708
+          }
+        },
+        {
+          "index": 13,
+          "success": true,
+          "timings": {
+            "api": 69.95489999826532,
+            "db": 11.5215999976499,
+            "retrieval": 185.64740000874735,
+            "agent_session": 2248.123299999861,
+            "agent_active": 784.705
+          }
+        },
+        {
+          "index": 14,
+          "success": true,
+          "timings": {
+            "api": 185.10700001206715,
+            "db": 9.547699999529868,
+            "retrieval": 260.4854999954114,
+            "agent_session": 2193.377600007807,
+            "agent_active": 1232.858
+          }
+        },
+        {
+          "index": 15,
+          "success": true,
+          "timings": {
+            "api": 95.41429999808315,
+            "db": 10.977699988870881,
+            "retrieval": 210.516799998004,
+            "agent_session": 2125.349099995219,
+            "agent_active": 1152.231
+          }
+        },
+        {
+          "index": 16,
+          "success": true,
+          "timings": {
+            "api": 106.81570001179352,
+            "db": 10.794600006192923,
+            "retrieval": 552.3304000089411,
+            "agent_session": 2223.3527999924263,
+            "agent_active": 1237.943
+          }
+        },
+        {
+          "index": 17,
+          "success": true,
+          "timings": {
+            "api": 113.45879999862518,
+            "db": 11.153200000990182,
+            "retrieval": 681.1645999987377,
+            "agent_session": 2003.6704999947688,
+            "agent_active": 979.035
+          }
+        },
+        {
+          "index": 18,
+          "success": true,
+          "timings": {
+            "api": 121.21979999938048,
+            "db": 11.727200006134808,
+            "retrieval": 779.2621999979019,
+            "agent_session": 1654.3623999896226,
+            "agent_active": 1194.907
+          }
+        },
+        {
+          "index": 19,
+          "success": true,
+          "timings": {
+            "api": 144.78869999584276,
+            "db": 15.723200005595572,
+            "retrieval": 777.4339000025066,
+            "agent_session": 1537.6743999950122,
+            "agent_active": 544.9979999999999
+          }
+        },
+        {
+          "index": 20,
+          "success": true,
+          "timings": {
+            "api": 137.0628000004217,
+            "db": 12.797899995348416,
+            "retrieval": 444.7821999929147,
+            "agent_session": 2245.913999999175,
+            "agent_active": 1355.6280000000002
+          }
+        },
+        {
+          "index": 21,
+          "success": true,
+          "timings": {
+            "api": 67.91040000098292,
+            "db": 14.686300011817366,
+            "retrieval": 528.2192999875406,
+            "agent_session": 2256.646099995123,
+            "agent_active": 1324.726
+          }
+        },
+        {
+          "index": 22,
+          "success": true,
+          "timings": {
+            "api": 132.6032000069972,
+            "db": 13.251800002763048,
+            "retrieval": 478.8722999946913,
+            "agent_session": 2243.2497999980114,
+            "agent_active": 1288.406
+          }
+        },
+        {
+          "index": 23,
+          "success": true,
+          "timings": {
+            "api": 133.02649999968708,
+            "db": 12.930500000948086,
+            "retrieval": 620.752499991795,
+            "agent_session": 2052.9143000021577,
+            "agent_active": 1067.689
+          }
+        },
+        {
+          "index": 24,
+          "success": true,
+          "timings": {
+            "api": 64.27200000325684,
+            "db": 11.229900002945215,
+            "retrieval": 659.5183999888832,
+            "agent_session": 2208.343899997999,
+            "agent_active": 1152.15
+          }
+        }
+      ]
+    },
+    {
+      "concurrency": 50,
+      "sessions": 50,
+      "wall_seconds": 9.41588810000394,
+      "error_rate": 0.0,
+      "latencies": {
+        "api": {
+          "p50_ms": 229.94564999680733,
+          "p95_ms": 340.41730999888387,
+          "p99_ms": 362.068407000479
+        },
+        "db": {
+          "p50_ms": 48.53174999880139,
+          "p95_ms": 75.09275499396607,
+          "p99_ms": 89.02621099754468
+        },
+        "retrieval": {
+          "p50_ms": 353.19785000319825,
+          "p95_ms": 1727.0830249995925,
+          "p99_ms": 1761.3171599959605
+        },
+        "agent_session": {
+          "p50_ms": 4297.042799997143,
+          "p95_ms": 5682.407290002448,
+          "p99_ms": 6237.358515005326
+        },
+        "agent_active": {
+          "p50_ms": 2301.1675,
+          "p95_ms": 3665.2127499999997,
+          "p99_ms": 3773.50013
+        }
+      },
+      "raw": [
+        {
+          "index": 0,
+          "success": true,
+          "timings": {
+            "api": 148.39000000210945,
+            "db": 11.93789999524597,
+            "retrieval": 294.61450000235345,
+            "agent_session": 2864.3927999946754,
+            "agent_active": 2327.792
+          }
+        },
+        {
+          "index": 1,
+          "success": true,
+          "timings": {
+            "api": 137.8087999910349,
+            "db": 2.276200000778772,
+            "retrieval": 265.59359999373555,
+            "agent_session": 3630.418999993708,
+            "agent_active": 2256.177
+          }
+        },
+        {
+          "index": 2,
+          "success": true,
+          "timings": {
+            "api": 148.28229999693576,
+            "db": 11.498599997139536,
+            "retrieval": 291.1853000114206,
+            "agent_session": 2921.06180000701,
+            "agent_active": 2331.361
+          }
+        },
+        {
+          "index": 3,
+          "success": true,
+          "timings": {
+            "api": 194.3901999911759,
+            "db": 45.935100002679974,
+            "retrieval": 281.18439999525435,
+            "agent_session": 3015.6308000005083,
+            "agent_active": 2300.16
+          }
+        },
+        {
+          "index": 4,
+          "success": true,
+          "timings": {
+            "api": 347.2704000014346,
+            "db": 44.688900001347065,
+            "retrieval": 243.60510001133662,
+            "agent_session": 3534.474999993108,
+            "agent_active": 766.1850000000001
+          }
+        },
+        {
+          "index": 5,
+          "success": true,
+          "timings": {
+            "api": 161.77479999896605,
+            "db": 27.902899993932806,
+            "retrieval": 287.05419998732395,
+            "agent_session": 3031.756900003529,
+            "agent_active": 2296.145
+          }
+        },
+        {
+          "index": 6,
+          "success": true,
+          "timings": {
+            "api": 269.06839999719523,
+            "db": 70.33679999585729,
+            "retrieval": 235.2894999930868,
+            "agent_session": 3269.079800011241,
+            "agent_active": 1462.787
+          }
+        },
+        {
+          "index": 7,
+          "success": true,
+          "timings": {
+            "api": 159.16319999087136,
+            "db": 26.880299992626533,
+            "retrieval": 285.32610001275316,
+            "agent_session": 3060.4464000061853,
+            "agent_active": 2294.426
+          }
+        },
+        {
+          "index": 8,
+          "success": true,
+          "timings": {
+            "api": 135.04120000288822,
+            "db": 4.939200007356703,
+            "retrieval": 278.78450001298916,
+            "agent_session": 3589.8967000102857,
+            "agent_active": 2239.85
+          }
+        },
+        {
+          "index": 9,
+          "success": true,
+          "timings": {
+            "api": 157.13540000433568,
+            "db": 21.537399996304885,
+            "retrieval": 286.86710000329185,
+            "agent_session": 2999.3958999984898,
+            "agent_active": 2301.187
+          }
+        },
+        {
+          "index": 10,
+          "success": true,
+          "timings": {
+            "api": 144.56149999750778,
+            "db": 18.746900008409284,
+            "retrieval": 287.80669999832753,
+            "agent_session": 2885.7313999906182,
+            "agent_active": 2326.796
+          }
+        },
+        {
+          "index": 11,
+          "success": true,
+          "timings": {
+            "api": 340.9879999962868,
+            "db": 43.41240000212565,
+            "retrieval": 227.92720000143163,
+            "agent_session": 3329.180200002156,
+            "agent_active": 1105.451
+          }
+        },
+        {
+          "index": 12,
+          "success": true,
+          "timings": {
+            "api": 339.71980000205804,
+            "db": 41.851499991025776,
+            "retrieval": 204.9308999994537,
+            "agent_session": 3331.4162000024226,
+            "agent_active": 1429.0639999999999
+          }
+        },
+        {
+          "index": 13,
+          "success": true,
+          "timings": {
+            "api": 235.2439999958733,
+            "db": 44.31879999174271,
+            "retrieval": 285.12069999123923,
+            "agent_session": 3176.353200004087,
+            "agent_active": 1492.634
+          }
+        },
+        {
+          "index": 14,
+          "success": true,
+          "timings": {
+            "api": 152.09360000153538,
+            "db": 24.713300008443184,
+            "retrieval": 290.3297000011662,
+            "agent_session": 3043.774999998277,
+            "agent_active": 2293.978
+          }
+        },
+        {
+          "index": 15,
+          "success": true,
+          "timings": {
+            "api": 233.8748000038322,
+            "db": 54.2903000023216,
+            "retrieval": 253.94260000030044,
+            "agent_session": 2928.7524999963352,
+            "agent_active": 2301.148
+          }
+        },
+        {
+          "index": 16,
+          "success": true,
+          "timings": {
+            "api": 254.56220000342,
+            "db": 53.75230000936426,
+            "retrieval": 282.464500007336,
+            "agent_session": 3411.142300014035,
+            "agent_active": 1314.2069999999999
+          }
+        },
+        {
+          "index": 17,
+          "success": true,
+          "timings": {
+            "api": 253.82949999766424,
+            "db": 56.04139999195468,
+            "retrieval": 287.80569999071304,
+            "agent_session": 3332.903400005307,
+            "agent_active": 1176.877
+          }
+        },
+        {
+          "index": 18,
+          "success": true,
+          "timings": {
+            "api": 230.10319999593776,
+            "db": 53.019799990579486,
+            "retrieval": 261.9228999974439,
+            "agent_session": 2961.607900011586,
+            "agent_active": 2299.432
+          }
+        },
+        {
+          "index": 19,
+          "success": true,
+          "timings": {
+            "api": 253.45370000286493,
+            "db": 70.27130000642501,
+            "retrieval": 232.19920000701677,
+            "agent_session": 3074.090599999181,
+            "agent_active": 2111.379
+          }
+        },
+        {
+          "index": 20,
+          "success": true,
+          "timings": {
+            "api": 256.8635999923572,
+            "db": 71.70359999872744,
+            "retrieval": 256.1333000048762,
+            "agent_session": 3371.323699990171,
+            "agent_active": 1391.381
+          }
+        },
+        {
+          "index": 21,
+          "success": true,
+          "timings": {
+            "api": 332.1579000039492,
+            "db": 42.49230001005344,
+            "retrieval": 242.98439999984112,
+            "agent_session": 3359.3454000074416,
+            "agent_active": 800.2230000000001
+          }
+        },
+        {
+          "index": 22,
+          "success": true,
+          "timings": {
+            "api": 288.9476999989711,
+            "db": 56.700199987972155,
+            "retrieval": 339.4503000017721,
+            "agent_session": 6262.155700009316,
+            "agent_active": 1737.308
+          }
+        },
+        {
+          "index": 23,
+          "success": true,
+          "timings": {
+            "api": 330.44479999807663,
+            "db": 46.64939999929629,
+            "retrieval": 226.87639998912346,
+            "agent_session": 3384.6927999984473,
+            "agent_active": 1045.171
+          }
+        },
+        {
+          "index": 24,
+          "success": true,
+          "timings": {
+            "api": 252.9515999922296,
+            "db": 68.00420000217855,
+            "retrieval": 224.01320000062697,
+            "agent_session": 3060.9625999932177,
+            "agent_active": 2285.513
+          }
+        },
+        {
+          "index": 25,
+          "success": true,
+          "timings": {
+            "api": 252.52949999412522,
+            "db": 92.71399999852292,
+            "retrieval": 1537.2278000140795,
+            "agent_session": 5503.239300000132,
+            "agent_active": 3208.643
+          }
+        },
+        {
+          "index": 26,
+          "success": true,
+          "timings": {
+            "api": 376.286099999561,
+            "db": 8.321900008013472,
+            "retrieval": 1755.357299989555,
+            "agent_session": 5451.509799997439,
+            "agent_active": 1249.464
+          }
+        },
+        {
+          "index": 27,
+          "success": true,
+          "timings": {
+            "api": 326.56840000709053,
+            "db": 46.00159999972675,
+            "retrieval": 1724.4256999983918,
+            "agent_session": 5500.283699991996,
+            "agent_active": 2626.118
+          }
+        },
+        {
+          "index": 28,
+          "success": true,
+          "timings": {
+            "api": 283.7719999952242,
+            "db": 53.789799989317544,
+            "retrieval": 1496.2521999987075,
+            "agent_session": 5499.871000007261,
+            "agent_active": 3370.572
+          }
+        },
+        {
+          "index": 29,
+          "success": true,
+          "timings": {
+            "api": 325.83380000141915,
+            "db": 46.812199987471104,
+            "retrieval": 1729.2572000005748,
+            "agent_session": 5515.346000000136,
+            "agent_active": 2379.68
+          }
+        },
+        {
+          "index": 30,
+          "success": true,
+          "timings": {
+            "api": 190.04890001087915,
+            "db": 48.40179999882821,
+            "retrieval": 863.0095999978948,
+            "agent_session": 5469.87000000081,
+            "agent_active": 3796.463
+          }
+        },
+        {
+          "index": 31,
+          "success": true,
+          "timings": {
+            "api": 196.9189999945229,
+            "db": 41.72739999194164,
+            "retrieval": 586.1622999946121,
+            "agent_session": 5653.438900000765,
+            "agent_active": 3530.77
+          }
+        },
+        {
+          "index": 32,
+          "success": true,
+          "timings": {
+            "api": 217.11050000158139,
+            "db": 48.661699998774566,
+            "retrieval": 1109.4949999969685,
+            "agent_session": 5322.314200006076,
+            "agent_active": 3749.6
+          }
+        },
+        {
+          "index": 33,
+          "success": true,
+          "timings": {
+            "api": 216.5822999959346,
+            "db": 51.286700007040054,
+            "retrieval": 1157.0403000077931,
+            "agent_session": 5357.800699988729,
+            "agent_active": 3667.2039999999997
+          }
+        },
+        {
+          "index": 34,
+          "success": true,
+          "timings": {
+            "api": 215.46110000053886,
+            "db": 43.699699992430396,
+            "retrieval": 411.207099998137,
+            "agent_session": 4872.204200000851,
+            "agent_active": 1419.195
+          }
+        },
+        {
+          "index": 35,
+          "success": true,
+          "timings": {
+            "api": 214.21550000377465,
+            "db": 41.632400010712445,
+            "retrieval": 548.7881000008201,
+            "agent_session": 5644.54750000732,
+            "agent_active": 3054.2889999999998
+          }
+        },
+        {
+          "index": 36,
+          "success": true,
+          "timings": {
+            "api": 144.52170000004116,
+            "db": 38.21080000489019,
+            "retrieval": 487.5209000019822,
+            "agent_session": 6211.549200001173,
+            "agent_active": 1660.984
+          }
+        },
+        {
+          "index": 37,
+          "success": true,
+          "timings": {
+            "api": 191.77370000397786,
+            "db": 42.83679999934975,
+            "retrieval": 366.9454000046244,
+            "agent_session": 3721.8813999934355,
+            "agent_active": 693.412
+          }
+        },
+        {
+          "index": 38,
+          "success": true,
+          "timings": {
+            "api": 235.3415999969002,
+            "db": 58.06170000869315,
+            "retrieval": 1767.0433000021148,
+            "agent_session": 5500.077299991972,
+            "agent_active": 2702.404
+          }
+        },
+        {
+          "index": 39,
+          "success": true,
+          "timings": {
+            "api": 235.31320001347922,
+            "db": 66.8461000022944,
+            "retrieval": 1322.3375999950804,
+            "agent_session": 5445.575000005192,
+            "agent_active": 3632.786
+          }
+        },
+        {
+          "index": 40,
+          "success": true,
+          "timings": {
+            "api": 210.4484000010416,
+            "db": 57.95039999065921,
+            "retrieval": 590.5415000015637,
+            "agent_session": 5706.108700003824,
+            "agent_active": 3598.204
+          }
+        },
+        {
+          "index": 41,
+          "success": true,
+          "timings": {
+            "api": 215.48519999487326,
+            "db": 54.03450000449084,
+            "retrieval": 643.5095999913756,
+            "agent_session": 5523.484499994083,
+            "agent_active": 3662.779
+          }
+        },
+        {
+          "index": 42,
+          "success": true,
+          "timings": {
+            "api": 231.83059999428224,
+            "db": 51.250300006358884,
+            "retrieval": 1616.1626999964938,
+            "agent_session": 5503.267100008088,
+            "agent_active": 3100.453
+          }
+        },
+        {
+          "index": 43,
+          "success": true,
+          "timings": {
+            "api": 232.3227000015322,
+            "db": 60.58180000400171,
+            "retrieval": 1192.9042000119807,
+            "agent_session": 5373.761000009836,
+            "agent_active": 3635.514
+          }
+        },
+        {
+          "index": 44,
+          "success": true,
+          "timings": {
+            "api": 230.51809999742545,
+            "db": 59.029299998655915,
+            "retrieval": 1252.8902999911224,
+            "agent_session": 5405.701000010595,
+            "agent_active": 3645.285
+          }
+        },
+        {
+          "index": 45,
+          "success": true,
+          "timings": {
+            "api": 229.28860000683926,
+            "db": 65.07180001062807,
+            "retrieval": 1297.1352000022307,
+            "agent_session": 5419.662700005574,
+            "agent_active": 3659.069
+          }
+        },
+        {
+          "index": 46,
+          "success": true,
+          "timings": {
+            "api": 228.81440000492148,
+            "db": 77.86569999007042,
+            "retrieval": 1378.1756999960635,
+            "agent_session": 5485.548500000732,
+            "agent_active": 3452.086
+          }
+        },
+        {
+          "index": 47,
+          "success": true,
+          "timings": {
+            "api": 227.76819999853615,
+            "db": 62.65930000517983,
+            "retrieval": 1683.204900007695,
+            "agent_session": 5495.883000010508,
+            "agent_active": 2847.508
+          }
+        },
+        {
+          "index": 48,
+          "success": true,
+          "timings": {
+            "api": 229.7880999976769,
+            "db": 65.46840000373777,
+            "retrieval": 1350.4545000032522,
+            "agent_session": 5474.843900010455,
+            "agent_active": 3505.3399999999997
+          }
+        },
+        {
+          "index": 49,
+          "success": true,
+          "timings": {
+            "api": 227.02639999624807,
+            "db": 85.18789999652654,
+            "retrieval": 1408.1131000129972,
+            "agent_session": 5502.332000003662,
+            "agent_active": 3482.027
+          }
+        }
+      ]
+    }
+  ],
+  "real_llm_latency": "NOT RUN",
+  "limitations": "One process on developer Windows host, concurrent UE build may share CPU. Warm document model/cache, session polling overhead included. Not production QPS."
+}

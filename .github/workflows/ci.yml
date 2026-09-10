@@ -1,0 +1,94 @@
+name: OpsPilot quality and regression
+on: [push, pull_request]
+jobs:
+  quality:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    services:
+      postgres:
+        image: pgvector/pgvector:pg17
+        env:
+          POSTGRES_USER: opspilot
+          POSTGRES_PASSWORD: opspilot
+          POSTGRES_DB: opspilot
+        ports: ["5433:5432"]
+        options: >-
+          --health-cmd "pg_isready -U opspilot -d opspilot"
+          --health-interval 5s --health-timeout 5s --health-retries 20
+      redis:
+        image: redis:7-alpine
+        ports: ["6379:6379"]
+    env:
+      OPSPILOT_PROVIDER: fake
+      OPSPILOT_DATABASE_URL: postgresql+psycopg://opspilot:opspilot@127.0.0.1:5433/opspilot
+      OPSPILOT_MODEL_CACHE: /tmp/opspilot-model-cache
+      OPSPILOT_MCP_URL: http://127.0.0.1:8003/mcp/
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: {python-version: '3.12'}
+      - uses: actions/setup-node@v4
+        with: {node-version: '22'}
+      - run: cp .env.example .env
+      - run: python -m venv .venv
+      - run: echo "$PWD/.venv/bin" >> "$GITHUB_PATH"
+      - run: pip install -r requirements-lock.txt && pip install --no-deps -e .
+      - run: ruff check backend evals analytics tests
+      - name: Start actual API for TCP MCP, SSE and browser integration
+        run: |
+          python -m uvicorn backend.app:app --host 127.0.0.1 --port 8003 > /tmp/opspilot.log 2>&1 &
+          python -m evals.wait_server
+          echo "OPSPILOT_E2E_REFUND_ORDER=$(python -m backend.demo_fixture)" >> "$GITHUB_ENV"
+      - run: OPSPILOT_LIVE_URL=http://127.0.0.1:8003 pytest -q --junitxml=evals/reports/backend-junit.xml
+      - run: python -m evals.runner agent --smoke
+      - name: Offline regression gate
+        run: python -m evals.gate evals/reports/agent-full.json
+      - run: npm ci
+        working-directory: frontend
+      - run: npm run lint && npm run test && npm run typecheck && npm run build
+        working-directory: frontend
+      - run: npx playwright install --with-deps chromium
+        working-directory: frontend
+      - run: npm run test:e2e
+        working-directory: frontend
+        env:
+          OPSPILOT_E2E_TOKEN: demo-admin
+          OPSPILOT_E2E_VIEWER_TOKEN: demo-viewer
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: opspilot-validation
+          path: |
+            evals/reports
+            frontend/test-results
+  compose-runtime:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - run: cp .env.example .env
+      - name: Validate Compose and build the actual backend image
+        run: docker compose config --quiet && docker compose build backend
+      - name: Start PostgreSQL, Redis and containerized API
+        run: |
+          docker compose up -d
+          docker compose exec -T backend python -m evals.wait_server
+      - name: Actual TCP MCP, SSE and transactional approval smoke
+        run: |
+          docker compose exec -T backend python -m evals.container_smoke --require-redis --output /tmp/container-smoke.json
+          docker compose cp backend:/tmp/container-smoke.json evals/reports/container-smoke.json
+          docker compose images --format json > evals/reports/container-images.json
+      - name: Preserve container logs
+        if: always()
+        run: docker compose logs --no-color > evals/reports/container-runtime.log
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: opspilot-container-runtime
+          path: |
+            evals/reports/container-smoke.json
+            evals/reports/container-images.json
+            evals/reports/container-runtime.log
+      - name: Clean up runner-local Compose resources
+        if: always()
+        run: docker compose down -v

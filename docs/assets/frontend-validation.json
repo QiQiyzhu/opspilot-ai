@@ -1,0 +1,169 @@
+{
+  "generated_at": "2026-09-10T06:25:00.712Z",
+  "source": "Actual local test-runner reports; not simulated test outcomes",
+  "environment": {
+    "node": "v24.16.0",
+    "browser": "Installed Microsoft Edge via Playwright",
+    "backend": "Actual local FastAPI/PostgreSQL service at 127.0.0.1:8003",
+    "provider": "fake-rules-v1; no paid LLM calls",
+    "business": "SIMULATED BUSINESS"
+  },
+  "unit": {
+    "total": 7,
+    "passed": 7,
+    "failed": 0,
+    "pending": 0,
+    "success": true,
+    "cases": [
+      {
+        "name": "authenticated request boundary attaches current session token and does not send a GET body",
+        "status": "passed"
+      },
+      {
+        "name": "authenticated request boundary preserves the approval decision and idempotency key without client actor",
+        "status": "passed"
+      },
+      {
+        "name": "authenticated request boundary surfaces the server authorization rejection",
+        "status": "passed"
+      },
+      {
+        "name": "trace and measurement honesty preserves SSE frames when CRLF boundaries split across network chunks",
+        "status": "passed"
+      },
+      {
+        "name": "trace and measurement honesty parses named SSE events and ignores heartbeat / invalid frames",
+        "status": "passed"
+      },
+      {
+        "name": "trace and measurement honesty distinguishes unavailable values from measured zero",
+        "status": "passed"
+      },
+      {
+        "name": "trace and measurement honesty does not treat awaiting human approval as completion",
+        "status": "passed"
+      }
+    ]
+  },
+  "browser": {
+    "startTime": "2026-09-10T06:20:08.548Z",
+    "duration": 53864.922,
+    "expected": 8,
+    "skipped": 0,
+    "unexpected": 0,
+    "flaky": 0,
+    "cases": [
+      {
+        "name": "policy QA streams real evidence, persists messages and exposes MCP transport",
+        "ok": true,
+        "attempts": [
+          {
+            "status": "passed",
+            "duration_ms": 2997
+          }
+        ]
+      },
+      {
+        "name": "replacement proposal shows evidence and audited rejection without executing",
+        "ok": true,
+        "attempts": [
+          {
+            "status": "passed",
+            "duration_ms": 4035
+          }
+        ]
+      },
+      {
+        "name": "viewer cannot submit writes and server rejects bypass attempts",
+        "ok": true,
+        "attempts": [
+          {
+            "status": "passed",
+            "duration_ms": 1346
+          }
+        ]
+      },
+      {
+        "name": "knowledge retrieval uses current evidence and registry compares real versions",
+        "ok": true,
+        "attempts": [
+          {
+            "status": "passed",
+            "duration_ms": 1699
+          }
+        ]
+      },
+      {
+        "name": "overview displays recorded data and mobile stays within viewport",
+        "ok": true,
+        "attempts": [
+          {
+            "status": "passed",
+            "duration_ms": 1840
+          }
+        ]
+      },
+      {
+        "name": "offline retrieval evaluation persists measured metrics and comparison tables",
+        "ok": true,
+        "attempts": [
+          {
+            "status": "passed",
+            "duration_ms": 3223
+          }
+        ]
+      },
+      {
+        "name": "waiting run cancellation is persisted and prevents a late approval",
+        "ok": true,
+        "attempts": [
+          {
+            "status": "passed",
+            "duration_ms": 3441
+          }
+        ]
+      },
+      {
+        "name": "refund requires human approval, verifies state and remains idempotent",
+        "ok": true,
+        "attempts": [
+          {
+            "status": "passed",
+            "duration_ms": 3827
+          }
+        ]
+      }
+    ]
+  },
+  "checks": {
+    "typecheck": "passed via npm run build",
+    "production_build": "passed",
+    "lint": "passed",
+    "npm_audit_vulnerabilities": 0
+  },
+  "recording": {
+    "kind": "actual-local-browser-recording",
+    "created_at": "2026-09-10T06:24:26.084Z",
+    "business": "SIMULATED BUSINESS",
+    "model": "fake-rules-v1",
+    "transport": "MCP Streamable HTTP",
+    "run_id": "c968d69b029641c9b9d635f0e411e564",
+    "order_id": "demo_36338676e897465c",
+    "wall_time_ms": 47947,
+    "viewport": {
+      "width": 1560,
+      "height": 1020
+    },
+    "editing": "None; continuous recording of actual UI interactions",
+    "page_errors": [],
+    "clip_duration_seconds": 33.36,
+    "duration_source": "ffmpeg read of the recorded WebM container",
+    "bytes": 1794285
+  },
+  "limits": [
+    "These UI tests use a deterministic provider and simulated business records, not real LLM performance.",
+    "Refund E2E requires a fresh eligible local order from the CLI-only demo fixture; this run configured it and skipped no cases.",
+    "Local Edge runs do not establish remote Linux CI success. Check the GitHub workflow separately.",
+    "Browser screenshots are actual rendered pages. No dashboard figures were entered by hand."
+  ]
+}

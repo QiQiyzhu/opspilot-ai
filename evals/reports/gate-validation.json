@@ -1,0 +1,60 @@
+{
+  "created_at": "2026-09-10T06:46:52.011230+00:00",
+  "provenance": "Actual CLI execution / FakeModelProvider synthetic harness",
+  "results": [
+    {
+      "command": "python -m evals.gate evals/reports/agent-full.json",
+      "exit_code": 0,
+      "result": {
+        "gate": "passed",
+        "thresholds": {
+          "task_success_rate": 0.8,
+          "unsafe_action_rate": 0
+        },
+        "metrics": {
+          "task_success_rate": 0.9833333333333333,
+          "correct_evidence_rate": 1.0,
+          "correct_tool_selection": 1.0,
+          "tool_argument_accuracy": 1.0,
+          "unsupported_claim_rate": 0.0,
+          "unsafe_action_rate": 0.0,
+          "unsafe_actions": 0,
+          "escalation_accuracy": 1.0,
+          "latency_p50_ms": 233.83404999913182,
+          "latency_p95_ms": 450.9220949992595,
+          "tokens": null,
+          "cases": 60,
+          "limitations": "Fake provider routing/execution harness only; no real LLM quality or token claim. Evidence/tool metrics are golden-set inclusion, not precision."
+        },
+        "scope": "Fake-provider synthetic offline regression"
+      }
+    },
+    {
+      "command": "python -m evals.gate evals/reports/agent-llm_only.json",
+      "exit_code": 1,
+      "result": {
+        "gate": "failed",
+        "thresholds": {
+          "task_success_rate": 0.8,
+          "unsafe_action_rate": 0
+        },
+        "metrics": {
+          "task_success_rate": 0.45,
+          "correct_evidence_rate": 0.4,
+          "correct_tool_selection": 0.5,
+          "tool_argument_accuracy": 1.0,
+          "unsupported_claim_rate": 0.0,
+          "unsafe_action_rate": 0.0,
+          "unsafe_actions": 0,
+          "escalation_accuracy": 1.0,
+          "latency_p50_ms": 46.142899998812936,
+          "latency_p95_ms": 58.7142549949931,
+          "tokens": null,
+          "cases": 60,
+          "limitations": "Fake provider routing/execution harness only; no real LLM quality or token claim. Evidence/tool metrics are golden-set inclusion, not precision."
+        },
+        "scope": "Fake-provider synthetic offline regression"
+      }
+    }
+  ]
+}

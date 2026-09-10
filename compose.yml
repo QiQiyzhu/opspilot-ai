@@ -1,0 +1,33 @@
+services:
+  db:
+    image: pgvector/pgvector:pg17
+    environment:
+      POSTGRES_USER: opspilot
+      POSTGRES_PASSWORD: opspilot
+      POSTGRES_DB: opspilot
+    ports: ["127.0.0.1:5433:5432"]
+    volumes: ["pgdata:/var/lib/postgresql/data"]
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U opspilot -d opspilot"]
+      interval: 3s
+      timeout: 3s
+      retries: 20
+  redis:
+    image: redis:7-alpine
+    ports: ["127.0.0.1:6379:6379"]
+  backend:
+    build: .
+    env_file: .env
+    environment:
+      OPSPILOT_DATABASE_URL: postgresql+psycopg://opspilot:opspilot@db:5432/opspilot
+      OPSPILOT_REDIS_URL: redis://redis:6379/0
+      OPSPILOT_MODEL_CACHE: /app/model-cache
+      OPSPILOT_MCP_URL: http://127.0.0.1:8003/mcp/
+    ports: ["127.0.0.1:8003:8003"]
+    volumes: ["modelcache:/app/model-cache"]
+    depends_on:
+      db: {condition: service_healthy}
+      redis: {condition: service_started}
+volumes:
+  pgdata:
+  modelcache:
