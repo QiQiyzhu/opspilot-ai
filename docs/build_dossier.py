@@ -49,6 +49,14 @@ def generate():
     tests = ET.parse(REPORTS / "backend-junit.xml").getroot().find("testsuite").attrib
     frontend = json.loads((ROOT / "docs/assets/frontend-validation.json").read_text(encoding="utf-8"))
     browser_regression = read("browser-approval-regression.json")["stats"]
+    ci_path = ROOT / "docs" / "ci-validation.md"
+    ci_details = ci_path.read_text(encoding="utf-8") if ci_path.exists() else ""
+    ci_measurements = read("ci-validation.json") if ci_details else None
+    ci_summary = (
+        f"Actual Linux GitHub Actions passed **{ci_measurements['backend']['tests']} backend tests, {ci_measurements['frontend']['unit_passed']} frontend unit tests and {ci_measurements['frontend']['browser']['expected']} browser scenarios**. A separate job built and started Compose, then verified PostgreSQL/Redis, TCP MCP/SSE and an approved idempotent refund. [Exact source SHA and downloaded CI evidence](docs/ci-validation.md)."
+        if ci_details
+        else "Remote CI and Docker runtime have not yet been verified; see validation for current evidence."
+    )
     recording = frontend["recording"]
     full = next(r for r in ablation["results"] if r["mode"] == "full")
     n = full["cases"]
@@ -94,6 +102,8 @@ def generate():
         ],
     )
     readme = f"""# OpsPilot AI
+
+[![GitHub Actions](https://github.com/QiQiyzhu/opspilot-ai/actions/workflows/ci.yml/badge.svg?branch=codex%2Fopspilot-v1)](https://github.com/QiQiyzhu/opspilot-ai/actions/workflows/ci.yml)
 
 Production-oriented RAG + Agent system for customer support and business operations.
 
@@ -145,6 +155,8 @@ Prompts/workflows have immutable versions, diffs and snapshots. A regression gat
 Requirements: Python **3.12**, Node **22.13+**, Docker Compose (or PostgreSQL17+ with pgvector installed). First startup downloads the lightweight ONNX embedding model; no paid API is needed. Keep large caches/data on a drive with space.
 
 ```bash
+git clone --branch codex/opspilot-v1 https://github.com/QiQiyzhu/opspilot-ai.git
+cd opspilot-ai
 cp .env.example .env
 docker compose up -d db redis
 python3.12 -m venv .venv
@@ -177,7 +189,7 @@ python -m analytics.explain
 python -m evals.demo
 ```
 
-Backend local result: **{tests["tests"]} passed, 0 skipped**, including TCP MCP/SSE tests. Frontend commands and credential/fixture setup are in [frontend README](frontend/README.md). GitHub Actions includes PostgreSQL/Redis services, lint/tests, Fake regression gate, browser integration and Docker build; remote CI and Docker were not executed locally at initial delivery. See validation for current evidence.
+Backend local result: **{tests["tests"]} passed, 0 skipped**, including TCP MCP/SSE tests. Frontend commands and credential/fixture setup are in [frontend README](frontend/README.md). {ci_summary}
 
 {perf_table}
 Local Windows developer-host Fake sessions, not production QPS or real LLM latency. [Scope and limitations](docs/performance.md).
@@ -202,8 +214,10 @@ RAG: 30 synthetic questions × 4 baselines; 36 rechunking/mode/top-K configurati
 {perf_table}
 85 total local simulated sessions; real LLM latency is NOT RUN. The values above come directly from the saved JSON.
 
-Local environment: Python3.12.14; PostgreSQL17.11; pgvector0.8.6; real BGE-small English ONNX384. PostgreSQL binaries, database, venv, pip/model caches and process temporary files are on a dedicated data drive. Docker was unavailable during initial setup. OpsPilot Docker build and GitHub Actions status at initial delivery: **NOT RUN**. Do not write “CI passed” before an actual remote run is inspected.
+Local environment: Python3.12.14; PostgreSQL17.11; pgvector0.8.6; real BGE-small English ONNX384. PostgreSQL binaries, database, venv, pip/model caches and process temporary files are on a dedicated data drive. Docker was unavailable during initial local setup. Remote verification is recorded separately below when actually executed.
 """
+    if ci_details:
+        validation += "\n" + ci_details
     (ROOT / "docs" / "validation.md").write_text(validation, encoding="utf-8")
     tree = "\n".join(
         sorted(
@@ -307,7 +321,7 @@ Local environment: Python3.12.14; PostgreSQL17.11; pgvector0.8.6; real BGE-small
         ("N. 失败案例", (ROOT / "docs/failure-cases.md").read_text(encoding="utf-8")),
         (
             "O. 尚未完成的问题",
-            "独立人工审查合成标签；真实LLM质量/成本/时延评测；拒答校准与更广注入测试；SSO/多租户/最小DB权限；审批过期与durable worker；Alembic迁移/备份恢复演练；线上托管。Docker/GitHub CI初始交付未运行，后续只能追加真实记录。",
+            "独立人工审查合成标签；真实LLM质量/成本/时延评测；拒答校准与更广注入测试；SSO/多租户/最小DB权限；审批过期与durable worker；Alembic迁移/备份恢复演练；线上托管。Docker/GitHub CI的实测记录见J节，不将本地结果冒充远程结果。",
         ),
         ("P. 10个必须逐行读懂的Backend文件", table(["File", "阅读目标"], backend_files)),
         ("Q. 5个必须读懂的Frontend文件", table(["File", "阅读目标"], front_files)),

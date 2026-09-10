@@ -1,0 +1,119 @@
+{
+  "observed_at": "2026-09-10T06:58:12.211602+00:00",
+  "run_id": 34447225959,
+  "run_url": "https://github.com/QiQiyzhu/opspilot-ai/actions/runs/34447225959",
+  "source_sha": "9c1ce3318c4ed5dd59e509364156b280224436cb",
+  "conclusion": "success",
+  "jobs": [
+    {
+      "name": "compose-runtime",
+      "url": "https://github.com/QiQiyzhu/opspilot-ai/actions/runs/34447225959/job/102774571048",
+      "conclusion": "success",
+      "started_at": "2026-09-10T06:52:51Z",
+      "completed_at": "2026-09-10T06:53:43Z"
+    },
+    {
+      "name": "quality",
+      "url": "https://github.com/QiQiyzhu/opspilot-ai/actions/runs/34447225959/job/102774571251",
+      "conclusion": "success",
+      "started_at": "2026-09-10T06:52:51Z",
+      "completed_at": "2026-09-10T06:55:18Z"
+    }
+  ],
+  "backend": {
+    "name": "pytest",
+    "errors": "0",
+    "failures": "0",
+    "skipped": "0",
+    "tests": "67",
+    "time": "4.687",
+    "timestamp": "2026-09-10T06:53:49.678199+00:00",
+    "hostname": "runnervmlun5p"
+  },
+  "frontend": {
+    "unit_passed": 7,
+    "unit_source": "quality job log, npm run test",
+    "browser": {
+      "startTime": "2026-09-10T06:54:48.614Z",
+      "duration": 23521.674000000003,
+      "expected": 8,
+      "skipped": 0,
+      "unexpected": 0,
+      "flaky": 0
+    },
+    "npm_ci_audit_vulnerabilities": 0,
+    "lint_typecheck_build": "passed in actual quality job"
+  },
+  "agent_smoke": {
+    "provider": "fake-rules-v1",
+    "cases": 10,
+    "task_success_rate": 1.0,
+    "gate": "passed"
+  },
+  "container": {
+    "created_at": "2026-09-10T06:53:38.475575+00:00",
+    "provenance": "Actual TCP smoke / SIMULATED BUSINESS / FakeModelProvider / scripted review",
+    "health": {
+      "status": "ok",
+      "business": "SIMULATED BUSINESS",
+      "provider": "fake",
+      "database": "PostgreSQL 17.11 (Debian 17.11-1.pgdg12+2) on x86_64-pc-linux-gnu, compiled by gcc (Debian 12.2.0-14+deb12u1) 12.2.0, 64-bit",
+      "pgvector": "0.8.6"
+    },
+    "mcp_protocol": "2026-07-28",
+    "mcp_transport": "Streamable HTTP over actual TCP",
+    "sse_events_observed": 24,
+    "checks": {
+      "authenticated_api": true,
+      "mcp_order_fact": true,
+      "sse_human_gate": true,
+      "operator_approval_denied": true,
+      "admin_approval_verified": true,
+      "idempotent_refund_count": 1,
+      "approved_amount_matches": true,
+      "redis_ping": true
+    },
+    "run_id": "d5a8f297c81b47b998b1033cf8c81806",
+    "order_id": "demo_026f2da367da42f5",
+    "proposal_id": "a4a83ee0d2a549a89b6afa54b538c901",
+    "verification": {
+      "checks": {
+        "order_exists": true,
+        "ledger_exists": true,
+        "ledger_submitted": true,
+        "proposal_executed": true,
+        "ledger_order_matches": true,
+        "order_amount_matches": true,
+        "order_status_matches": true,
+        "approved_amount_matches": true,
+        "ledger_proposal_matches": true
+      },
+      "method": "independent_database_read",
+      "record": {
+        "id": "53c0d18b727e4200b8e0720355803fc2",
+        "status": "submitted",
+        "order_id": "demo_026f2da367da42f5",
+        "created_at": "2026-09-10T06:53:38.411158+00:00",
+        "proposal_id": "a4a83ee0d2a549a89b6afa54b538c901",
+        "amount_cents": 12900
+      },
+      "order_id": "demo_026f2da367da42f5",
+      "verified": true,
+      "checked_at": "2026-09-10T06:53:38.415649+00:00",
+      "reservation": null,
+      "observed_status": "refunded",
+      "inventory_verification_scope": null
+    }
+  },
+  "failed_runs_observed": [],
+  "warnings": [
+    "One upstream Starlette/AnyIO deprecation warning in pytest",
+    "GitHub warned that action versions targeting Node20 are forced to Node24; jobs passed"
+  ],
+  "limitations": [
+    "Synthetic business and FakeModelProvider; no real LLM performance or business effect claimed",
+    "This is the recorded source SHA; later documentation commits do not alter what this run tested",
+    "The 10-task CI agent smoke is separate from the full 60-task local ablation",
+    "Only designated CI outputs were copied; source-bundled local reports were not relabeled as newly run in CI"
+  ]
+}

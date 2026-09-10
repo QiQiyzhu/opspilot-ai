@@ -1,0 +1,55 @@
+{
+  "created_at": "2026-09-10T06:53:38.475575+00:00",
+  "provenance": "Actual TCP smoke / SIMULATED BUSINESS / FakeModelProvider / scripted review",
+  "health": {
+    "status": "ok",
+    "business": "SIMULATED BUSINESS",
+    "provider": "fake",
+    "database": "PostgreSQL 17.11 (Debian 17.11-1.pgdg12+2) on x86_64-pc-linux-gnu, compiled by gcc (Debian 12.2.0-14+deb12u1) 12.2.0, 64-bit",
+    "pgvector": "0.8.6"
+  },
+  "mcp_protocol": "2026-07-28",
+  "mcp_transport": "Streamable HTTP over actual TCP",
+  "sse_events_observed": 24,
+  "checks": {
+    "authenticated_api": true,
+    "mcp_order_fact": true,
+    "sse_human_gate": true,
+    "operator_approval_denied": true,
+    "admin_approval_verified": true,
+    "idempotent_refund_count": 1,
+    "approved_amount_matches": true,
+    "redis_ping": true
+  },
+  "run_id": "d5a8f297c81b47b998b1033cf8c81806",
+  "order_id": "demo_026f2da367da42f5",
+  "proposal_id": "a4a83ee0d2a549a89b6afa54b538c901",
+  "verification": {
+    "checks": {
+      "order_exists": true,
+      "ledger_exists": true,
+      "ledger_submitted": true,
+      "proposal_executed": true,
+      "ledger_order_matches": true,
+      "order_amount_matches": true,
+      "order_status_matches": true,
+      "approved_amount_matches": true,
+      "ledger_proposal_matches": true
+    },
+    "method": "independent_database_read",
+    "record": {
+      "id": "53c0d18b727e4200b8e0720355803fc2",
+      "status": "submitted",
+      "order_id": "demo_026f2da367da42f5",
+      "created_at": "2026-09-10T06:53:38.411158+00:00",
+      "proposal_id": "a4a83ee0d2a549a89b6afa54b538c901",
+      "amount_cents": 12900
+    },
+    "order_id": "demo_026f2da367da42f5",
+    "verified": true,
+    "checked_at": "2026-09-10T06:53:38.415649+00:00",
+    "reservation": null,
+    "observed_status": "refunded",
+    "inventory_verification_scope": null
+  }
+}
